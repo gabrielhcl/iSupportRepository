@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yongyou.iSupport.dao.IsBGroupDao">
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsBGroup">
+    <id column="pk_group" jdbcType="INTEGER" property="pk_group" />
+    <result column="groupcode" jdbcType="VARCHAR" property="groupcode" />
+    <result column="groupname" jdbcType="VARCHAR" property="groupname" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    pk_group, groupcode, groupname, remark
+  </sql>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsBGroup">
+    insert into is_b_group (pk_group, groupcode, groupname, 
+      remark)
+    values (#{pk_group,jdbcType=INTEGER}, #{groupcode,jdbcType=VARCHAR}, #{groupname,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  
+   <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBGroup">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_b_group
+		<where>
+			<if test=" pk_group!= null">
+				AND pk_group=#{pk_group}
+			</if>
+			<if test=" groupcode != null and  groupcode != '' ">
+				AND groupcode LIKE
+				concat('%',#{groupcode},'%')
+			</if>
+			<if test=" groupname != null and  groupname != '' ">
+				AND groupname LIKE
+				concat('%',#{groupname},'%')
+			</if>
+			<if test=" remark != null and  remark != '' ">
+				AND remark LIKE
+				concat('%',#{remark},'%')
+			</if>
+		</where>
+	</select>
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from is_b_group
+    where pk_group = #{pk_group,jdbcType=INTEGER}
+  	</delete>
+  	
+  	
+  	
+  	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	SELECT 
+    <include refid="Base_Column_List" />
+    FROM is_b_group 
+    WHERE pk_group = #{pk_group,jdbcType=INTEGER}
+	</select>
+	
+	<update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsBGroup">
+		UPDATE is_b_group 
+		SET  
+		groupcode=#{groupcode,jdbcType=VARCHAR},
+		groupname=#{groupname,jdbcType=VARCHAR},
+		remark=#{remark,jdbcType=VARCHAR}
+		WHERE pk_group=#{pk_group,jdbcType=INTEGER}
+	</update>
+	
+  
+  
+  	
+</mapper>

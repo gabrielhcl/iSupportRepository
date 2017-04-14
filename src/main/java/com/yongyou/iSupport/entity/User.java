@@ -6,9 +6,6 @@ package com.yongyou.iSupport.entity;
  */
 
 public class User {
-	/*
-	 * 用户主键id，用户编码，用户密码，用户名，用户类型，用户中文名，用户电话，用户邮箱，用户性别，用户所在区域，用户所在部门
-	 */
     private Integer pk_user;
     private String usercode;
     private String password;

@@ -1,7 +1,5 @@
 package com.yongyou.iSupport.service.impl;
 
-
-
 import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yongyou.iSupport.dao.UserDao;
 import com.yongyou.iSupport.entity.User;
 import com.yongyou.iSupport.service.UserService;
-
 
 @Service("userService")
 public class UserServiceImpl implements UserService {

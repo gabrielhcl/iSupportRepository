@@ -16,6 +16,6 @@ public class MapController {
 		String jsp = "map-vector.jsp";
 		model.addAttribute("map-vector.jsp",request.getContextPath()+"/"+jsp);
 		System.out.println(request.getContextPath()+jsp);
-		return "/page/index";
+		return "index";
 	}
 }

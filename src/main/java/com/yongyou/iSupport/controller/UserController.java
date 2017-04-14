@@ -22,7 +22,7 @@ public class UserController {
 	
 	
 	/*
-	 * ÓÃ»§µÇÂ¼
+	 * ç™»å½•åŠŸèƒ½
 	 */
 	@RequestMapping("login")
 	public String login(HttpServletRequest request,HttpServletResponse response,Model model,HttpSession httpsession){
@@ -37,27 +37,29 @@ public class UserController {
 		if(user !=null){
 			model.addAttribute("user",user);
 			httpsession.setAttribute("user", user);
-			model.addAttribute("iframesrc",request.getContextPath() + "/yonyou-map.jsp");
+			model.addAttribute("iframesrc",request.getContextPath() + "/jsp/page/yonyou-map.jsp");
 			System.out.println(request.getContextPath() + "/yonyou-map.jsp");
-			return "page/index";
+			return "index";
 		}else{
-			String loginfailed = "µÇÂ½Ê§°Ü£¬ÃÜÂë»òÓÃ»§Ãû´íÎó";
+			String loginfailed = "ç™»é™†å¤±è´¥ï¼Œè¯·é‡æ–°è¾“å…¥ç”¨æˆ·åä¸å¯†ç ";
 			model.addAttribute("loginfailed",loginfailed);
-			return "page/login";
+			return "login";
 		}
 	}
 	
-	
+	/*
+	 * ç‚¹å‡»æ³¨å†Œè·³è½¬æ³¨å†ŒåŠŸèƒ½
+	 */
 	@RequestMapping("regist")
 	public String regist(HttpServletRequest request,HttpServletResponse response){
-		return "page/userRegistForm";
+		return " userRegistForm";
 	}
 	/*
-	 * ÓÃ»§×¢²á
+	 * æ³¨å†Œå®Œæˆè¿”å›ç™»å½•é¡µ
 	 */
 	@RequestMapping("insertuser")
 	public String insertUser(User user,HttpServletRequest request,HttpServletResponse response,Model model){
 		userService.insertUser(user);
-		return "page/login";
+		return "login";
 	}
 }

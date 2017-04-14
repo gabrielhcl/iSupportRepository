@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsBCorpDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsBCorp" >
+    <id column="pk_corp" property="pk_corp" jdbcType="INTEGER" />
+    <result column="corpcode" property="corpcode" jdbcType="VARCHAR" />
+    <result column="corpname" property="corpname" jdbcType="VARCHAR" />
+    <result column="groupname" property="groupname" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_corp, corpcode, corpname, groupname, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_b_corp
+    where pk_corp = #{pk_corp,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_b_corp
+    where pk_corp = #{pk_corp,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsBCorp" >
+    insert into is_b_corp (pk_corp, corpcode, corpname, 
+      groupname, remark)
+    values (#{pk_corp,jdbcType=INTEGER}, #{corpcode,jdbcType=VARCHAR}, #{corpname,jdbcType=VARCHAR}, 
+      #{groupname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsBCorp" >
+    insert into is_b_corp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pk_corp != null" >
+        pk_corp,
+      </if>
+      <if test="corpcode != null" >
+        corpcode,
+      </if>
+      <if test="corpname != null" >
+        corpname,
+      </if>
+      <if test="groupname != null" >
+        groupname,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pk_corp != null" >
+        #{pk_corp,jdbcType=INTEGER},
+      </if>
+      <if test="corpcode != null" >
+        #{corpcode,jdbcType=VARCHAR},
+      </if>
+      <if test="corpname != null" >
+        #{corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null" >
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsBCorp" >
+    update is_b_corp
+    <set >
+      <if test="corpcode != null" >
+        corpcode = #{corpcode,jdbcType=VARCHAR},
+      </if>
+      <if test="corpname != null" >
+        corpname = #{corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null" >
+        groupname = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_corp = #{pk_corp,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsBCorp" >
+    update is_b_corp
+    set corpcode = #{corpcode,jdbcType=VARCHAR},
+      corpname = #{corpname,jdbcType=VARCHAR},
+      groupname = #{groupname,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where pk_corp = #{pk_corp,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBCorp">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_b_corp 
+		<where>
+			<if test=" pk_corp!= null">
+				AND  pk_corp=#{ pk_corp}
+			</if>
+			<if test=" corpname != null and  corpname != '' ">
+				AND corpname LIKE
+				concat('%',#{corpname},'%')
+			</if>
+			<if test=" corpcode != null and  corpcode != '' ">
+				AND corpcode LIKE
+				concat('%',#{corpcode},'%')
+			</if>
+			<if test=" groupname != null and  groupname != '' ">
+				AND groupname LIKE
+				concat('%',#{groupname},'%')
+			</if>
+			<if test=" remark != null and  remark != '' ">
+				AND remark LIKE
+				concat('%',#{remark},'%')
+			</if>
+		</where>
+	</select>
+</mapper>

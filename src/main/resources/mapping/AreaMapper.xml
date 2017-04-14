@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.AreaDao">
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.Area">
+    <id column="pk_area" jdbcType="INTEGER" property="pk_area" />
+    <result column="areacode" jdbcType="VARCHAR" property="areacode" />
+    <result column="areaname" jdbcType="VARCHAR" property="areaname" />
+  </resultMap>
+  
+   <sql id="Base_Column_List" >
+    pk_area, areacode, areaname
+  </sql>
+  
+  
+   <insert id="insertArea" parameterType="com.yongyou.iSupport.entity.Area" >
+    insert into is_b_area (areacode, areaname 
+      )
+    values (#{areacode,jdbcType=VARCHAR}, #{areaname,jdbcType=VARCHAR} 
+      )
+  </insert>
+  
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.Area">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_b_area 
+		<where>
+			<if test=" pk_area!= null">
+				AND pk_area=#{pk_area}
+			</if>
+			<if test=" areaname != null and  areaname != '' ">
+				AND areaname LIKE
+				concat('%',#{areaname},'%')
+			</if>
+			<if test=" areacode != null and  areacode != '' ">
+				AND areacode LIKE
+				concat('%',#{areacode},'%')
+			</if>
+		</where>
+	</select>
+	
+<!-- 删除方法 -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		DELETE FROM is_b_area
+		WHERE pk_area = #{pk_area,jdbcType=INTEGER}
+	</delete>
+	
+	
+	
+	<update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.Area">
+		UPDATE is_b_area 
+		SET  
+		areacode=#{areacode,jdbcType=VARCHAR},
+		areaname=#{areaname,jdbcType=VARCHAR}
+		WHERE pk_area=#{pk_area,jdbcType=INTEGER}
+	</update>
+	
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	SELECT 
+    <include refid="Base_Column_List" />
+    FROM is_b_area 
+    WHERE pk_area = #{pk_area,jdbcType=INTEGER}
+	</select>
+  
+</mapper>
