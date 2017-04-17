@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50709
 File Encoding         : 65001
 
-Date: 2017-04-14 10:46:35
+Date: 2017-04-17 10:09:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,7 +67,7 @@ CREATE TABLE `is_b_group` (
   `groupname` varchar(200) NOT NULL COMMENT '集团名称',
   `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`pk_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='集团表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='集团表';
 
 -- ----------------------------
 -- Records of is_b_group
@@ -77,6 +77,7 @@ INSERT INTO `is_b_group` VALUES ('3', '222', '3123123123', '12312');
 INSERT INTO `is_b_group` VALUES ('4', '123123', '123123', '123123');
 INSERT INTO `is_b_group` VALUES ('5', '12312', '123123', '123123');
 INSERT INTO `is_b_group` VALUES ('6', 'ceshi', '集团测试', '测试测试');
+INSERT INTO `is_b_group` VALUES ('7', '0011', '1', '22');
 
 -- ----------------------------
 -- Table structure for `is_b_product`
@@ -98,8 +99,38 @@ CREATE TABLE `is_b_product` (
 DROP TABLE IF EXISTS `is_b_project`;
 CREATE TABLE `is_b_project` (
   `pk_project` int(20) NOT NULL AUTO_INCREMENT COMMENT '项目主键',
-  `projectcode` varchar(20) NOT NULL COMMENT '项目编码',
+  `projectcode` varchar(20) DEFAULT NULL COMMENT '项目编码',
   `projectname` varchar(200) NOT NULL COMMENT '项目名称',
+  `customername` varchar(30) DEFAULT NULL COMMENT '客户名',
+  `groupcode` varchar(30) DEFAULT NULL COMMENT '所属集团主键',
+  `servicestime` datetime DEFAULT NULL COMMENT '服务开始时间',
+  `serviceftime` datetime DEFAULT NULL COMMENT '服务结束时间',
+  `isimplement` int(2) DEFAULT NULL COMMENT '是否按照合同签订服务期间执行',
+  `contractcode` varchar(30) DEFAULT NULL COMMENT '合同编码',
+  `contractname` varchar(30) DEFAULT NULL COMMENT '合同名称',
+  `areacode` varchar(30) DEFAULT NULL COMMENT '区域编码',
+  `address` varchar(50) DEFAULT NULL COMMENT '地址',
+  `productcode` varchar(30) DEFAULT NULL COMMENT '对应产品编码',
+  `modulemessage` varchar(100) DEFAULT NULL COMMENT '模块信息',
+  `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
+  `createby` varchar(30) DEFAULT NULL COMMENT '创建人',
+  `createdate` datetime DEFAULT NULL COMMENT '创建时间',
+  `appos` varchar(30) DEFAULT NULL COMMENT '操作系统',
+  `appsysversion` varchar(30) DEFAULT NULL COMMENT '系统版本',
+  `appbrand` varchar(30) DEFAULT NULL COMMENT '品牌',
+  `appcpu` varchar(30) DEFAULT NULL COMMENT 'cpu类型',
+  `appcpunum` varchar(30) DEFAULT NULL COMMENT 'cpu个数',
+  `appram` varchar(30) DEFAULT NULL COMMENT '内存',
+  `dbos` varchar(30) DEFAULT NULL COMMENT '数据库操作系统',
+  `dbosversion` varchar(30) DEFAULT '' COMMENT '系统版本',
+  `dbcpu` varchar(30) DEFAULT NULL,
+  `dbcpunum` varchar(30) DEFAULT NULL,
+  `dbram` varchar(30) DEFAULT NULL,
+  `wasstarus` varchar(50) DEFAULT NULL COMMENT 'was情况',
+  `typewidth` varchar(30) DEFAULT NULL COMMENT '带宽',
+  `antivirussoftware` varchar(30) DEFAULT NULL COMMENT '杀毒软件',
+  `onlinenum` varchar(30) DEFAULT NULL COMMENT '在线数',
+  `clientnum` varchar(30) DEFAULT NULL COMMENT '客户端总数',
   PRIMARY KEY (`pk_project`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目表';
 
