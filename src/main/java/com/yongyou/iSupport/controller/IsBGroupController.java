@@ -1,6 +1,7 @@
 package com.yongyou.iSupport.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yongyou.iSupport.entity.Area;
 import com.yongyou.iSupport.entity.IsBGroup;
 import com.yongyou.iSupport.service.IsBGroupService;
 
@@ -33,6 +33,9 @@ public class IsBGroupController {
 	 */
 	@RequestMapping("insertgroup")
 	public String insertGroup(IsBGroup record,HttpServletRequest request, HttpServletResponse response,Model model){
+		UUID uuid = UUID.randomUUID();
+		String groupcode = uuid.toString().substring(0, 8);
+		record.setGroupcode(groupcode);
 		isBGroupService.insert(record);
 		return "redirect:/group/grouplist";
 	}
