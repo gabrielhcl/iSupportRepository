@@ -21,23 +21,23 @@ public class DWeedPlaneController {
 	public void aLittleCase(WeekPlaneForm form, HttpServletRequest req, HttpServletResponse response, Model model) {
 		String projectmanager = form.getProjectmanager();
 
-//		List<String> weekworktask = form.getWeekworktask();
-//		List<String> weekworkstarttime = form.getWeekworkstarttime();
-//		List<String> weekpersonliable = form.getWeekpersonliable();
-//		List<String> weekworkexplain = form.getWeekworkexplain();
+		List<String> weekworktask = form.getWeekworktask();
+		List<String> weekworkstarttime = form.getWeekworkstarttime();
+		List<String> weekpersonliable = form.getWeekpersonliable();
+		List<String> weekworkexplain = form.getWeekworkexplain();
 	/*	if (!StringUtils.isEmpty(weekworktask)) {
 			for (String string : weekworktask) {
 				System.out.println(string);
 			}
 		}*/
-//		List<String> notfinishtask = form.getNotfinishtask();
-//		List<String> personliable = form.getPersonliable();
-//		List<String> notfinishreason = form.getNotfinishreason();
-//		List<String> concretemeasure = form.getConcretemeasure();
+		List<String> notfinishtask = form.getNotfinishtask();
+		List<String> personliable = form.getPersonliable();
+		List<String> notfinishreason = form.getNotfinishreason();
+		List<String> concretemeasure = form.getConcretemeasure();
 		
-//		List<String> problem = form.getProblem();
-//		List<String> needhelp = form.getNeedhelp();
-//		List<String> hopefinishtime = form.getHopefinishtime();
+		List<String> problem = form.getProblem();
+		List<String> needhelp = form.getNeedhelp();
+		List<String> hopefinishtime = form.getHopefinishtime();
 		
 		List<String> nextweektask = form.getNextweektask();
 		List<String> nextpersonliable = form.getNextpersonliable();
