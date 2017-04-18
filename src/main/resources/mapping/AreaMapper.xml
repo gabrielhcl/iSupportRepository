@@ -45,9 +45,6 @@
 		DELETE FROM is_b_area
 		WHERE pk_area = #{pk_area,jdbcType=INTEGER}
 	</delete>
-	
-	
-	
 	<update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.Area">
 		UPDATE is_b_area 
 		SET  

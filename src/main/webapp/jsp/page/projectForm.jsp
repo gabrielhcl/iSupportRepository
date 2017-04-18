@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -79,11 +80,9 @@
 							<small class="col-md-1 control-label">所属集团</small>
 							<div class="col-md-3">
 								<select class="form-control"  name="groupcode">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
+								<c:forEach items="${glist}" var="group">
+									<option value="${group.groupcode}">${group.groupname}</option>
+								</c:forEach>
 								</select>
 							</div>
 							<small class="col-md-1 control-label">服务时间</small>
@@ -118,9 +117,9 @@
 							<small class="col-md-1 control-label">所属区域</small>
 							<div class="col-md-3">
 								<select class="form-control" name="areacode">
-									<option value="1">西北区</option>
-									<option value="2">西南区</option>
-									<option value="3">四川省区</option>
+									<c:forEach items="${alist}" var="area">
+										<option value="${area.areacode}">${area.areaname}</option>
+									</c:forEach>
 								</select>
 							</div> 
 							<small class="col-md-1 control-label">项目地址</small>

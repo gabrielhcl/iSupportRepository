@@ -12,8 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yongyou.iSupport.entity.Area;
+import com.yongyou.iSupport.entity.IsBGroup;
 import com.yongyou.iSupport.entity.IsBProject;
 import com.yongyou.iSupport.form.IsBProjectForm;
+import com.yongyou.iSupport.service.AreaService;
+import com.yongyou.iSupport.service.IsBGroupService;
 import com.yongyou.iSupport.service.IsBProjectService;
 import com.yongyou.iSupport.utils.TimeUtil;
 
@@ -23,12 +27,20 @@ public class IsBProjectController {
 	
 	@Autowired
 	private IsBProjectService isBProjectService;
+	@Autowired
+	private IsBGroupService isBGroupService;
+	@Autowired
+	private AreaService areaService;
 	
 	/*
 	 * 跳转projrct添加form表单 
 	 */
 	@RequestMapping("addproject")
-	public String addProject(Model model,HttpServletRequest request,HttpServletResponse response,IsBProject record){
+	public String addProject(Model model,HttpServletRequest request,HttpServletResponse response,IsBProject record,IsBGroup group,Area area){
+		List<IsBGroup> findList = isBGroupService.findList(group);
+		model.addAttribute("glist",findList);
+		List<Area> findList2 = areaService.findList(area);
+		model.addAttribute("alist",findList2);
 		return "projectForm";
 	}
 	
