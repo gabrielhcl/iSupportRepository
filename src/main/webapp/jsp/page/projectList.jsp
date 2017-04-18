@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>项目列表</title>
 <link
 	href="${pageContext.request.contextPath}/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css"
 	rel="stylesheet" type="text/css" />
@@ -33,15 +33,15 @@
 		<div class="col-md-12">
 			<div class="card-box">
 				<div class="page-header">
-					<h1>区域</h1>
+					<h1>项目</h1>
 					<small>列表</small>
 				</div>
-				<button id="button"
-					class="btn btn-default  waves-light"  onclick="location='${pageContext.request.contextPath}/area/addarea'">
+				<button id="addbutton"
+					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/project/addproject'">
 					添加
 				</button>
 				<br>
-				<form modelAttribute="area" action="${pageContext.request.contextPath}/area/arealist" method="post" id="searchForm" name="searchForm" class="form-inline searchForm">
+				<form modelAttribute="project" action="${pageContext.request.contextPath}/project/projectlist" method="post" id="searchForm" name="searchForm" class="form-inline searchForm">
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card-box">
@@ -53,26 +53,33 @@
 									data-show-pagination-switch="true" class="table-bordered ">
 									<thead>
 										<tr>
-											<th   data-sortable="true">区域编码</th>
-											<th   data-sortable="true">区域名</th>
+											<th   data-sortable="true">项目编码</th>
+											<th   data-sortable="true">项目名称</th>
 											<th   data-sortable="true">操作</th>
 										</tr>
 									</thead>
 
 									<tbody>
-									<c:forEach items="${alist}" var="area">
+									<c:forEach items="${plist}" var="project">
 										<tr>
-											<td>${area.areacode}</td>
-											<td>${area.areaname}</td>
-											<td><a
-												href="${pageContext.request.contextPath}/area/update?pk_area=${area.pk_area}"
+											<td>${project.projectcode}</td>
+											<td>${project.projectname}</td>
+											<td>
+											<a
+												href="${pageContext.request.contextPath}/project/projectdetail?pkProject=${project.pkProject}"
+												onclick="return confirmx('确认要删除该数据吗？', this.href)"
+												class="btn btn-success btn-xs"> <i class="fa fa-trash"></i>查看
+											</a>
+											<a
+												href="${pageContext.request.contextPath}/project/update?pkProject=${project.pkProject}"
 												onclick="return confirmx('确认要修改该数据吗？', this.href)"
 												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>修改
 											</a> <a
-												href="${pageContext.request.contextPath}/area/delete?pk_area=${area.pk_area}"
+												href="${pageContext.request.contextPath}/project/delete?pkProject=${project.pkProject}"
 												onclick="return confirmx('确认要删除该数据吗？', this.href)"
 												class="btn btn-danger btn-xs"> <i class="fa fa-trash"></i>删除
-											</a></td>
+											</a>
+											</td>
 									</c:forEach>
 									</tbody>
 								</table>

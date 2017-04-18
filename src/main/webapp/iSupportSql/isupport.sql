@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50709
 File Encoding         : 65001
 
-Date: 2017-04-17 10:09:31
+Date: 2017-04-18 14:28:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,7 +67,7 @@ CREATE TABLE `is_b_group` (
   `groupname` varchar(200) NOT NULL COMMENT '集团名称',
   `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`pk_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='集团表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='集团表';
 
 -- ----------------------------
 -- Records of is_b_group
@@ -78,6 +78,7 @@ INSERT INTO `is_b_group` VALUES ('4', '123123', '123123', '123123');
 INSERT INTO `is_b_group` VALUES ('5', '12312', '123123', '123123');
 INSERT INTO `is_b_group` VALUES ('6', 'ceshi', '集团测试', '测试测试');
 INSERT INTO `is_b_group` VALUES ('7', '0011', '1', '22');
+INSERT INTO `is_b_group` VALUES ('8', '76a261a7', '3123', '12312');
 
 -- ----------------------------
 -- Table structure for `is_b_product`
@@ -99,6 +100,7 @@ CREATE TABLE `is_b_product` (
 DROP TABLE IF EXISTS `is_b_project`;
 CREATE TABLE `is_b_project` (
   `pk_project` int(20) NOT NULL AUTO_INCREMENT COMMENT '项目主键',
+  `billcode` varchar(30) DEFAULT NULL COMMENT '单据编码',
   `projectcode` varchar(20) DEFAULT NULL COMMENT '项目编码',
   `projectname` varchar(200) NOT NULL COMMENT '项目名称',
   `customername` varchar(30) DEFAULT NULL COMMENT '客户名',
@@ -123,20 +125,25 @@ CREATE TABLE `is_b_project` (
   `appram` varchar(30) DEFAULT NULL COMMENT '内存',
   `dbos` varchar(30) DEFAULT NULL COMMENT '数据库操作系统',
   `dbosversion` varchar(30) DEFAULT '' COMMENT '系统版本',
+  `dbbrand` varchar(30) DEFAULT NULL COMMENT '数据库品牌',
   `dbcpu` varchar(30) DEFAULT NULL,
   `dbcpunum` varchar(30) DEFAULT NULL,
   `dbram` varchar(30) DEFAULT NULL,
   `wasstarus` varchar(50) DEFAULT NULL COMMENT 'was情况',
+  `serveraddress` varchar(50) DEFAULT NULL COMMENT '服务器地址',
   `typewidth` varchar(30) DEFAULT NULL COMMENT '带宽',
   `antivirussoftware` varchar(30) DEFAULT NULL COMMENT '杀毒软件',
   `onlinenum` varchar(30) DEFAULT NULL COMMENT '在线数',
   `clientnum` varchar(30) DEFAULT NULL COMMENT '客户端总数',
   PRIMARY KEY (`pk_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='项目表';
 
 -- ----------------------------
 -- Records of is_b_project
 -- ----------------------------
+INSERT INTO `is_b_project` VALUES ('1', '1112', null, '项目添加测试', '3', '4', '2016-12-04 00:00:00', '2016-12-04 00:00:00', null, '', '', '1', '', '3', '', '', '', '2016-12-04 00:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `is_b_project` VALUES ('3', '', null, '项目测试1130', '1', '1', null, null, null, '', '', '1', '', '1', '', '', '', null, '', '', '', '', '', '', '', '', '', '', '', '', '22222222222222222', '', '', '', '', '');
+INSERT INTO `is_b_project` VALUES ('4', '', null, '测试详情', '5', '4', '2016-12-04 00:00:00', '2016-12-04 00:00:00', null, '', '', '1', '', '1', '', '', '', '2016-12-04 00:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `is_b_province`

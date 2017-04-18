@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>项目信息修改</title>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
@@ -44,13 +44,13 @@
 		<div class="container">
 			<div class="page-header">
 				<h1>
-					添加项目信息 <small>area form</small>
+					修改项目信息 <small>area update form</small>
 				</h1>
 			</div>
 			<br>
 			<div class="row">
 				<div class="col-md-12">
-					<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/project/insertproject" method="post" modelAttribute="project">
+					<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/project/saveproject?pkProject=${project.pkProject}" method="post" modelAttribute="project">
 					
 						<div class="form-group" class="col-md-6">
 							<h4 class="col-md-6">项目基本信息</h4>
@@ -58,11 +58,11 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">单据编码</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="billcode">
+								<input type="text" class="form-control" value="${project.billcode}" name="billcode">
 							</div>
 							<small class="col-md-1 control-label">项目名称</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="projectname">
+								<input type="text" class="form-control" value="${project.projectname}" name="projectname">
 							</div>
 							<small class="col-md-1 control-label">客户名称</small>
 							<div class="col-md-3">
@@ -107,11 +107,11 @@
 							</div>
 							<small class="col-md-1 control-label">合同编码</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="contractcode">
+								<input type="text" class="form-control" value="${project.contractcode}" name="contractcode">
 							</div>
 							<small class="col-md-1 control-label">合同名称</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="contractname">
+								<input type="text" class="form-control" value="${project.contractname}" name="contractname">
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
@@ -125,7 +125,7 @@
 							</div> 
 							<small class="col-md-1 control-label">项目地址</small>
 							<div class="col-md-7">
-								<input type="text" class="form-control" value="" name="address">
+								<input type="text" class="form-control" value="${project.address}" name="address">
 							</div> 
 						</div>
 						<div class="form-group" class="col-md-6">
@@ -140,19 +140,19 @@
 							</div>
 							<small class="col-md-1 control-label">模块信息</small>
 							<div class="col-md-7">
-								<input type="text" class="form-control" value="" name="modulemessage">
+								<input type="text" class="form-control" value="${project.modulemessage}" name="modulemessage">
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">备注</small>
 							<div class="col-md-11">
-								<input type="text" class="form-control" value="" name="remark">
+								<input type="text" class="form-control" value="${project.remark}" name="remark">
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">创建人</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="createby">
+								<input type="text" class="form-control" value="${project.createby}" name="createby">
 							</div>
 							<small class="col-md-1 control-label">创建日期</small>
 							<div class="col-md-3 input-daterange input-group" id="date-range">
@@ -168,29 +168,29 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">操作系统</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="appos">
+								<input type="text" class="form-control" value="${project.appos}" name="appos">
 							</div>
 							<small class="col-md-1 control-label">系统版本</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="appsysversion">
+								<input type="text" class="form-control" value="${project.appsysversion}" name="appsysversion">
 							</div>
 							<small class="col-md-1 control-label">品牌</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="appbrand">
+								<input type="text" class="form-control" value="${project.appbrand}" name="appbrand">
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">CPU类型</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="appcpu">
+								<input type="text" class="form-control" value="${project.appcpu}" name="appcpu">
 							</div>
 							<small class="col-md-1 control-label">CPU个数</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="appcpunum">
+								<input type="text" class="form-control" value="${project.appcpu}" name="appcpunum">
 							</div>
 							<small class="col-md-1 control-label">内存</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="appram">
+								<input type="text" class="form-control" value="${project.appram}" name="appram">
 							</div>
 						</div>
 						
@@ -201,29 +201,29 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">操作系统</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="dbos">
+								<input type="text" class="form-control" value="${project.dbos}" name="dbos">
 							</div>
 							<small class="col-md-1 control-label">系统版本</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="dbosversion">
+								<input type="text" class="form-control" value="${project.dbosversion}" name="dbosversion">
 							</div>
 							<small class="col-md-1 control-label">品牌</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="dbbrand">
+								<input type="text" class="form-control" value="${project.dbbrand}" name="dbbrand">
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">CPU类型</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="dbcpu"> 
+								<input type="text" class="form-control" value="${project.dbcpu}" name="dbcpu"> 
 							</div>
 							<small class="col-md-1 control-label">CPU个数</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="dbcpunum">
+								<input type="text" class="form-control" value="${project.dbcpunum}" name="dbcpunum">
 							</div>
 							<small class="col-md-1 control-label">内存</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="dbram">
+								<input type="text" class="form-control" value="${project.dbram}" name="dbram">
 							</div>
 						</div>
 						
@@ -233,29 +233,29 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">WAS情况</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="wasstarus">
+								<input type="text" class="form-control" value="${project.wasstarus}" name="wasstarus">
 							</div>
 							<small class="col-md-1 control-label">服务器地址</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="serveraddress">
+								<input type="text" class="form-control" value="${project.serveraddress}" name="serveraddress">
 							</div>
 							<small class="col-md-1 control-label">网络带宽</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="typewidth">
+								<input type="text" class="form-control" value="${project.typewidth}" name="typewidth">
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">杀毒软件</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="antivirussoftware">
+								<input type="text" class="form-control" value="${project.antivirussoftware}" name="antivirussoftware">
 							</div>
 							<small class="col-md-1 control-label">日常在线数</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="onlinenum">
+								<input type="text" class="form-control" value="${project.onlinenum}" name="onlinenum">
 							</div>
 							<small class="col-md-1 control-label">客户端总数</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="clientnum">
+								<input type="text" class="form-control" value="${project.clientnum}" name="clientnum">
 							</div>
 						</div>
 						<button type="submit" class="btn btn-default">保存</button>

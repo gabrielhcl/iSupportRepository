@@ -51,6 +51,9 @@ public class MenuController {
 		}else if(menuid.equals("5")){
 			model.addAttribute("iframesrc",request.getContextPath() + "/jsp/page/corpList.jsp");
 			return "index";
+		}else if(menuid.equals("6")){
+			model.addAttribute("iframesrc",request.getContextPath() + "/jsp/page/projectList.jsp");
+			return "index";
 		}
 		return menuid;
 	}

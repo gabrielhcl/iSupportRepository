@@ -175,6 +175,7 @@ body {
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=11">区域管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=4">集团管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=5">公司管理</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=6">项目管理</a></li>
 							</ul>
 							</li>
 							

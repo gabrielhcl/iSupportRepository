@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsBProjectDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsBProject" >
+    <id column="pk_project" property="pkProject" jdbcType="INTEGER" />
+    <result column="billcode" property="billcode" jdbcType="VARCHAR" />
+    <result column="projectcode" property="projectcode" jdbcType="VARCHAR" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="customername" property="customername" jdbcType="VARCHAR" />
+    <result column="groupcode" property="groupcode" jdbcType="VARCHAR" />
+    <result column="servicestime" property="servicestime" jdbcType="TIMESTAMP" />
+    <result column="serviceftime" property="serviceftime" jdbcType="TIMESTAMP" />
+    <result column="isimplement" property="isimplement" jdbcType="INTEGER" />
+    <result column="contractcode" property="contractcode" jdbcType="VARCHAR" />
+    <result column="contractname" property="contractname" jdbcType="VARCHAR" />
+    <result column="areacode" property="areacode" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="productcode" property="productcode" jdbcType="VARCHAR" />
+    <result column="modulemessage" property="modulemessage" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="createby" property="createby" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="appos" property="appos" jdbcType="VARCHAR" />
+    <result column="appsysversion" property="appsysversion" jdbcType="VARCHAR" />
+    <result column="appbrand" property="appbrand" jdbcType="VARCHAR" />
+    <result column="appcpu" property="appcpu" jdbcType="VARCHAR" />
+    <result column="appcpunum" property="appcpunum" jdbcType="VARCHAR" />
+    <result column="appram" property="appram" jdbcType="VARCHAR" />
+    <result column="dbos" property="dbos" jdbcType="VARCHAR" />
+    <result column="dbosversion" property="dbosversion" jdbcType="VARCHAR" />
+    <result column="dbbrand" property="dbbrand" jdbcType="VARCHAR" />
+    <result column="dbcpu" property="dbcpu" jdbcType="VARCHAR" />
+    <result column="dbcpunum" property="dbcpunum" jdbcType="VARCHAR" />
+    <result column="dbram" property="dbram" jdbcType="VARCHAR" />
+    <result column="wasstarus" property="wasstarus" jdbcType="VARCHAR" />
+    <result column="serveraddress" property="serveraddress" jdbcType="VARCHAR" />
+    <result column="typewidth" property="typewidth" jdbcType="VARCHAR" />
+    <result column="antivirussoftware" property="antivirussoftware" jdbcType="VARCHAR" />
+    <result column="onlinenum" property="onlinenum" jdbcType="VARCHAR" />
+    <result column="clientnum" property="clientnum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_project, billcode, projectcode, projectname, customername, groupcode, servicestime, 
+    serviceftime, isimplement, contractcode, contractname, areacode, address, productcode, 
+    modulemessage, remark, createby, createdate, appos, appsysversion, appbrand, appcpu, 
+    appcpunum, appram, dbos, dbosversion, dbbrand, dbcpu, dbcpunum, dbram, wasstarus, 
+    serveraddress, typewidth, antivirussoftware, onlinenum, clientnum
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from is_b_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_b_project
+    where pk_project = #{pkProject,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_b_project
+    where pk_project = #{pkProject,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yongyou.iSupport.entity.IsBProjectExample" >
+    delete from is_b_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsBProject" >
+    insert into is_b_project (pk_project, billcode, projectcode, 
+      projectname, customername, groupcode, 
+      servicestime, serviceftime, isimplement, 
+      contractcode, contractname, areacode, 
+      address, productcode, modulemessage, 
+      remark, createby, createdate, 
+      appos, appsysversion, appbrand, 
+      appcpu, appcpunum, appram, 
+      dbos, dbosversion, dbbrand, 
+      dbcpu, dbcpunum, dbram, 
+      wasstarus, serveraddress, typewidth, 
+      antivirussoftware, onlinenum, clientnum
+      )
+    values (#{pkProject,jdbcType=INTEGER}, #{billcode,jdbcType=VARCHAR}, #{projectcode,jdbcType=VARCHAR}, 
+      #{projectname,jdbcType=VARCHAR}, #{customername,jdbcType=VARCHAR}, #{groupcode,jdbcType=VARCHAR}, 
+      #{servicestime,jdbcType=TIMESTAMP}, #{serviceftime,jdbcType=TIMESTAMP}, #{isimplement,jdbcType=INTEGER}, 
+      #{contractcode,jdbcType=VARCHAR}, #{contractname,jdbcType=VARCHAR}, #{areacode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{productcode,jdbcType=VARCHAR}, #{modulemessage,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{appos,jdbcType=VARCHAR}, #{appsysversion,jdbcType=VARCHAR}, #{appbrand,jdbcType=VARCHAR}, 
+      #{appcpu,jdbcType=VARCHAR}, #{appcpunum,jdbcType=VARCHAR}, #{appram,jdbcType=VARCHAR}, 
+      #{dbos,jdbcType=VARCHAR}, #{dbosversion,jdbcType=VARCHAR}, #{dbbrand,jdbcType=VARCHAR}, 
+      #{dbcpu,jdbcType=VARCHAR}, #{dbcpunum,jdbcType=VARCHAR}, #{dbram,jdbcType=VARCHAR}, 
+      #{wasstarus,jdbcType=VARCHAR}, #{serveraddress,jdbcType=VARCHAR}, #{typewidth,jdbcType=VARCHAR}, 
+      #{antivirussoftware,jdbcType=VARCHAR}, #{onlinenum,jdbcType=VARCHAR}, #{clientnum,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsBProject" >
+    insert into is_b_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkProject != null" >
+        pk_project,
+      </if>
+      <if test="billcode != null" >
+        billcode,
+      </if>
+      <if test="projectcode != null" >
+        projectcode,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="customername != null" >
+        customername,
+      </if>
+      <if test="groupcode != null" >
+        groupcode,
+      </if>
+      <if test="servicestime != null" >
+        servicestime,
+      </if>
+      <if test="serviceftime != null" >
+        serviceftime,
+      </if>
+      <if test="isimplement != null" >
+        isimplement,
+      </if>
+      <if test="contractcode != null" >
+        contractcode,
+      </if>
+      <if test="contractname != null" >
+        contractname,
+      </if>
+      <if test="areacode != null" >
+        areacode,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="productcode != null" >
+        productcode,
+      </if>
+      <if test="modulemessage != null" >
+        modulemessage,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createby != null" >
+        createby,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="appos != null" >
+        appos,
+      </if>
+      <if test="appsysversion != null" >
+        appsysversion,
+      </if>
+      <if test="appbrand != null" >
+        appbrand,
+      </if>
+      <if test="appcpu != null" >
+        appcpu,
+      </if>
+      <if test="appcpunum != null" >
+        appcpunum,
+      </if>
+      <if test="appram != null" >
+        appram,
+      </if>
+      <if test="dbos != null" >
+        dbos,
+      </if>
+      <if test="dbosversion != null" >
+        dbosversion,
+      </if>
+      <if test="dbbrand != null" >
+        dbbrand,
+      </if>
+      <if test="dbcpu != null" >
+        dbcpu,
+      </if>
+      <if test="dbcpunum != null" >
+        dbcpunum,
+      </if>
+      <if test="dbram != null" >
+        dbram,
+      </if>
+      <if test="wasstarus != null" >
+        wasstarus,
+      </if>
+      <if test="serveraddress != null" >
+        serveraddress,
+      </if>
+      <if test="typewidth != null" >
+        typewidth,
+      </if>
+      <if test="antivirussoftware != null" >
+        antivirussoftware,
+      </if>
+      <if test="onlinenum != null" >
+        onlinenum,
+      </if>
+      <if test="clientnum != null" >
+        clientnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkProject != null" >
+        #{pkProject,jdbcType=INTEGER},
+      </if>
+      <if test="billcode != null" >
+        #{billcode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectcode != null" >
+        #{projectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null" >
+        #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="servicestime != null" >
+        #{servicestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceftime != null" >
+        #{serviceftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isimplement != null" >
+        #{isimplement,jdbcType=INTEGER},
+      </if>
+      <if test="contractcode != null" >
+        #{contractcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractname != null" >
+        #{contractname,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null" >
+        #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="modulemessage != null" >
+        #{modulemessage,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appos != null" >
+        #{appos,jdbcType=VARCHAR},
+      </if>
+      <if test="appsysversion != null" >
+        #{appsysversion,jdbcType=VARCHAR},
+      </if>
+      <if test="appbrand != null" >
+        #{appbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="appcpu != null" >
+        #{appcpu,jdbcType=VARCHAR},
+      </if>
+      <if test="appcpunum != null" >
+        #{appcpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="appram != null" >
+        #{appram,jdbcType=VARCHAR},
+      </if>
+      <if test="dbos != null" >
+        #{dbos,jdbcType=VARCHAR},
+      </if>
+      <if test="dbosversion != null" >
+        #{dbosversion,jdbcType=VARCHAR},
+      </if>
+      <if test="dbbrand != null" >
+        #{dbbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="dbcpu != null" >
+        #{dbcpu,jdbcType=VARCHAR},
+      </if>
+      <if test="dbcpunum != null" >
+        #{dbcpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="dbram != null" >
+        #{dbram,jdbcType=VARCHAR},
+      </if>
+      <if test="wasstarus != null" >
+        #{wasstarus,jdbcType=VARCHAR},
+      </if>
+      <if test="serveraddress != null" >
+        #{serveraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="typewidth != null" >
+        #{typewidth,jdbcType=VARCHAR},
+      </if>
+      <if test="antivirussoftware != null" >
+        #{antivirussoftware,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinenum != null" >
+        #{onlinenum,jdbcType=VARCHAR},
+      </if>
+      <if test="clientnum != null" >
+        #{clientnum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yongyou.iSupport.entity.IsBProjectExample" resultType="java.lang.Integer" >
+    select count(*) from is_b_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update is_b_project
+    <set >
+      <if test="record.pkProject != null" >
+        pk_project = #{record.pkProject,jdbcType=INTEGER},
+      </if>
+      <if test="record.billcode != null" >
+        billcode = #{record.billcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectcode != null" >
+        projectcode = #{record.projectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null" >
+        projectname = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customername != null" >
+        customername = #{record.customername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupcode != null" >
+        groupcode = #{record.groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicestime != null" >
+        servicestime = #{record.servicestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.serviceftime != null" >
+        serviceftime = #{record.serviceftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isimplement != null" >
+        isimplement = #{record.isimplement,jdbcType=INTEGER},
+      </if>
+      <if test="record.contractcode != null" >
+        contractcode = #{record.contractcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractname != null" >
+        contractname = #{record.contractname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areacode != null" >
+        areacode = #{record.areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productcode != null" >
+        productcode = #{record.productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modulemessage != null" >
+        modulemessage = #{record.modulemessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createby != null" >
+        createby = #{record.createby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdate != null" >
+        createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.appos != null" >
+        appos = #{record.appos,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appsysversion != null" >
+        appsysversion = #{record.appsysversion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appbrand != null" >
+        appbrand = #{record.appbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appcpu != null" >
+        appcpu = #{record.appcpu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appcpunum != null" >
+        appcpunum = #{record.appcpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appram != null" >
+        appram = #{record.appram,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbos != null" >
+        dbos = #{record.dbos,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbosversion != null" >
+        dbosversion = #{record.dbosversion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbbrand != null" >
+        dbbrand = #{record.dbbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbcpu != null" >
+        dbcpu = #{record.dbcpu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbcpunum != null" >
+        dbcpunum = #{record.dbcpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbram != null" >
+        dbram = #{record.dbram,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wasstarus != null" >
+        wasstarus = #{record.wasstarus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serveraddress != null" >
+        serveraddress = #{record.serveraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typewidth != null" >
+        typewidth = #{record.typewidth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.antivirussoftware != null" >
+        antivirussoftware = #{record.antivirussoftware,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onlinenum != null" >
+        onlinenum = #{record.onlinenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientnum != null" >
+        clientnum = #{record.clientnum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update is_b_project
+    set pk_project = #{record.pkProject,jdbcType=INTEGER},
+      billcode = #{record.billcode,jdbcType=VARCHAR},
+      projectcode = #{record.projectcode,jdbcType=VARCHAR},
+      projectname = #{record.projectname,jdbcType=VARCHAR},
+      customername = #{record.customername,jdbcType=VARCHAR},
+      groupcode = #{record.groupcode,jdbcType=VARCHAR},
+      servicestime = #{record.servicestime,jdbcType=TIMESTAMP},
+      serviceftime = #{record.serviceftime,jdbcType=TIMESTAMP},
+      isimplement = #{record.isimplement,jdbcType=INTEGER},
+      contractcode = #{record.contractcode,jdbcType=VARCHAR},
+      contractname = #{record.contractname,jdbcType=VARCHAR},
+      areacode = #{record.areacode,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      productcode = #{record.productcode,jdbcType=VARCHAR},
+      modulemessage = #{record.modulemessage,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      createby = #{record.createby,jdbcType=VARCHAR},
+      createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      appos = #{record.appos,jdbcType=VARCHAR},
+      appsysversion = #{record.appsysversion,jdbcType=VARCHAR},
+      appbrand = #{record.appbrand,jdbcType=VARCHAR},
+      appcpu = #{record.appcpu,jdbcType=VARCHAR},
+      appcpunum = #{record.appcpunum,jdbcType=VARCHAR},
+      appram = #{record.appram,jdbcType=VARCHAR},
+      dbos = #{record.dbos,jdbcType=VARCHAR},
+      dbosversion = #{record.dbosversion,jdbcType=VARCHAR},
+      dbbrand = #{record.dbbrand,jdbcType=VARCHAR},
+      dbcpu = #{record.dbcpu,jdbcType=VARCHAR},
+      dbcpunum = #{record.dbcpunum,jdbcType=VARCHAR},
+      dbram = #{record.dbram,jdbcType=VARCHAR},
+      wasstarus = #{record.wasstarus,jdbcType=VARCHAR},
+      serveraddress = #{record.serveraddress,jdbcType=VARCHAR},
+      typewidth = #{record.typewidth,jdbcType=VARCHAR},
+      antivirussoftware = #{record.antivirussoftware,jdbcType=VARCHAR},
+      onlinenum = #{record.onlinenum,jdbcType=VARCHAR},
+      clientnum = #{record.clientnum,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsBProject" >
+    update is_b_project
+    <set >
+      <if test="billcode != null" >
+        billcode = #{billcode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectcode != null" >
+        projectcode = #{projectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        customername = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null" >
+        groupcode = #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="servicestime != null" >
+        servicestime = #{servicestime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceftime != null" >
+        serviceftime = #{serviceftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isimplement != null" >
+        isimplement = #{isimplement,jdbcType=INTEGER},
+      </if>
+      <if test="contractcode != null" >
+        contractcode = #{contractcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractname != null" >
+        contractname = #{contractname,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        areacode = #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null" >
+        productcode = #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="modulemessage != null" >
+        modulemessage = #{modulemessage,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appos != null" >
+        appos = #{appos,jdbcType=VARCHAR},
+      </if>
+      <if test="appsysversion != null" >
+        appsysversion = #{appsysversion,jdbcType=VARCHAR},
+      </if>
+      <if test="appbrand != null" >
+        appbrand = #{appbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="appcpu != null" >
+        appcpu = #{appcpu,jdbcType=VARCHAR},
+      </if>
+      <if test="appcpunum != null" >
+        appcpunum = #{appcpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="appram != null" >
+        appram = #{appram,jdbcType=VARCHAR},
+      </if>
+      <if test="dbos != null" >
+        dbos = #{dbos,jdbcType=VARCHAR},
+      </if>
+      <if test="dbosversion != null" >
+        dbosversion = #{dbosversion,jdbcType=VARCHAR},
+      </if>
+      <if test="dbbrand != null" >
+        dbbrand = #{dbbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="dbcpu != null" >
+        dbcpu = #{dbcpu,jdbcType=VARCHAR},
+      </if>
+      <if test="dbcpunum != null" >
+        dbcpunum = #{dbcpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="dbram != null" >
+        dbram = #{dbram,jdbcType=VARCHAR},
+      </if>
+      <if test="wasstarus != null" >
+        wasstarus = #{wasstarus,jdbcType=VARCHAR},
+      </if>
+      <if test="serveraddress != null" >
+        serveraddress = #{serveraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="typewidth != null" >
+        typewidth = #{typewidth,jdbcType=VARCHAR},
+      </if>
+      <if test="antivirussoftware != null" >
+        antivirussoftware = #{antivirussoftware,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinenum != null" >
+        onlinenum = #{onlinenum,jdbcType=VARCHAR},
+      </if>
+      <if test="clientnum != null" >
+        clientnum = #{clientnum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_project = #{pkProject,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsBProject" >
+    update is_b_project
+    set billcode = #{billcode,jdbcType=VARCHAR},
+      projectcode = #{projectcode,jdbcType=VARCHAR},
+      projectname = #{projectname,jdbcType=VARCHAR},
+      customername = #{customername,jdbcType=VARCHAR},
+      groupcode = #{groupcode,jdbcType=VARCHAR},
+      servicestime = #{servicestime,jdbcType=TIMESTAMP},
+      serviceftime = #{serviceftime,jdbcType=TIMESTAMP},
+      isimplement = #{isimplement,jdbcType=INTEGER},
+      contractcode = #{contractcode,jdbcType=VARCHAR},
+      contractname = #{contractname,jdbcType=VARCHAR},
+      areacode = #{areacode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      productcode = #{productcode,jdbcType=VARCHAR},
+      modulemessage = #{modulemessage,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      createby = #{createby,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      appos = #{appos,jdbcType=VARCHAR},
+      appsysversion = #{appsysversion,jdbcType=VARCHAR},
+      appbrand = #{appbrand,jdbcType=VARCHAR},
+      appcpu = #{appcpu,jdbcType=VARCHAR},
+      appcpunum = #{appcpunum,jdbcType=VARCHAR},
+      appram = #{appram,jdbcType=VARCHAR},
+      dbos = #{dbos,jdbcType=VARCHAR},
+      dbosversion = #{dbosversion,jdbcType=VARCHAR},
+      dbbrand = #{dbbrand,jdbcType=VARCHAR},
+      dbcpu = #{dbcpu,jdbcType=VARCHAR},
+      dbcpunum = #{dbcpunum,jdbcType=VARCHAR},
+      dbram = #{dbram,jdbcType=VARCHAR},
+      wasstarus = #{wasstarus,jdbcType=VARCHAR},
+      serveraddress = #{serveraddress,jdbcType=VARCHAR},
+      typewidth = #{typewidth,jdbcType=VARCHAR},
+      antivirussoftware = #{antivirussoftware,jdbcType=VARCHAR},
+      onlinenum = #{onlinenum,jdbcType=VARCHAR},
+      clientnum = #{clientnum,jdbcType=VARCHAR}
+    where pk_project = #{pkProject,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+<!--   模糊查询/列表查询 -->
+  
+   <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBProject">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_b_project
+		<where>
+			<if test=" pkProject!= null">
+				AND pk_project=#{pkProject}
+			</if>
+			<if test=" billcode != null and  billcode != '' ">
+				AND billcode LIKE
+				concat('%',#{billcode},'%')
+			</if>
+			<if test=" projectcode != null and  projectcode != '' ">
+				AND projectcode LIKE
+				concat('%',#{projectcode},'%')
+			</if>
+			<if test=" projectname != null and  projectname != '' ">
+				AND projectname LIKE
+				concat('%',#{projectname},'%')
+			</if>
+			<if test=" customername != null and  customername != '' ">
+				AND customername LIKE
+				concat('%',#{customername},'%')
+			</if>
+			<if test=" groupcode != null and  groupcode != '' ">
+				AND groupcode LIKE
+				concat('%',#{groupcode},'%')
+			</if>
+			<if test=" servicestime != null and  servicestime != '' ">
+				AND servicestime LIKE
+				concat('%',#{servicestime},'%')
+			</if>
+			<if test=" serviceftime != null and  serviceftime != '' ">
+				AND serviceftime LIKE
+				concat('%',#{serviceftime},'%')
+			</if>
+			<if test=" isimplement != null and  isimplement != '' ">
+				AND isimplement LIKE
+				concat('%',#{isimplement},'%')
+			</if>
+			<if test=" contractcode != null and  contractcode != '' ">
+				AND contractcode LIKE
+				concat('%',#{contractcode},'%')
+			</if>
+			<if test=" contractname != null and  contractname != '' ">
+				AND contractname LIKE
+				concat('%',#{contractname},'%')
+			</if>
+			<if test=" areacode != null and  areacode != '' ">
+				AND areacode LIKE
+				concat('%',#{areacode},'%')
+			</if>
+			<if test=" address != null and  address != '' ">
+				AND address LIKE
+				concat('%',#{address},'%')
+			</if>
+			<if test=" productcode != null and  productcode != '' ">
+				AND productcode LIKE
+				concat('%',#{productcode},'%')
+			</if>
+			<if test=" modulemessage != null and  modulemessage != '' ">
+				AND modulemessage LIKE
+				concat('%',#{modulemessage},'%')
+			</if>
+			<if test=" remark != null and  remark != '' ">
+				AND remark LIKE
+				concat('%',#{remark},'%')
+			</if>
+			<if test=" createby != null and  createby != '' ">
+				AND createby LIKE
+				concat('%',#{createby},'%')
+			</if>
+			<if test=" createdate != null and  createdate != '' ">
+				AND createdate LIKE
+				concat('%',#{createdate},'%')
+			</if>
+			<if test=" appos != null and  appos != '' ">
+				AND appos LIKE
+				concat('%',#{appos},'%')
+			</if>
+			<if test=" appsysversion != null and  appsysversion != '' ">
+				AND appsysversion LIKE
+				concat('%',#{appsysversion},'%')
+			</if>
+			<if test=" appbrand != null and  appbrand != '' ">
+				AND appbrand LIKE
+				concat('%',#{appbrand},'%')
+			</if>
+			<if test=" appcpu != null and  appcpu != '' ">
+				AND appcpu LIKE
+				concat('%',#{appcpu},'%')
+			</if>
+			<if test=" appcpunum != null and  appcpunum != '' ">
+				AND appcpunum LIKE
+				concat('%',#{appcpunum},'%')
+			</if>
+			<if test=" appram != null and  appram != '' ">
+				AND appram LIKE
+				concat('%',#{appram},'%')
+			</if>
+			<if test=" dbos != null and  dbos != '' ">
+				AND dbos LIKE
+				concat('%',#{dbos},'%')
+			</if>
+			<if test=" dbosversion != null and  dbosversion != '' ">
+				AND dbosversion LIKE
+				concat('%',#{dbosversion},'%')
+			</if>
+			<if test=" dbbrand != null and  dbbrand != '' ">
+				AND dbbrand LIKE
+				concat('%',#{dbbrand},'%')
+			</if>
+			<if test=" dbcpu != null and  dbcpu != '' ">
+				AND dbcpu LIKE
+				concat('%',#{dbcpu},'%')
+			</if>
+			<if test=" dbcpunum != null and  dbcpunum != '' ">
+				AND dbcpunum LIKE
+				concat('%',#{dbcpunum},'%')
+			</if>
+			<if test=" dbram != null and  dbram != '' ">
+				AND dbram LIKE
+				concat('%',#{dbram},'%')
+			</if>
+			<if test=" wasstarus != null and  wasstarus != '' ">
+				AND wasstarus LIKE
+				concat('%',#{wasstarus},'%')
+			</if>
+			<if test=" serveraddress != null and  serveraddress != '' ">
+				AND serveraddress LIKE
+				concat('%',#{serveraddress},'%')
+			</if>
+			<if test=" typewidth != null and  typewidth != '' ">
+				AND typewidth LIKE
+				concat('%',#{typewidth},'%')
+			</if>
+			<if test=" antivirussoftware != null and  antivirussoftware != '' ">
+				AND antivirussoftware LIKE
+				concat('%',#{antivirussoftware},'%')
+			</if>
+			<if test=" onlinenum != null and  onlinenum != '' ">
+				AND onlinenum LIKE
+				concat('%',#{onlinenum},'%')
+			</if>
+			<if test=" clientnum != null and  clientnum != '' ">
+				AND clientnum LIKE
+				concat('%',#{clientnum},'%')
+			</if>
+		</where>
+	</select>
+</mapper>
