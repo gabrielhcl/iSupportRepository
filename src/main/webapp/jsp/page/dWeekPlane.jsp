@@ -202,8 +202,23 @@
 								<td></td>
 							</tr>
 							<tr>
+								<td></td>
+								<td><input type="date" class="form-control" name="proplstarttime"></td>
+								<td><input type="date" class="form-control" name="bpdesignstarttime"></td>
+								<td><input type="date" class="form-control" name="sysbuildstarttime"></td>
+								<td><input type="date" class="form-control" name="onlineswitchstarttime"></td>
+								<td><input type="date" class="form-control" name="susupportstarttime"></td>
+							</tr>
+							<tr>
 								<td>项目规格</td>
-								<td style="background-color: #81C868"></td>
+								<td>
+								<select class="form-control" name="proplstatus">
+									<option value="1">未开始</option>
+									<option value="2">开始</option>
+									<option value="3">完成</option>
+									<option value="4">未完成</option>
+								</select>
+								</td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -212,7 +227,14 @@
 							<tr>
 								<td>蓝图设计</td>
 								<td></td>
-								<td style="background-color: #81C868"></td>
+								<td>
+								<select class="form-control" name="bpdesignstatus">
+									<option value="1">未开始</option>
+									<option value="2">开始</option>
+									<option value="3">完成</option>
+									<option value="4">未完成</option>
+								</select>
+								</td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -221,7 +243,14 @@
 								<td>系统建设</td>
 								<td></td>
 								<td></td>
-								<td style="background-color: #81C868"></td>
+								<td>
+								<select class="form-control" name="sysbuildstatus">
+									<option value="1">未开始</option>
+									<option value="2">开始</option>
+									<option value="3">完成</option>
+									<option value="4">未完成</option>
+								</select>
+								</td>
 								<td></td>
 								<td></td>
 							</tr>
@@ -230,7 +259,14 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td style="background-color: #34D3EB"></td>
+								<td>
+								<select class="form-control" name="onlineswitchstatus">
+									<option value="1">未开始</option>
+									<option value="2">开始</option>
+									<option value="3">完成</option>
+									<option value="4">未完成</option>
+								</select>
+								</td>
 								<td></td>
 							</tr>
 							<tr>
@@ -239,7 +275,14 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td style="background-color: #FFBD4A"></td>
+								<td>
+								<select class="form-control" name="susupportstatus">
+									<option value="1">未开始</option>
+									<option value="2">开始</option>
+									<option value="3">完成</option>
+									<option value="4">未完成</option>
+								</select>
+								</td>
 							</tr>
 
 							<!-- 本周工作完成情况 -->

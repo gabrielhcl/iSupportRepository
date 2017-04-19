@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsSDweekplaneHDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneH" >
+    <id column="pk_dweekplane_h" property="pkDweekplaneH" jdbcType="INTEGER" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="pk_project" property="pkProject" jdbcType="INTEGER" />
+    <result column="corpname" property="corpname" jdbcType="VARCHAR" />
+    <result column="filldate" property="filldate" jdbcType="TIMESTAMP" />
+    <result column="pk_mianplane" property="pkMianplane" jdbcType="INTEGER" />
+    <result column="planestartdate" property="planestartdate" jdbcType="TIMESTAMP" />
+    <result column="planefinishdate" property="planefinishdate" jdbcType="TIMESTAMP" />
+    <result column="startprojectdate" property="startprojectdate" jdbcType="TIMESTAMP" />
+    <result column="projectmanager" property="projectmanager" jdbcType="VARCHAR" />
+    <result column="projectmanagerdaytime" property="projectmanagerdaytime" jdbcType="VARCHAR" />
+    <result column="impconsultant" property="impconsultant" jdbcType="VARCHAR" />
+    <result column="impconsultantdaytime" property="impconsultantdaytime" jdbcType="VARCHAR" />
+    <result column="devconsultant" property="devconsultant" jdbcType="VARCHAR" />
+    <result column="devconsultantdaytime" property="devconsultantdaytime" jdbcType="VARCHAR" />
+    <result column="planesumdaytime" property="planesumdaytime" jdbcType="VARCHAR" />
+    <result column="sumdaytime" property="sumdaytime" jdbcType="VARCHAR" />
+    <result column="stagein" property="stagein" jdbcType="VARCHAR" />
+    <result column="yiprojectmanager" property="yiprojectmanager" jdbcType="VARCHAR" />
+    <result column="radio" property="radio" jdbcType="VARCHAR" />
+    <result column="lagdays" property="lagdays" jdbcType="VARCHAR" />
+    <result column="riskwarning" property="riskwarning" jdbcType="VARCHAR" />
+    <result column="proplstarttime" property="proplstarttime" jdbcType="TIMESTAMP" />
+    <result column="proplstatus" property="proplstatus" jdbcType="VARCHAR" />
+    <result column="bpdesignstarttime" property="bpdesignstarttime" jdbcType="TIMESTAMP" />
+    <result column="bpdesignstatus" property="bpdesignstatus" jdbcType="VARCHAR" />
+    <result column="sysbuildstarttime" property="sysbuildstarttime" jdbcType="TIMESTAMP" />
+    <result column="sysbuildstatus" property="sysbuildstatus" jdbcType="VARCHAR" />
+    <result column="onlineswitchstarttime" property="onlineswitchstarttime" jdbcType="TIMESTAMP" />
+    <result column="onlineswitchstatus" property="onlineswitchstatus" jdbcType="VARCHAR" />
+    <result column="susupportstarttime" property="susupportstarttime" jdbcType="TIMESTAMP" />
+    <result column="susupportstatus" property="susupportstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_dweekplane_h, projectname, pk_project, corpname, filldate, pk_mianplane, planestartdate, 
+    planefinishdate, startprojectdate, projectmanager, projectmanagerdaytime, impconsultant, 
+    impconsultantdaytime, devconsultant, devconsultantdaytime, planesumdaytime, sumdaytime, 
+    stagein, yiprojectmanager, radio, lagdays, riskwarning, proplstarttime, proplstatus, 
+    bpdesignstarttime, bpdesignstatus, sysbuildstarttime, sysbuildstatus, onlineswitchstarttime, 
+    onlineswitchstatus, susupportstarttime, susupportstatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_s_dweekplane_h
+    where pk_dweekplane_h = #{pkDweekplaneH,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_s_dweekplane_h
+    where pk_dweekplane_h = #{pkDweekplaneH,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneH" >
+    insert into is_s_dweekplane_h (pk_dweekplane_h, projectname, pk_project, 
+      corpname, filldate, pk_mianplane, 
+      planestartdate, planefinishdate, startprojectdate, 
+      projectmanager, projectmanagerdaytime, 
+      impconsultant, impconsultantdaytime, devconsultant, 
+      devconsultantdaytime, planesumdaytime, 
+      sumdaytime, stagein, yiprojectmanager, 
+      radio, lagdays, riskwarning, 
+      proplstarttime, proplstatus, bpdesignstarttime, 
+      bpdesignstatus, sysbuildstarttime, sysbuildstatus, 
+      onlineswitchstarttime, onlineswitchstatus, 
+      susupportstarttime, susupportstatus)
+    values (#{pkDweekplaneH,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{pkProject,jdbcType=INTEGER}, 
+      #{corpname,jdbcType=VARCHAR}, #{filldate,jdbcType=TIMESTAMP}, #{pkMianplane,jdbcType=INTEGER}, 
+      #{planestartdate,jdbcType=TIMESTAMP}, #{planefinishdate,jdbcType=TIMESTAMP}, #{startprojectdate,jdbcType=TIMESTAMP}, 
+      #{projectmanager,jdbcType=VARCHAR}, #{projectmanagerdaytime,jdbcType=VARCHAR}, 
+      #{impconsultant,jdbcType=VARCHAR}, #{impconsultantdaytime,jdbcType=VARCHAR}, #{devconsultant,jdbcType=VARCHAR}, 
+      #{devconsultantdaytime,jdbcType=VARCHAR}, #{planesumdaytime,jdbcType=VARCHAR}, 
+      #{sumdaytime,jdbcType=VARCHAR}, #{stagein,jdbcType=VARCHAR}, #{yiprojectmanager,jdbcType=VARCHAR}, 
+      #{radio,jdbcType=VARCHAR}, #{lagdays,jdbcType=VARCHAR}, #{riskwarning,jdbcType=VARCHAR}, 
+      #{proplstarttime,jdbcType=TIMESTAMP}, #{proplstatus,jdbcType=VARCHAR}, #{bpdesignstarttime,jdbcType=TIMESTAMP}, 
+      #{bpdesignstatus,jdbcType=VARCHAR}, #{sysbuildstarttime,jdbcType=TIMESTAMP}, #{sysbuildstatus,jdbcType=VARCHAR}, 
+      #{onlineswitchstarttime,jdbcType=TIMESTAMP}, #{onlineswitchstatus,jdbcType=VARCHAR}, 
+      #{susupportstarttime,jdbcType=TIMESTAMP}, #{susupportstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneH" >
+    insert into is_s_dweekplane_h
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkDweekplaneH != null" >
+        pk_dweekplane_h,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="pkProject != null" >
+        pk_project,
+      </if>
+      <if test="corpname != null" >
+        corpname,
+      </if>
+      <if test="filldate != null" >
+        filldate,
+      </if>
+      <if test="pkMianplane != null" >
+        pk_mianplane,
+      </if>
+      <if test="planestartdate != null" >
+        planestartdate,
+      </if>
+      <if test="planefinishdate != null" >
+        planefinishdate,
+      </if>
+      <if test="startprojectdate != null" >
+        startprojectdate,
+      </if>
+      <if test="projectmanager != null" >
+        projectmanager,
+      </if>
+      <if test="projectmanagerdaytime != null" >
+        projectmanagerdaytime,
+      </if>
+      <if test="impconsultant != null" >
+        impconsultant,
+      </if>
+      <if test="impconsultantdaytime != null" >
+        impconsultantdaytime,
+      </if>
+      <if test="devconsultant != null" >
+        devconsultant,
+      </if>
+      <if test="devconsultantdaytime != null" >
+        devconsultantdaytime,
+      </if>
+      <if test="planesumdaytime != null" >
+        planesumdaytime,
+      </if>
+      <if test="sumdaytime != null" >
+        sumdaytime,
+      </if>
+      <if test="stagein != null" >
+        stagein,
+      </if>
+      <if test="yiprojectmanager != null" >
+        yiprojectmanager,
+      </if>
+      <if test="radio != null" >
+        radio,
+      </if>
+      <if test="lagdays != null" >
+        lagdays,
+      </if>
+      <if test="riskwarning != null" >
+        riskwarning,
+      </if>
+      <if test="proplstarttime != null" >
+        proplstarttime,
+      </if>
+      <if test="proplstatus != null" >
+        proplstatus,
+      </if>
+      <if test="bpdesignstarttime != null" >
+        bpdesignstarttime,
+      </if>
+      <if test="bpdesignstatus != null" >
+        bpdesignstatus,
+      </if>
+      <if test="sysbuildstarttime != null" >
+        sysbuildstarttime,
+      </if>
+      <if test="sysbuildstatus != null" >
+        sysbuildstatus,
+      </if>
+      <if test="onlineswitchstarttime != null" >
+        onlineswitchstarttime,
+      </if>
+      <if test="onlineswitchstatus != null" >
+        onlineswitchstatus,
+      </if>
+      <if test="susupportstarttime != null" >
+        susupportstarttime,
+      </if>
+      <if test="susupportstatus != null" >
+        susupportstatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkDweekplaneH != null" >
+        #{pkDweekplaneH,jdbcType=INTEGER},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="pkProject != null" >
+        #{pkProject,jdbcType=INTEGER},
+      </if>
+      <if test="corpname != null" >
+        #{corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="filldate != null" >
+        #{filldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pkMianplane != null" >
+        #{pkMianplane,jdbcType=INTEGER},
+      </if>
+      <if test="planestartdate != null" >
+        #{planestartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planefinishdate != null" >
+        #{planefinishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startprojectdate != null" >
+        #{startprojectdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectmanager != null" >
+        #{projectmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectmanagerdaytime != null" >
+        #{projectmanagerdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="impconsultant != null" >
+        #{impconsultant,jdbcType=VARCHAR},
+      </if>
+      <if test="impconsultantdaytime != null" >
+        #{impconsultantdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="devconsultant != null" >
+        #{devconsultant,jdbcType=VARCHAR},
+      </if>
+      <if test="devconsultantdaytime != null" >
+        #{devconsultantdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="planesumdaytime != null" >
+        #{planesumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="sumdaytime != null" >
+        #{sumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="stagein != null" >
+        #{stagein,jdbcType=VARCHAR},
+      </if>
+      <if test="yiprojectmanager != null" >
+        #{yiprojectmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="radio != null" >
+        #{radio,jdbcType=VARCHAR},
+      </if>
+      <if test="lagdays != null" >
+        #{lagdays,jdbcType=VARCHAR},
+      </if>
+      <if test="riskwarning != null" >
+        #{riskwarning,jdbcType=VARCHAR},
+      </if>
+      <if test="proplstarttime != null" >
+        #{proplstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proplstatus != null" >
+        #{proplstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bpdesignstarttime != null" >
+        #{bpdesignstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bpdesignstatus != null" >
+        #{bpdesignstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sysbuildstarttime != null" >
+        #{sysbuildstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysbuildstatus != null" >
+        #{sysbuildstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineswitchstarttime != null" >
+        #{onlineswitchstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlineswitchstatus != null" >
+        #{onlineswitchstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="susupportstarttime != null" >
+        #{susupportstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="susupportstatus != null" >
+        #{susupportstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneH" >
+    update is_s_dweekplane_h
+    <set >
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="pkProject != null" >
+        pk_project = #{pkProject,jdbcType=INTEGER},
+      </if>
+      <if test="corpname != null" >
+        corpname = #{corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="filldate != null" >
+        filldate = #{filldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pkMianplane != null" >
+        pk_mianplane = #{pkMianplane,jdbcType=INTEGER},
+      </if>
+      <if test="planestartdate != null" >
+        planestartdate = #{planestartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="planefinishdate != null" >
+        planefinishdate = #{planefinishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startprojectdate != null" >
+        startprojectdate = #{startprojectdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectmanager != null" >
+        projectmanager = #{projectmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectmanagerdaytime != null" >
+        projectmanagerdaytime = #{projectmanagerdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="impconsultant != null" >
+        impconsultant = #{impconsultant,jdbcType=VARCHAR},
+      </if>
+      <if test="impconsultantdaytime != null" >
+        impconsultantdaytime = #{impconsultantdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="devconsultant != null" >
+        devconsultant = #{devconsultant,jdbcType=VARCHAR},
+      </if>
+      <if test="devconsultantdaytime != null" >
+        devconsultantdaytime = #{devconsultantdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="planesumdaytime != null" >
+        planesumdaytime = #{planesumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="sumdaytime != null" >
+        sumdaytime = #{sumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="stagein != null" >
+        stagein = #{stagein,jdbcType=VARCHAR},
+      </if>
+      <if test="yiprojectmanager != null" >
+        yiprojectmanager = #{yiprojectmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="radio != null" >
+        radio = #{radio,jdbcType=VARCHAR},
+      </if>
+      <if test="lagdays != null" >
+        lagdays = #{lagdays,jdbcType=VARCHAR},
+      </if>
+      <if test="riskwarning != null" >
+        riskwarning = #{riskwarning,jdbcType=VARCHAR},
+      </if>
+      <if test="proplstarttime != null" >
+        proplstarttime = #{proplstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proplstatus != null" >
+        proplstatus = #{proplstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bpdesignstarttime != null" >
+        bpdesignstarttime = #{bpdesignstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bpdesignstatus != null" >
+        bpdesignstatus = #{bpdesignstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="sysbuildstarttime != null" >
+        sysbuildstarttime = #{sysbuildstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysbuildstatus != null" >
+        sysbuildstatus = #{sysbuildstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineswitchstarttime != null" >
+        onlineswitchstarttime = #{onlineswitchstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlineswitchstatus != null" >
+        onlineswitchstatus = #{onlineswitchstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="susupportstarttime != null" >
+        susupportstarttime = #{susupportstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="susupportstatus != null" >
+        susupportstatus = #{susupportstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_dweekplane_h = #{pkDweekplaneH,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneH" >
+    update is_s_dweekplane_h
+    set projectname = #{projectname,jdbcType=VARCHAR},
+      pk_project = #{pkProject,jdbcType=INTEGER},
+      corpname = #{corpname,jdbcType=VARCHAR},
+      filldate = #{filldate,jdbcType=TIMESTAMP},
+      pk_mianplane = #{pkMianplane,jdbcType=INTEGER},
+      planestartdate = #{planestartdate,jdbcType=TIMESTAMP},
+      planefinishdate = #{planefinishdate,jdbcType=TIMESTAMP},
+      startprojectdate = #{startprojectdate,jdbcType=TIMESTAMP},
+      projectmanager = #{projectmanager,jdbcType=VARCHAR},
+      projectmanagerdaytime = #{projectmanagerdaytime,jdbcType=VARCHAR},
+      impconsultant = #{impconsultant,jdbcType=VARCHAR},
+      impconsultantdaytime = #{impconsultantdaytime,jdbcType=VARCHAR},
+      devconsultant = #{devconsultant,jdbcType=VARCHAR},
+      devconsultantdaytime = #{devconsultantdaytime,jdbcType=VARCHAR},
+      planesumdaytime = #{planesumdaytime,jdbcType=VARCHAR},
+      sumdaytime = #{sumdaytime,jdbcType=VARCHAR},
+      stagein = #{stagein,jdbcType=VARCHAR},
+      yiprojectmanager = #{yiprojectmanager,jdbcType=VARCHAR},
+      radio = #{radio,jdbcType=VARCHAR},
+      lagdays = #{lagdays,jdbcType=VARCHAR},
+      riskwarning = #{riskwarning,jdbcType=VARCHAR},
+      proplstarttime = #{proplstarttime,jdbcType=TIMESTAMP},
+      proplstatus = #{proplstatus,jdbcType=VARCHAR},
+      bpdesignstarttime = #{bpdesignstarttime,jdbcType=TIMESTAMP},
+      bpdesignstatus = #{bpdesignstatus,jdbcType=VARCHAR},
+      sysbuildstarttime = #{sysbuildstarttime,jdbcType=TIMESTAMP},
+      sysbuildstatus = #{sysbuildstatus,jdbcType=VARCHAR},
+      onlineswitchstarttime = #{onlineswitchstarttime,jdbcType=TIMESTAMP},
+      onlineswitchstatus = #{onlineswitchstatus,jdbcType=VARCHAR},
+      susupportstarttime = #{susupportstarttime,jdbcType=TIMESTAMP},
+      susupportstatus = #{susupportstatus,jdbcType=VARCHAR}
+    where pk_dweekplane_h = #{pkDweekplaneH,jdbcType=INTEGER}
+  </update>
+</mapper>

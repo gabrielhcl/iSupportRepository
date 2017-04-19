@@ -47,6 +47,7 @@ public class WeekPlaneForm {
 	private List<String> nextpersonliable; //
 	private List<String> nextweekstarttime; //
 	private List<String> nextweekfinishtime; //
+	private List<String> explain;
 	
 	
 	public List<String> getNextweektask() {
@@ -305,4 +306,14 @@ public class WeekPlaneForm {
 		this.riskwarning = riskwarning;
 	}
 
+	public List<String> getExplain() {
+		return explain;
+	}
+
+	public void setExplain(List<String> explain) {
+		this.explain = explain;
+	}
+
+	
+	
 }
