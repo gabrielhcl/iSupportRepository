@@ -39,6 +39,7 @@ public class UserController {
 			httpsession.setAttribute("user", user);
 			model.addAttribute("iframesrc",request.getContextPath() + "/jsp/page/yonyou-map.jsp");
 			System.out.println(request.getContextPath() + "/yonyou-map.jsp");
+			httpsession.setAttribute("user", user);
 			return "index";
 		}else{
 			String loginfailed = "登陆失败，请重新输入用户名与密码";
@@ -52,7 +53,7 @@ public class UserController {
 	 */
 	@RequestMapping("regist")
 	public String regist(HttpServletRequest request,HttpServletResponse response){
-		return " userRegistForm";
+		return "userRegistForm";
 	}
 	/*
 	 * 注册完成返回登录页

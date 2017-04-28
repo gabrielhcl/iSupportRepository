@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsNewsDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsNews" >
+    <id column="pk_news" property="pkNews" jdbcType="INTEGER" />
+    <result column="pk_column" property="pkColumn" jdbcType="INTEGER" />
+<!--     <result column="pk_column" property="pkNewsColumn" jdbcType="INTEGER" /> -->
+    <result column="newscode" property="newscode" jdbcType="VARCHAR" />
+    <result column="newstitle" property="newstitle" jdbcType="VARCHAR" />
+    <result column="newsdate" property="newsdate" jdbcType="TIMESTAMP" />
+    <result column="createby" property="createby" jdbcType="VARCHAR" />
+    <result column="newscontent" property="newscontent" jdbcType="VARCHAR" />
+    <result column="newspicture" property="newspicture" jdbcType="VARCHAR" />
+    <result column="newsremarks" property="newsremarks" jdbcType="VARCHAR" />
+    <result column="iscomment" property="iscomment" jdbcType="VARCHAR" />
+    <result column="istop" property="istop" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_news, pk_column, newscode, newstitle, newsdate, createby, newscontent, newspicture, 
+    newsremarks, iscomment, istop
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_news
+    where pk_news = #{pkNews,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByPkColumn" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_news
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_news
+    where pk_news = #{pkNews,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsNews" >
+    insert into is_news (pk_column, newscode, 
+      newstitle, newsdate, createby, 
+      newscontent, newspicture, newsremarks, 
+      iscomment, istop
+      )
+    values (#{pkColumn,jdbcType=INTEGER}, #{newscode,jdbcType=VARCHAR}, 
+      #{newstitle,jdbcType=VARCHAR}, #{newsdate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{newscontent,jdbcType=VARCHAR}, #{newspicture,jdbcType=VARCHAR}, #{newsremarks,jdbcType=VARCHAR}, 
+      #{iscomment,jdbcType=VARCHAR}, #{istop,jdbcType=VARCHAR} 
+      )
+  </insert>
+<!--   手动插入新闻 -->
+  <insert id="insertNews" parameterType="com.yongyou.iSupport.entity.IsNews" >
+    insert into is_news (pk_column, newscode, 
+      newstitle, newsdate, createby, 
+      newscontent, newspicture, newsremarks, 
+      iscomment, istop
+      )
+    values (#{pkColumn,jdbcType=INTEGER}, #{newscode,jdbcType=VARCHAR}, 
+      #{newstitle,jdbcType=VARCHAR}, #{newsdate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
+      #{newscontent,jdbcType=VARCHAR}, #{newspicture,jdbcType=VARCHAR}, #{newsremarks,jdbcType=VARCHAR}, 
+      #{iscomment,jdbcType=VARCHAR}, #{istop,jdbcType=VARCHAR} 
+      )
+  </insert>
+  
+  
+<!--    <select id="findNewsByColumn" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsNews"> -->
+<!-- 		SELECT -->
+<!-- 		<include refid="Base_Column_List" /> -->
+<!-- 		FROM is_news  -->
+<!-- 		<where> -->
+<!-- 			<if test="pkNewsColumn!= null"> -->
+<!-- 				AND pkNewsColumn=#{pkNewsColumn} -->
+<!-- 			</if> -->
+<!-- 		</where> -->
+<!-- 	</select> -->
+  
+  
+  
+  
+  
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsNews" >
+    insert into is_news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkNews != null" >
+        pk_news,
+      </if>
+      <if test="pkColumn != null" >
+        pk_column,
+      </if>
+      <if test="newscode != null" >
+        newscode,
+      </if>
+      <if test="newstitle != null" >
+        newstitle,
+      </if>
+      <if test="newsdate != null" >
+        newsdate,
+      </if>
+      <if test="createby != null" >
+        createby,
+      </if>
+      <if test="newscontent != null" >
+        newscontent,
+      </if>
+      <if test="newspicture != null" >
+        newspicture,
+      </if>
+      <if test="newsremarks != null" >
+        newsremarks,
+      </if>
+      <if test="iscomment != null" >
+        iscomment,
+      </if>
+      <if test="istop != null" >
+        istop,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkNews != null" >
+        #{pkNews,jdbcType=INTEGER},
+      </if>
+      <if test="pkColumn != null" >
+        #{pkColumn,jdbcType=INTEGER},
+      </if>
+      <if test="newscode != null" >
+        #{newscode,jdbcType=VARCHAR},
+      </if>
+      <if test="newstitle != null" >
+        #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsdate != null" >
+        #{newsdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="newscontent != null" >
+        #{newscontent,jdbcType=VARCHAR},
+      </if>
+      <if test="newspicture != null" >
+        #{newspicture,jdbcType=VARCHAR},
+      </if>
+      <if test="newsremarks != null" >
+        #{newsremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="iscomment != null" >
+        #{iscomment,jdbcType=VARCHAR},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsNews" >
+    update is_news
+    <set >
+      <if test="pkColumn != null" >
+        pk_column = #{pkColumn,jdbcType=INTEGER},
+      </if>
+      <if test="newscode != null" >
+        newscode = #{newscode,jdbcType=VARCHAR},
+      </if>
+      <if test="newstitle != null" >
+        newstitle = #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsdate != null" >
+        newsdate = #{newsdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null" >
+        createby = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="newscontent != null" >
+        newscontent = #{newscontent,jdbcType=VARCHAR},
+      </if>
+      <if test="newspicture != null" >
+        newspicture = #{newspicture,jdbcType=VARCHAR},
+      </if>
+      <if test="newsremarks != null" >
+        newsremarks = #{newsremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="iscomment != null" >
+        iscomment = #{iscomment,jdbcType=VARCHAR},
+      </if>
+      <if test="istop != null" >
+        istop = #{istop,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_news = #{pkNews,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsNews" >
+    update is_news
+    set pk_column = #{pkColumn,jdbcType=INTEGER},
+      newscode = #{newscode,jdbcType=VARCHAR},
+      newstitle = #{newstitle,jdbcType=VARCHAR},
+      newsdate = #{newsdate,jdbcType=TIMESTAMP},
+      createby = #{createby,jdbcType=VARCHAR},
+      newscontent = #{newscontent,jdbcType=VARCHAR},
+      newspicture = #{newspicture,jdbcType=VARCHAR},
+      newsremarks = #{newsremarks,jdbcType=VARCHAR},
+      iscomment = #{iscomment,jdbcType=VARCHAR},
+      istop = #{istop,jdbcType=VARCHAR}
+    where pk_news = #{pkNews,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsNews">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_news 
+		<where>
+			<if test=" pkNews!= null">
+				AND pkNews=#{pkNews}
+			</if>
+			<if test=" pkColumn!= null">
+				AND pkColumn=#{pkColumn}
+			</if>
+			<if test=" newscode != null and  newscode != '' ">
+				AND newscode LIKE
+				concat('%',#{newscode},'%')
+			</if>
+			<if test=" newstitle != null and  newstitle != '' ">
+				AND newstitle LIKE
+				concat('%',#{newstitle},'%')
+			</if><if test=" newsdate != null and  newsdate != '' ">
+				AND newsdate LIKE
+				concat('%',#{newsdate},'%')
+			</if><if test=" createby != null and  createby != '' ">
+				AND createby LIKE
+				concat('%',#{createby},'%')
+			</if><if test=" newscontent != null and  newscontent != '' ">
+				AND newscontent LIKE
+				concat('%',#{newscontent},'%')
+			</if><if test=" newspicture != null and  newspicture != '' ">
+				AND newspicture LIKE
+				concat('%',#{newspicture},'%')
+			</if>
+			<if test=" newsremarks != null and  newsremarks != '' ">
+				AND newsremarks LIKE
+				concat('%',#{newsremarks},'%')
+			</if>
+			<if test=" iscomment != null and  iscomment != '' ">
+				AND iscomment LIKE
+				concat('%',#{iscomment},'%')
+			</if>
+			<if test=" istop != null and  istop != '' ">
+				AND istop LIKE
+				concat('%',#{istop},'%')
+			</if>
+		</where>
+	</select>
+</mapper>

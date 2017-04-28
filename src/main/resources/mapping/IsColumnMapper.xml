@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsColumnDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsColumn" >
+    <id column="pk_column" property="pkColumn" jdbcType="INTEGER" />
+    <result column="columncode" property="columncode" jdbcType="VARCHAR" />
+    <result column="columnname" property="columnname" jdbcType="VARCHAR" />
+    <result column="columnremark" property="columnremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_column, columncode, columnname, columnremark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_column
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_column
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsColumn" >
+    insert into is_column (pk_column, columncode, columnname, 
+      columnremark)
+    values (#{pkColumn,jdbcType=INTEGER}, #{columncode,jdbcType=VARCHAR}, #{columnname,jdbcType=VARCHAR}, 
+      #{columnremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsColumn" >
+    insert into is_column
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkColumn != null" >
+        pk_column,
+      </if>
+      <if test="columncode != null" >
+        columncode,
+      </if>
+      <if test="columnname != null" >
+        columnname,
+      </if>
+      <if test="columnremark != null" >
+        columnremark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkColumn != null" >
+        #{pkColumn,jdbcType=INTEGER},
+      </if>
+      <if test="columncode != null" >
+        #{columncode,jdbcType=VARCHAR},
+      </if>
+      <if test="columnname != null" >
+        #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="columnremark != null" >
+        #{columnremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsColumn" >
+    update is_column
+    <set >
+      <if test="columncode != null" >
+        columncode = #{columncode,jdbcType=VARCHAR},
+      </if>
+      <if test="columnname != null" >
+        columnname = #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="columnremark != null" >
+        columnremark = #{columnremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsColumn" >
+    update is_column
+    set columncode = #{columncode,jdbcType=VARCHAR},
+      columnname = #{columnname,jdbcType=VARCHAR},
+      columnremark = #{columnremark,jdbcType=VARCHAR}
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsColumn">
+  	SELECT
+  	<include refid="Base_Column_List"/>
+  	FROM is_column
+  	<where>
+  		<if test="pkColumn!=null">
+  			AND pkColumn=#{pkColumn}
+  		</if>
+  		<if	test="columncode!=null and columncode!=''">
+  			AND columncode LIKE
+  			concat('%',#{columncode},'%')
+  		</if>
+  		<if	test="columnname!=null and columnname!=''">
+  			AND columnname LIKE
+  			concat('%',#{columnname},'%')
+  		</if>
+  		<if	test="columnremark!=null and columnremark!=''">
+  			AND columnremark LIKE
+  			concat('%',#{columnremark},'%')
+  		</if>
+  	</where>
+  </select>
+</mapper>

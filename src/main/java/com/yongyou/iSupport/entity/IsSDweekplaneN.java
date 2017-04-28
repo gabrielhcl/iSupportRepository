@@ -5,7 +5,7 @@ import java.util.Date;
 public class IsSDweekplaneN {
     private Integer pkSDweekplaneN;
 
-    private Integer pkSDweekplaneT;
+    private Integer pkSDweekplaneH;
 
     private Date weekplstarttime;
 
@@ -19,7 +19,7 @@ public class IsSDweekplaneN {
 
     private Date nextweekfinishtime;
 
-    private String explain;
+    private String nextweekexplain;
 
     public Integer getPkSDweekplaneN() {
         return pkSDweekplaneN;
@@ -29,12 +29,12 @@ public class IsSDweekplaneN {
         this.pkSDweekplaneN = pkSDweekplaneN;
     }
 
-    public Integer getPkSDweekplaneT() {
-        return pkSDweekplaneT;
+    public Integer getPkSDweekplaneH() {
+        return pkSDweekplaneH;
     }
 
-    public void setPkSDweekplaneT(Integer pkSDweekplaneT) {
-        this.pkSDweekplaneT = pkSDweekplaneT;
+    public void setPkSDweekplaneH(Integer pkSDweekplaneH) {
+        this.pkSDweekplaneH = pkSDweekplaneH;
     }
 
     public Date getWeekplstarttime() {
@@ -85,11 +85,12 @@ public class IsSDweekplaneN {
         this.nextweekfinishtime = nextweekfinishtime;
     }
 
-    public String getExplain() {
-        return explain;
-    }
+	public String getNextweekexplain() {
+		return nextweekexplain;
+	}
 
-    public void setExplain(String explain) {
-        this.explain = explain == null ? null : explain.trim();
-    }
+	public void setNextweekexplain(String nextweekexplain) {
+		this.nextweekexplain = nextweekexplain;
+	}
+    
 }

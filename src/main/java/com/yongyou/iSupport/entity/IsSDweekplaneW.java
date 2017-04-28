@@ -3,7 +3,7 @@ package com.yongyou.iSupport.entity;
 public class IsSDweekplaneW {
     private Integer pkSDweekplaneW;
 
-    private Integer pkSDweekplaneT;
+    private Integer pkSDweekplaneH;
 
     private String notfinishtask;
 
@@ -21,12 +21,12 @@ public class IsSDweekplaneW {
         this.pkSDweekplaneW = pkSDweekplaneW;
     }
 
-    public Integer getPkSDweekplaneT() {
-        return pkSDweekplaneT;
+    public Integer getPkSDweekplaneH() {
+        return pkSDweekplaneH;
     }
 
-    public void setPkSDweekplaneT(Integer pkSDweekplaneT) {
-        this.pkSDweekplaneT = pkSDweekplaneT;
+    public void setPkSDweekplaneH(Integer pkSDweekplaneH) {
+        this.pkSDweekplaneH = pkSDweekplaneH;
     }
 
     public String getNotfinishtask() {

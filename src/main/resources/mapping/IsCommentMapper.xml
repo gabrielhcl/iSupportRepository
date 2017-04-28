@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsCommentDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsComment" >
+    <id column="pk_comment" property="pkComment" jdbcType="INTEGER" />
+    <result column="pk_news" property="pkNews" jdbcType="INTEGER" />
+    <result column="newstitle" property="newstitle" jdbcType="VARCHAR" />
+    <result column="commentcode" property="commentcode" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="usercode" property="usercode" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_comment, pk_news, newstitle, commentcode, content, usercode, username, createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_comment
+    where pk_comment = #{pkComment,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByPkNews" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_comment
+    where pk_news = #{pkNews,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_comment
+    where pk_comment = #{pkComment,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsComment" >
+    insert into is_comment (pk_comment, pk_news, newstitle, 
+      commentcode, content, usercode, 
+      username, createDate)
+    values (#{pkComment,jdbcType=INTEGER}, #{pkNews,jdbcType=INTEGER}, #{newstitle,jdbcType=VARCHAR}, 
+      #{commentcode,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsComment" >
+    insert into is_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkComment != null" >
+        pk_comment,
+      </if>
+      <if test="pkNews != null" >
+        pk_news,
+      </if>
+      <if test="newstitle != null" >
+        newstitle,
+      </if>
+      <if test="commentcode != null" >
+        commentcode,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="usercode != null" >
+        usercode,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkComment != null" >
+        #{pkComment,jdbcType=INTEGER},
+      </if>
+      <if test="pkNews != null" >
+        #{pkNews,jdbcType=INTEGER},
+      </if>
+      <if test="newstitle != null" >
+        #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="commentcode != null" >
+        #{commentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null" >
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsComment" >
+    update is_comment
+    <set >
+      <if test="pkNews != null" >
+        pk_news = #{pkNews,jdbcType=INTEGER},
+      </if>
+      <if test="newstitle != null" >
+        newstitle = #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="commentcode != null" >
+        commentcode = #{commentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null" >
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pk_comment = #{pkComment,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsComment" >
+    update is_comment
+    set pk_news = #{pkNews,jdbcType=INTEGER},
+      newstitle = #{newstitle,jdbcType=VARCHAR},
+      commentcode = #{commentcode,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP}
+    where pk_comment = #{pkComment,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsComment">
+  		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_comment
+		<where>
+			<if test=" pkComment!= null">
+				AND pkComment=#{pkComment}
+			</if>
+			<if test=" newstitle != null and  newstitle != '' ">
+				AND newstitle LIKE
+				concat('%',#{newstitle},'%')
+			</if>
+			<if test=" commentcode != null and  commentcode != '' ">
+				AND commentcode LIKE
+				concat('%',#{commentcode},'%')
+			</if>
+			<if test=" content != null and  content != '' ">
+				AND content LIKE
+				concat('%',#{content},'%')
+			</if>
+			<if test=" usercode != null and  usercode != '' ">
+				AND usercode LIKE
+				concat('%',#{usercode},'%')
+			</if>
+			<if test=" username != null and  username != '' ">
+				AND username LIKE
+				concat('%',#{username},'%')
+			</if>
+			<if test=" createdate != null and  createdate != '' ">
+				AND createdate LIKE
+				concat('%',#{createdate},'%')
+			</if>
+		</where>
+  </select>
+</mapper>

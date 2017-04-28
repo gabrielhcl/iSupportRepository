@@ -5,7 +5,7 @@ import java.util.Date;
 public class IsSDweekplaneP {
     private Integer pkSDweekplaneP;
 
-    private Integer pkSDweekplaneT;
+    private Integer pkSDweekplaneH;
 
     private String problem;
 
@@ -21,12 +21,12 @@ public class IsSDweekplaneP {
         this.pkSDweekplaneP = pkSDweekplaneP;
     }
 
-    public Integer getPkSDweekplaneT() {
-        return pkSDweekplaneT;
+    public Integer getPkSDweekplaneH() {
+        return pkSDweekplaneH;
     }
 
-    public void setPkSDweekplaneT(Integer pkSDweekplaneT) {
-        this.pkSDweekplaneT = pkSDweekplaneT;
+    public void setPkSDweekplaneH(Integer pkSDweekplaneH) {
+        this.pkSDweekplaneH = pkSDweekplaneH;
     }
 
     public String getProblem() {

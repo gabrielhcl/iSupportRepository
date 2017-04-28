@@ -3,14 +3,14 @@
 <mapper namespace="com.yongyou.iSupport.dao.IsSDweekplaneWDao">
   <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneW">
     <id column="pk_s_dweekplane_w" jdbcType="INTEGER" property="pkSDweekplaneW" />
-    <result column="pk_s_dweekplane_t" jdbcType="INTEGER" property="pkSDweekplaneT" />
+    <result column="pk_s_dweekplane_h" jdbcType="INTEGER" property="pkSDweekplaneH" />
     <result column="notfinishtask" jdbcType="VARCHAR" property="notfinishtask" />
     <result column="personliable" jdbcType="VARCHAR" property="personliable" />
     <result column="notfinishreason" jdbcType="VARCHAR" property="notfinishreason" />
     <result column="concretemeasure" jdbcType="VARCHAR" property="concretemeasure" />
   </resultMap>
   <sql id="Base_Column_List">
-    pk_s_dweekplane_w, pk_s_dweekplane_t, notfinishtask, personliable, notfinishreason, 
+    pk_s_dweekplane_w, pk_s_dweekplane_h, notfinishtask, personliable, notfinishreason, 
     concretemeasure
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -24,183 +24,16 @@
     where pk_s_dweekplane_w = #{pkSDweekplaneW,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    insert into is_s_dweekplane_w (pk_s_dweekplane_w, pk_s_dweekplane_t, notfinishtask, 
+    insert into is_s_dweekplane_w (pk_s_dweekplane_w, pk_s_dweekplane_h, notfinishtask, 
       personliable, notfinishreason, concretemeasure
       )
-    values (#{pkSDweekplaneW,jdbcType=INTEGER}, #{pkSDweekplaneT,jdbcType=INTEGER}, #{notfinishtask,jdbcType=VARCHAR}, 
+    values (#{pkSDweekplaneW,jdbcType=INTEGER}, #{pkSDweekplaneH,jdbcType=INTEGER}, #{notfinishtask,jdbcType=VARCHAR}, 
       #{personliable,jdbcType=VARCHAR}, #{notfinishreason,jdbcType=VARCHAR}, #{concretemeasure,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    insert into is_s_dweekplane_w
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneW != null">
-        pk_s_dweekplane_w,
-      </if>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t,
-      </if>
-      <if test="notfinishtask != null">
-        notfinishtask,
-      </if>
-      <if test="personliable != null">
-        personliable,
-      </if>
-      <if test="notfinishreason != null">
-        notfinishreason,
-      </if>
-      <if test="concretemeasure != null">
-        concretemeasure,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneW != null">
-        #{pkSDweekplaneW,jdbcType=INTEGER},
-      </if>
-      <if test="pkSDweekplaneT != null">
-        #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="notfinishtask != null">
-        #{notfinishtask,jdbcType=VARCHAR},
-      </if>
-      <if test="personliable != null">
-        #{personliable,jdbcType=VARCHAR},
-      </if>
-      <if test="notfinishreason != null">
-        #{notfinishreason,jdbcType=VARCHAR},
-      </if>
-      <if test="concretemeasure != null">
-        #{concretemeasure,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    update is_s_dweekplane_w
-    <set>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="notfinishtask != null">
-        notfinishtask = #{notfinishtask,jdbcType=VARCHAR},
-      </if>
-      <if test="personliable != null">
-        personliable = #{personliable,jdbcType=VARCHAR},
-      </if>
-      <if test="notfinishreason != null">
-        notfinishreason = #{notfinishreason,jdbcType=VARCHAR},
-      </if>
-      <if test="concretemeasure != null">
-        concretemeasure = #{concretemeasure,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where pk_s_dweekplane_w = #{pkSDweekplaneW,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
     update is_s_dweekplane_w
-    set pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      notfinishtask = #{notfinishtask,jdbcType=VARCHAR},
-      personliable = #{personliable,jdbcType=VARCHAR},
-      notfinishreason = #{notfinishreason,jdbcType=VARCHAR},
-      concretemeasure = #{concretemeasure,jdbcType=VARCHAR}
-    where pk_s_dweekplane_w = #{pkSDweekplaneW,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    <id column="pk_s_dweekplane_w" jdbcType="INTEGER" property="pkSDweekplaneW" />
-    <result column="pk_s_dweekplane_t" jdbcType="INTEGER" property="pkSDweekplaneT" />
-    <result column="notfinishtask" jdbcType="VARCHAR" property="notfinishtask" />
-    <result column="personliable" jdbcType="VARCHAR" property="personliable" />
-    <result column="notfinishreason" jdbcType="VARCHAR" property="notfinishreason" />
-    <result column="concretemeasure" jdbcType="VARCHAR" property="concretemeasure" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    pk_s_dweekplane_w, pk_s_dweekplane_t, notfinishtask, personliable, notfinishreason, 
-    concretemeasure
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from is_s_dweekplane_w
-    where pk_s_dweekplane_w = #{pkSDweekplaneW,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from is_s_dweekplane_w
-    where pk_s_dweekplane_w = #{pkSDweekplaneW,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    insert into is_s_dweekplane_w (pk_s_dweekplane_w, pk_s_dweekplane_t, notfinishtask, 
-      personliable, notfinishreason, concretemeasure
-      )
-    values (#{pkSDweekplaneW,jdbcType=INTEGER}, #{pkSDweekplaneT,jdbcType=INTEGER}, #{notfinishtask,jdbcType=VARCHAR}, 
-      #{personliable,jdbcType=VARCHAR}, #{notfinishreason,jdbcType=VARCHAR}, #{concretemeasure,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    insert into is_s_dweekplane_w
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneW != null">
-        pk_s_dweekplane_w,
-      </if>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t,
-      </if>
-      <if test="notfinishtask != null">
-        notfinishtask,
-      </if>
-      <if test="personliable != null">
-        personliable,
-      </if>
-      <if test="notfinishreason != null">
-        notfinishreason,
-      </if>
-      <if test="concretemeasure != null">
-        concretemeasure,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneW != null">
-        #{pkSDweekplaneW,jdbcType=INTEGER},
-      </if>
-      <if test="pkSDweekplaneT != null">
-        #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="notfinishtask != null">
-        #{notfinishtask,jdbcType=VARCHAR},
-      </if>
-      <if test="personliable != null">
-        #{personliable,jdbcType=VARCHAR},
-      </if>
-      <if test="notfinishreason != null">
-        #{notfinishreason,jdbcType=VARCHAR},
-      </if>
-      <if test="concretemeasure != null">
-        #{concretemeasure,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    update is_s_dweekplane_w
-    <set>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="notfinishtask != null">
-        notfinishtask = #{notfinishtask,jdbcType=VARCHAR},
-      </if>
-      <if test="personliable != null">
-        personliable = #{personliable,jdbcType=VARCHAR},
-      </if>
-      <if test="notfinishreason != null">
-        notfinishreason = #{notfinishreason,jdbcType=VARCHAR},
-      </if>
-      <if test="concretemeasure != null">
-        concretemeasure = #{concretemeasure,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where pk_s_dweekplane_w = #{pkSDweekplaneW,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneW">
-    update is_s_dweekplane_w
-    set pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
+    set pk_s_dweekplane_h = #{pkSDweekplaneH,jdbcType=INTEGER},
       notfinishtask = #{notfinishtask,jdbcType=VARCHAR},
       personliable = #{personliable,jdbcType=VARCHAR},
       notfinishreason = #{notfinishreason,jdbcType=VARCHAR},

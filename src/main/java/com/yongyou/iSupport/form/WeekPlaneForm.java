@@ -3,6 +3,7 @@ package com.yongyou.iSupport.form;
 import java.util.List;
 
 public class WeekPlaneForm {
+	private String filldate;
 	private String planestartdate; // 计划开工日期
 	private String startprojectdate; // 实际开工日期
 	private String planefinishdate; // 计划完工日期
@@ -47,7 +48,7 @@ public class WeekPlaneForm {
 	private List<String> nextpersonliable; //
 	private List<String> nextweekstarttime; //
 	private List<String> nextweekfinishtime; //
-	private List<String> explain;
+	private List<String> nextweekexplain;
 	
 	
 	public List<String> getNextweektask() {
@@ -306,12 +307,24 @@ public class WeekPlaneForm {
 		this.riskwarning = riskwarning;
 	}
 
-	public List<String> getExplain() {
-		return explain;
+
+	
+	
+
+	public List<String> getNextweekexplain() {
+		return nextweekexplain;
 	}
 
-	public void setExplain(List<String> explain) {
-		this.explain = explain;
+	public void setNextweekexplain(List<String> nextweekexplain) {
+		this.nextweekexplain = nextweekexplain;
+	}
+
+	public String getFilldate() {
+		return filldate;
+	}
+
+	public void setFilldate(String filldate) {
+		this.filldate = filldate;
 	}
 
 	

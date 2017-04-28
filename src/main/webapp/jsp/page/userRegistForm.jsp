@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script> -->
 <!-- 引入本地jquery -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery/jquery-3.1.1.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery/jquery-3.1.1.js"></script> --%>
 <!-- 引入jquery验证 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/lib/jquery.js"></script> --%>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script> --%>
 <!-- 验证中文提示 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> --%>
 
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>

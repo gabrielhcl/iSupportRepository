@@ -165,63 +165,63 @@ public class IsSDweekplanePExample {
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTIsNull() {
-            addCriterion("pk_s_dweekplane_t is null");
+        public Criteria andPkSDweekplaneHIsNull() {
+            addCriterion("pk_s_dweekplane_h is null");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTIsNotNull() {
-            addCriterion("pk_s_dweekplane_t is not null");
+        public Criteria andPkSDweekplaneHIsNotNull() {
+            addCriterion("pk_s_dweekplane_h is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTEqualTo(Integer value) {
-            addCriterion("pk_s_dweekplane_t =", value, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHEqualTo(Integer value) {
+            addCriterion("pk_s_dweekplane_h =", value, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTNotEqualTo(Integer value) {
-            addCriterion("pk_s_dweekplane_t <>", value, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHNotEqualTo(Integer value) {
+            addCriterion("pk_s_dweekplane_h <>", value, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTGreaterThan(Integer value) {
-            addCriterion("pk_s_dweekplane_t >", value, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHGreaterThan(Integer value) {
+            addCriterion("pk_s_dweekplane_h >", value, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTGreaterThanOrEqualTo(Integer value) {
-            addCriterion("pk_s_dweekplane_t >=", value, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pk_s_dweekplane_h >=", value, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTLessThan(Integer value) {
-            addCriterion("pk_s_dweekplane_t <", value, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHLessThan(Integer value) {
+            addCriterion("pk_s_dweekplane_h <", value, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTLessThanOrEqualTo(Integer value) {
-            addCriterion("pk_s_dweekplane_t <=", value, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHLessThanOrEqualTo(Integer value) {
+            addCriterion("pk_s_dweekplane_h <=", value, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTIn(List<Integer> values) {
-            addCriterion("pk_s_dweekplane_t in", values, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHIn(List<Integer> values) {
+            addCriterion("pk_s_dweekplane_h in", values, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTNotIn(List<Integer> values) {
-            addCriterion("pk_s_dweekplane_t not in", values, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHNotIn(List<Integer> values) {
+            addCriterion("pk_s_dweekplane_h not in", values, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTBetween(Integer value1, Integer value2) {
-            addCriterion("pk_s_dweekplane_t between", value1, value2, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHBetween(Integer value1, Integer value2) {
+            addCriterion("pk_s_dweekplane_h between", value1, value2, "pkSDweekplaneH");
             return (Criteria) this;
         }
 
-        public Criteria andPkSDweekplaneTNotBetween(Integer value1, Integer value2) {
-            addCriterion("pk_s_dweekplane_t not between", value1, value2, "pkSDweekplaneT");
+        public Criteria andPkSDweekplaneHNotBetween(Integer value1, Integer value2) {
+            addCriterion("pk_s_dweekplane_h not between", value1, value2, "pkSDweekplaneH");
             return (Criteria) this;
         }
 

@@ -29,7 +29,13 @@
 </select>
 
 
-
+<select id="selectByUserCode" parameterType="com.yongyou.iSupport.entity.User" resultMap="BaseResultMap">
+	SELECT 
+	*
+	FROM is_b_user
+	WHERE
+	usercode = #{usercode,jdbcType=VARCHAR}
+</select>
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

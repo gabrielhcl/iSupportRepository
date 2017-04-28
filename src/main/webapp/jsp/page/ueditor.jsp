@@ -1,10 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>ueditor demo</title>
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script
+    <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 </head>
 
 
@@ -31,50 +35,50 @@
 		<div class="col-md-3 column">
 		</div>
 		<div class="col-md-6 column">
-			<form role="form">
+			<form role="form" action="${pageContext.request.contextPath}/news/insertnews" method="post">
 				<div class="form-group">
 				<label for="exampleInputEmail1">新闻类别</label>
-				<select class="selectpicker" data-style="btn-white">
-					<option>体育</option>
-					<option>时政</option>
-					<option>技术</option>
+				<select class="selectpicker" data-style="btn-white" name="pkColumn" required>
+				<c:forEach items="${clist}" var="column">
+					<option value="${column.pkColumn}">${column.columnname}</option>
+				</c:forEach>
 				</select>
 				</div>
 				<div class="form-group">
-					 <label for="exampleInputEmail1">题目</label><input type="email" class="form-control" id="exampleInputEmail1" />
+					 <label for="exampleInputEmail1">题目</label><input type="text" class="form-control" name="newstitle" required/>
 				</div>
 				
 				
 				<div class="form-group">
 				<div class="form-group">
 					<label for="name">新闻简介</label>
-					<textarea class="form-control" rows="3"></textarea>
+					<textarea class="form-control" rows="3" name="newsremarks" required  placeholder="输入新闻简介，字数不超过200字" maxlength="200"></textarea>
 				</div>
 				</div>
 				
 				
 				
-				<div class="form-group">
-					 <label for="exampleInputFile">新闻展示图片</label><input type="file" id="exampleInputFile" />
-				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					 <label for="exampleInputFile">新闻展示图片</label><input type="file" id="exampleInputFile" /> -->
+<!-- 				</div> -->
 				<div id="ueditor-input">
-				<script id="container" name="content" type="text/plain">
+				<script id="container" name="newscontent" type="text/plain">
         			
     			</script>
     			</div>
     			<br>
     			<div class="form-group">
 					<label for="name">允许评论</label>
-					<select class="form-control">
-						<option>是</option>
-						<option>否</option>
+					<select class="form-control" name="iscomment" required>
+						<option value="0">是</option>
+						<option value="1">否</option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="name">新闻置顶</label>
-					<select class="form-control">
-						<option>是</option>
-						<option>否</option>
+					<select class="form-control" name="istop" required>
+						<option value="0">是</option>
+						<option value="1">否</option>
 					</select>
 				</div>
     			<br>

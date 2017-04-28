@@ -1,269 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yongyou.iSupport.dao.IsSDweekplaneNDao">
-  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneN">
-    <id column="pk_s_dweekplane_n" jdbcType="INTEGER" property="pkSDweekplaneN" />
-    <result column="pk_s_dweekplane_t" jdbcType="INTEGER" property="pkSDweekplaneT" />
-    <result column="weekplstarttime" jdbcType="TIMESTAMP" property="weekplstarttime" />
-    <result column="weekplfinishtime" jdbcType="TIMESTAMP" property="weekplfinishtime" />
-    <result column="nextweektask" jdbcType="VARCHAR" property="nextweektask" />
-    <result column="nextpersonliable" jdbcType="VARCHAR" property="nextpersonliable" />
-    <result column="nextweekstarttime" jdbcType="TIMESTAMP" property="nextweekstarttime" />
-    <result column="nextweekfinishtime" jdbcType="TIMESTAMP" property="nextweekfinishtime" />
-    <result column="explain" jdbcType="VARCHAR" property="explain" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsSDweekplaneNDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneN" >
+    <id column="pk_s_dweekplane_n" property="pkSDweekplaneN" jdbcType="INTEGER" />
+    <result column="pk_s_dweekplane_h" property="pkSDweekplaneH" jdbcType="INTEGER" />
+    <result column="weekplstarttime" property="weekplstarttime" jdbcType="TIMESTAMP" />
+    <result column="weekplfinishtime" property="weekplfinishtime" jdbcType="TIMESTAMP" />
+    <result column="nextweektask" property="nextweektask" jdbcType="VARCHAR" />
+    <result column="nextpersonliable" property="nextpersonliable" jdbcType="VARCHAR" />
+    <result column="nextweekstarttime" property="nextweekstarttime" jdbcType="TIMESTAMP" />
+    <result column="nextweekfinishtime" property="nextweekfinishtime" jdbcType="TIMESTAMP" />
+    <result column="nextweekexplain" property="nextweekexplain" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
-    pk_s_dweekplane_n, pk_s_dweekplane_t, weekplstarttime, weekplfinishtime, nextweektask, 
-    nextpersonliable, nextweekstarttime, nextweekfinishtime, explain
+  <sql id="Base_Column_List" >
+    pk_s_dweekplane_n, pk_s_dweekplane_h, weekplstarttime, weekplfinishtime, nextweektask, 
+    nextpersonliable, nextweekstarttime, nextweekfinishtime, nextweekexplain
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from is_s_dweekplane_n
     where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from is_s_dweekplane_n
     where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
-    insert into is_s_dweekplane_n (pk_s_dweekplane_n, pk_s_dweekplane_t, weekplstarttime, 
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN" >
+    insert into is_s_dweekplane_n (pk_s_dweekplane_n, pk_s_dweekplane_h, weekplstarttime, 
       weekplfinishtime, nextweektask, nextpersonliable, 
       nextweekstarttime, nextweekfinishtime, 
-      explain)
-    values (#{pkSDweekplaneN,jdbcType=INTEGER}, #{pkSDweekplaneT,jdbcType=INTEGER}, #{weekplstarttime,jdbcType=TIMESTAMP}, 
+      nextweekexplain)
+    values (#{pkSDweekplaneN,jdbcType=INTEGER}, #{pkSDweekplaneH,jdbcType=INTEGER}, #{weekplstarttime,jdbcType=TIMESTAMP}, 
       #{weekplfinishtime,jdbcType=TIMESTAMP}, #{nextweektask,jdbcType=VARCHAR}, #{nextpersonliable,jdbcType=VARCHAR}, 
       #{nextweekstarttime,jdbcType=TIMESTAMP}, #{nextweekfinishtime,jdbcType=TIMESTAMP}, 
-      #{explain,jdbcType=VARCHAR})
+      #{nextweekexplain,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN" >
     insert into is_s_dweekplane_n
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneN != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkSDweekplaneN != null" >
         pk_s_dweekplane_n,
       </if>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t,
+      <if test="pkSDweekplaneH != null" >
+        pk_s_dweekplane_h,
       </if>
-      <if test="weekplstarttime != null">
+      <if test="weekplstarttime != null" >
         weekplstarttime,
       </if>
-      <if test="weekplfinishtime != null">
+      <if test="weekplfinishtime != null" >
         weekplfinishtime,
       </if>
-      <if test="nextweektask != null">
+      <if test="nextweektask != null" >
         nextweektask,
       </if>
-      <if test="nextpersonliable != null">
+      <if test="nextpersonliable != null" >
         nextpersonliable,
       </if>
-      <if test="nextweekstarttime != null">
+      <if test="nextweekstarttime != null" >
         nextweekstarttime,
       </if>
-      <if test="nextweekfinishtime != null">
+      <if test="nextweekfinishtime != null" >
         nextweekfinishtime,
       </if>
-      <if test="explain != null">
-        explain,
+      <if test="nextweekexplain != null" >
+        nextweekexplain,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneN != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkSDweekplaneN != null" >
         #{pkSDweekplaneN,jdbcType=INTEGER},
       </if>
-      <if test="pkSDweekplaneT != null">
-        #{pkSDweekplaneT,jdbcType=INTEGER},
+      <if test="pkSDweekplaneH != null" >
+        #{pkSDweekplaneH,jdbcType=INTEGER},
       </if>
-      <if test="weekplstarttime != null">
+      <if test="weekplstarttime != null" >
         #{weekplstarttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="weekplfinishtime != null">
+      <if test="weekplfinishtime != null" >
         #{weekplfinishtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="nextweektask != null">
+      <if test="nextweektask != null" >
         #{nextweektask,jdbcType=VARCHAR},
       </if>
-      <if test="nextpersonliable != null">
+      <if test="nextpersonliable != null" >
         #{nextpersonliable,jdbcType=VARCHAR},
       </if>
-      <if test="nextweekstarttime != null">
+      <if test="nextweekstarttime != null" >
         #{nextweekstarttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="nextweekfinishtime != null">
+      <if test="nextweekfinishtime != null" >
         #{nextweekfinishtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="explain != null">
-        #{explain,jdbcType=VARCHAR},
+      <if test="nextweekexplain != null" >
+        #{nextweekexplain,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN" >
     update is_s_dweekplane_n
-    <set>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
+    <set >
+      <if test="pkSDweekplaneH != null" >
+        pk_s_dweekplane_h = #{pkSDweekplaneH,jdbcType=INTEGER},
       </if>
-      <if test="weekplstarttime != null">
+      <if test="weekplstarttime != null" >
         weekplstarttime = #{weekplstarttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="weekplfinishtime != null">
+      <if test="weekplfinishtime != null" >
         weekplfinishtime = #{weekplfinishtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="nextweektask != null">
+      <if test="nextweektask != null" >
         nextweektask = #{nextweektask,jdbcType=VARCHAR},
       </if>
-      <if test="nextpersonliable != null">
+      <if test="nextpersonliable != null" >
         nextpersonliable = #{nextpersonliable,jdbcType=VARCHAR},
       </if>
-      <if test="nextweekstarttime != null">
+      <if test="nextweekstarttime != null" >
         nextweekstarttime = #{nextweekstarttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="nextweekfinishtime != null">
+      <if test="nextweekfinishtime != null" >
         nextweekfinishtime = #{nextweekfinishtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="explain != null">
-        explain = #{explain,jdbcType=VARCHAR},
+      <if test="nextweekexplain != null" >
+        nextweekexplain = #{nextweekexplain,jdbcType=VARCHAR},
       </if>
     </set>
     where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN" >
     update is_s_dweekplane_n
-    set pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
+    set pk_s_dweekplane_h = #{pkSDweekplaneH,jdbcType=INTEGER},
       weekplstarttime = #{weekplstarttime,jdbcType=TIMESTAMP},
       weekplfinishtime = #{weekplfinishtime,jdbcType=TIMESTAMP},
       nextweektask = #{nextweektask,jdbcType=VARCHAR},
       nextpersonliable = #{nextpersonliable,jdbcType=VARCHAR},
       nextweekstarttime = #{nextweekstarttime,jdbcType=TIMESTAMP},
       nextweekfinishtime = #{nextweekfinishtime,jdbcType=TIMESTAMP},
-      explain = #{explain,jdbcType=VARCHAR}
-    where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
-  </update>
-  <sql id="Base_Column_List">
-    pk_s_dweekplane_n, pk_s_dweekplane_t, weekplstarttime, weekplfinishtime, nextweektask, 
-    nextpersonliable, nextweekstarttime, nextweekfinishtime, explain
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from is_s_dweekplane_n
-    where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from is_s_dweekplane_n
-    where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
-    insert into is_s_dweekplane_n (pk_s_dweekplane_n, pk_s_dweekplane_t, weekplstarttime, 
-      weekplfinishtime, nextweektask, nextpersonliable, 
-      nextweekstarttime, nextweekfinishtime, 
-      explain)
-    values (#{pkSDweekplaneN,jdbcType=INTEGER}, #{pkSDweekplaneT,jdbcType=INTEGER}, #{weekplstarttime,jdbcType=TIMESTAMP}, 
-      #{weekplfinishtime,jdbcType=TIMESTAMP}, #{nextweektask,jdbcType=VARCHAR}, #{nextpersonliable,jdbcType=VARCHAR}, 
-      #{nextweekstarttime,jdbcType=TIMESTAMP}, #{nextweekfinishtime,jdbcType=TIMESTAMP}, 
-      #{explain,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
-    insert into is_s_dweekplane_n
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneN != null">
-        pk_s_dweekplane_n,
-      </if>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t,
-      </if>
-      <if test="weekplstarttime != null">
-        weekplstarttime,
-      </if>
-      <if test="weekplfinishtime != null">
-        weekplfinishtime,
-      </if>
-      <if test="nextweektask != null">
-        nextweektask,
-      </if>
-      <if test="nextpersonliable != null">
-        nextpersonliable,
-      </if>
-      <if test="nextweekstarttime != null">
-        nextweekstarttime,
-      </if>
-      <if test="nextweekfinishtime != null">
-        nextweekfinishtime,
-      </if>
-      <if test="explain != null">
-        explain,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneN != null">
-        #{pkSDweekplaneN,jdbcType=INTEGER},
-      </if>
-      <if test="pkSDweekplaneT != null">
-        #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="weekplstarttime != null">
-        #{weekplstarttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="weekplfinishtime != null">
-        #{weekplfinishtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nextweektask != null">
-        #{nextweektask,jdbcType=VARCHAR},
-      </if>
-      <if test="nextpersonliable != null">
-        #{nextpersonliable,jdbcType=VARCHAR},
-      </if>
-      <if test="nextweekstarttime != null">
-        #{nextweekstarttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nextweekfinishtime != null">
-        #{nextweekfinishtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="explain != null">
-        #{explain,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
-    update is_s_dweekplane_n
-    <set>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="weekplstarttime != null">
-        weekplstarttime = #{weekplstarttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="weekplfinishtime != null">
-        weekplfinishtime = #{weekplfinishtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nextweektask != null">
-        nextweektask = #{nextweektask,jdbcType=VARCHAR},
-      </if>
-      <if test="nextpersonliable != null">
-        nextpersonliable = #{nextpersonliable,jdbcType=VARCHAR},
-      </if>
-      <if test="nextweekstarttime != null">
-        nextweekstarttime = #{nextweekstarttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nextweekfinishtime != null">
-        nextweekfinishtime = #{nextweekfinishtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="explain != null">
-        explain = #{explain,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneN">
-    update is_s_dweekplane_n
-    set pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      weekplstarttime = #{weekplstarttime,jdbcType=TIMESTAMP},
-      weekplfinishtime = #{weekplfinishtime,jdbcType=TIMESTAMP},
-      nextweektask = #{nextweektask,jdbcType=VARCHAR},
-      nextpersonliable = #{nextpersonliable,jdbcType=VARCHAR},
-      nextweekstarttime = #{nextweekstarttime,jdbcType=TIMESTAMP},
-      nextweekfinishtime = #{nextweekfinishtime,jdbcType=TIMESTAMP},
-      explain = #{explain,jdbcType=VARCHAR}
+      nextweekexplain = #{nextweekexplain,jdbcType=VARCHAR}
     where pk_s_dweekplane_n = #{pkSDweekplaneN,jdbcType=INTEGER}
   </update>
 </mapper>

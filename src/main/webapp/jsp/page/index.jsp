@@ -171,11 +171,14 @@ body {
 						<li class="has_sub"><a href="#" class="waves-effect"><i
 								class="ti-files"></i><span> 管理 </span></a>
 							<ul class="list-unstyled">
-								<li><a href="extra-profile.html">合同管理</a></li>
+<!-- 								<li><a href="extra-profile.html">合同管理</a></li> -->
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=11">区域管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=4">集团管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=5">公司管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=6">项目管理</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=7">新闻管理</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=8">栏目管理</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=9">友情链接管理</a></li>
 							</ul>
 							</li>
 							
@@ -186,10 +189,16 @@ body {
 								<li><a href="${pageContext.request.contextPath}/group/selectByPrimaryKey?pk_group=2"> echarts测试</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=12"> ueditor展示测试</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=33">ueditor信息发布</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=44">iSupport新闻</a></li>
 							</ul>
 							</li>
 
-
+							<li class="has_sub"><a href="#" class="waves-effect"><i
+								class="ti-files"></i><span>链接 </span></a>
+							<ul class="list-unstyled">
+								<li><a href="${pageContext.request.contextPath}/link/linkmain?menuid=10">友情链接</a></li>
+							</ul>
+							</li>
 
 					</ul>
 					<div class="clearfix"></div>

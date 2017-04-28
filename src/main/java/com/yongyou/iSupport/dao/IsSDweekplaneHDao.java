@@ -27,4 +27,6 @@ public interface IsSDweekplaneHDao {
     int updateByPrimaryKeySelective(IsSDweekplaneH record);
 
     int updateByPrimaryKey(IsSDweekplaneH record);
+    
+    public List<IsSDweekplaneH> findList(IsSDweekplaneH record);
 }

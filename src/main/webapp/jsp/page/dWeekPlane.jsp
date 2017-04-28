@@ -23,7 +23,9 @@
 <link href="${pageContext.request.contextPath}/assets/css/responsive.css" rel="stylesheet"
 	type="text/css" />
 <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> --%>
+
+
 
 <style>
 .tablehead {
@@ -41,34 +43,15 @@
 	<div class="content">
 		<div class="container">
 			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<br>
-					<div class="dropdown">
-						<button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-							项目选择 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">项目1</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">项目2</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">项目3</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-4 column"></div>
-				<div class="col-md-4 column" align="center">
-				</div>
-				<div class="col-md-4 column"></div>
-			</div>
-			<div class="row clearfix">
 				<div class="col-md-3 column"></div>
 				<div class="col-md-4 column" align="center">
 					<h4>用友网络科技股份有限公司建筑行业公司</h4>
-					<h5>2017年02月24日</h5>
+<!-- 					<h5>2017年02月24日</h5> -->
 				</div>
 				<div class="col-md-5 column"></div>
 			</div>
 			<div>
-				<form id="iform" name="iform" method="post" action="${pageContext.request.contextPath}/test">
+				<form id = "iform" name = "iform" method = "post" action="${pageContext.request.contextPath}/savedweekplane">
 					<table data-toggle="table" data-show-columns="false" data-page-list="[5, 10, 20]"
 						data-page-size="5" data-pagination="true" data-show-pagination-switch="true"
 						class="table-bordered">
@@ -78,14 +61,14 @@
 								<td style="background-color: #F4F8FB" width="70%">报告日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="date" class="form-control" id="reportdate" name="reportdate"> <span
+										<input type="date" class="form-control" id="filldate" name="filldate" required> <span
 											class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
 								<td class="tableColor">计划开工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="date" class="form-control" id="planestartdate" name="planestartdate">
+										<input type="date" class="form-control" id="planestartdate" name="planestartdate" required>
 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
@@ -94,14 +77,14 @@
 								<td class="tableColor">实际开工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="date" class="form-control" id="startprojectdate" name="startprojectdate">
+										<input type="date" class="form-control" id="startprojectdate" name="startprojectdate" required>
 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
 								<td class="tableColor">计划完工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="date" class="form-control" id="planefinishdate" name="planefinishdate">
+										<input type="date" class="form-control" id="planefinishdate" name="planefinishdate" required>
 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
@@ -109,30 +92,30 @@
 							<tr>
 								<td class="tableColor">项目经理</td>
 								<td colspan="2"><input type="text" name="projectmanager" id="projectmanager"
-									class="form-control" /></td>
+									class="form-control"  required/></td>
 								<td class="tableColor">项目经理投入人天总数</td>
 								<td colspan="2"><input type="text" name="projectmanagerdaytime"
-									id="projectmanagerdaytime" class="form-control" /></td>
+									id="projectmanagerdaytime" class="form-control" required/></td>
 							</tr>
 							<tr>
 								<td class="tableColor">实施顾问</td>
 								<td colspan="2"><input type="text" name="impconsultant" id="impconsultant"
-									class="form-control" /></td>
+									class="form-control" required/></td>
 								<td class="tableColor">实施顾问投入人天总数</td>
 								<td colspan="2"><input type="text" name="impconsultantdaytime"
-									id="impconsultantdaytime" class="form-control" /></td>
+									id="impconsultantdaytime" class="form-control" required/></td>
 							</tr>
 							<tr>
 								<td class="tableColor">开发顾问</td>
 								<td colspan="2"><input type="text" name="devconsultant" id="devconsultant"
-									class="form-control" /></td>
+									class="form-control" required/></td>
 								<td class="tableColor">开发顾问投入人天总数</td>
 								<td colspan="2"><input type="text" name="devconsultantdaytime"
-									id="devconsultantdaytime" class="form-control" /></td>
+									id="devconsultantdaytime" class="form-control" required/></td>
 							</tr>
 							<tr>
 								<td class="tableColor">总人天数</td>
-								<td colspan="5"><input type="text" name="sumdaytime" id="sumdaytime" class="form-control" /></td>
+								<td colspan="5"><input type="text" name="sumdaytime" id="sumdaytime" class="form-control" required/></td>
 							</tr>
 							<tr>
 								<td colspan="6"></td>
@@ -145,10 +128,10 @@
 							</tr>
 							<tr>
 								<td colspan="2">所处阶段</td>
-								<td><input type="text" name="stagein" id="stagein" class="form-control" /></td>
+								<td><input type="text" name="stagein" id="stagein" class="form-control" required/></td>
 								<td>乙方项目经理</td>
 								<td colspan="2"><input type="text" name="yiprojectmanager" id="yiprojectmanager"
-									class="form-control" /></td>
+									class="form-control" required/></td>
 							</tr>
 
 							<tr>
@@ -619,8 +602,7 @@
 											class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
-								<td><input type="text" name="nextweekexplain1" id="nextweekexplain1"
-									class="form-control" /></td>
+								<td><input type="text" name="nextweekexplain" class="form-control" /></td>
 							</tr>
 							<tr>
 								<td>2</td>
@@ -700,8 +682,8 @@
 								<td><input type="text" name="nextpersonliable" class="form-control" /></td>
 								<td>
 									<div class="input-group">
-										<input type="date" class="form-control" id="nextweekstarttime6" name="nextweekstarttime6">
-										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
+										<input type="date" class="form-control" name="nextweekstarttime"> <span
+											class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
 								<td>
@@ -739,9 +721,8 @@
 								<td colspan="4"></td>
 							</tr>
 							<tr>
-								<td><input type="button" value="提交" id="tracysubmit" /></td>
+								<td><input type ="button" value = "提交" id="tracysubmit" /></td>
 							</tr>
-
 						</tbody>
 					</table>
 				</form>
@@ -753,6 +734,7 @@
 			$("#tracysubmit").click(function() {
 				alert("666");
 				$('form').submit();
+				alert("777");
 			});
 			
 			$("#sumdaytime").focus(	function() {

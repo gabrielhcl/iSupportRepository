@@ -8,4 +8,6 @@ public interface UserService {
     public User selectByNameAndPwd(User user);
     
     public int insertUser(User user);
+    
+    public User selectByUserCode(String usercode);
 }  

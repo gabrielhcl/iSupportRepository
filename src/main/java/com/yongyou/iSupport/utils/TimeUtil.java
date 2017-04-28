@@ -206,7 +206,7 @@ public class TimeUtil {
 	 * @return
 	 */
 	public static Date parseDateHms(String date){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSS"); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss"); 
 		try {
 			return sdf.parse(date);
 		} catch (ParseException e) {

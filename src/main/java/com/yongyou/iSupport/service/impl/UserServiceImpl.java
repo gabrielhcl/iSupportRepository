@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
 	public int insertUser(User user){
 		return this.userDao.insertUser(user);
 	}
+	
+	@Override
+	public User selectByUserCode(String usercode){
+		return this.userDao.selectByUserCode(usercode);
+	}
 }

@@ -3,13 +3,13 @@
 <mapper namespace="com.yongyou.iSupport.dao.IsSDweekplanePDao">
   <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneP">
     <id column="pk_s_dweekplane_p" jdbcType="INTEGER" property="pkSDweekplaneP" />
-    <result column="pk_s_dweekplane_t" jdbcType="INTEGER" property="pkSDweekplaneT" />
+    <result column="pk_s_dweekplane_h" jdbcType="INTEGER" property="pkSDweekplaneH" />
     <result column="problem" jdbcType="VARCHAR" property="problem" />
     <result column="needhelp" jdbcType="VARCHAR" property="needhelp" />
     <result column="hopefinishtime" jdbcType="TIMESTAMP" property="hopefinishtime" />
   </resultMap>
   <sql id="Base_Column_List">
-    pk_s_dweekplane_p, pk_s_dweekplane_t, problem, needhelp, hopefinishtime
+    pk_s_dweekplane_p, pk_s_dweekplane_h, problem, needhelp, hopefinishtime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,158 +22,14 @@
     where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    insert into is_s_dweekplane_p (pk_s_dweekplane_p, pk_s_dweekplane_t, problem, 
+    insert into is_s_dweekplane_p (pk_s_dweekplane_p, pk_s_dweekplane_h, problem, 
       needhelp, hopefinishtime)
-    values (#{pkSDweekplaneP,jdbcType=INTEGER}, #{pkSDweekplaneT,jdbcType=INTEGER}, #{problem,jdbcType=VARCHAR}, 
+    values (#{pkSDweekplaneP,jdbcType=INTEGER}, #{pkSDweekplaneH,jdbcType=INTEGER}, #{problem,jdbcType=VARCHAR}, 
       #{needhelp,jdbcType=VARCHAR}, #{hopefinishtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    insert into is_s_dweekplane_p
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneP != null">
-        pk_s_dweekplane_p,
-      </if>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t,
-      </if>
-      <if test="problem != null">
-        problem,
-      </if>
-      <if test="needhelp != null">
-        needhelp,
-      </if>
-      <if test="hopefinishtime != null">
-        hopefinishtime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneP != null">
-        #{pkSDweekplaneP,jdbcType=INTEGER},
-      </if>
-      <if test="pkSDweekplaneT != null">
-        #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="problem != null">
-        #{problem,jdbcType=VARCHAR},
-      </if>
-      <if test="needhelp != null">
-        #{needhelp,jdbcType=VARCHAR},
-      </if>
-      <if test="hopefinishtime != null">
-        #{hopefinishtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    update is_s_dweekplane_p
-    <set>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="problem != null">
-        problem = #{problem,jdbcType=VARCHAR},
-      </if>
-      <if test="needhelp != null">
-        needhelp = #{needhelp,jdbcType=VARCHAR},
-      </if>
-      <if test="hopefinishtime != null">
-        hopefinishtime = #{hopefinishtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
     update is_s_dweekplane_p
-    set pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      problem = #{problem,jdbcType=VARCHAR},
-      needhelp = #{needhelp,jdbcType=VARCHAR},
-      hopefinishtime = #{hopefinishtime,jdbcType=TIMESTAMP}
-    where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    <id column="pk_s_dweekplane_p" jdbcType="INTEGER" property="pkSDweekplaneP" />
-    <result column="pk_s_dweekplane_t" jdbcType="INTEGER" property="pkSDweekplaneT" />
-    <result column="problem" jdbcType="VARCHAR" property="problem" />
-    <result column="needhelp" jdbcType="VARCHAR" property="needhelp" />
-    <result column="hopefinishtime" jdbcType="TIMESTAMP" property="hopefinishtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    pk_s_dweekplane_p, pk_s_dweekplane_t, problem, needhelp, hopefinishtime
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from is_s_dweekplane_p
-    where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from is_s_dweekplane_p
-    where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    insert into is_s_dweekplane_p (pk_s_dweekplane_p, pk_s_dweekplane_t, problem, 
-      needhelp, hopefinishtime)
-    values (#{pkSDweekplaneP,jdbcType=INTEGER}, #{pkSDweekplaneT,jdbcType=INTEGER}, #{problem,jdbcType=VARCHAR}, 
-      #{needhelp,jdbcType=VARCHAR}, #{hopefinishtime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    insert into is_s_dweekplane_p
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneP != null">
-        pk_s_dweekplane_p,
-      </if>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t,
-      </if>
-      <if test="problem != null">
-        problem,
-      </if>
-      <if test="needhelp != null">
-        needhelp,
-      </if>
-      <if test="hopefinishtime != null">
-        hopefinishtime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="pkSDweekplaneP != null">
-        #{pkSDweekplaneP,jdbcType=INTEGER},
-      </if>
-      <if test="pkSDweekplaneT != null">
-        #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="problem != null">
-        #{problem,jdbcType=VARCHAR},
-      </if>
-      <if test="needhelp != null">
-        #{needhelp,jdbcType=VARCHAR},
-      </if>
-      <if test="hopefinishtime != null">
-        #{hopefinishtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    update is_s_dweekplane_p
-    <set>
-      <if test="pkSDweekplaneT != null">
-        pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
-      </if>
-      <if test="problem != null">
-        problem = #{problem,jdbcType=VARCHAR},
-      </if>
-      <if test="needhelp != null">
-        needhelp = #{needhelp,jdbcType=VARCHAR},
-      </if>
-      <if test="hopefinishtime != null">
-        hopefinishtime = #{hopefinishtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
-    update is_s_dweekplane_p
-    set pk_s_dweekplane_t = #{pkSDweekplaneT,jdbcType=INTEGER},
+    set pk_s_dweekplane_h = #{pkSDweekplaneH,jdbcType=INTEGER},
       problem = #{problem,jdbcType=VARCHAR},
       needhelp = #{needhelp,jdbcType=VARCHAR},
       hopefinishtime = #{hopefinishtime,jdbcType=TIMESTAMP}

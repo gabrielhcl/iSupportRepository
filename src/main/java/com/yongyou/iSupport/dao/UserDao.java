@@ -10,6 +10,8 @@ public interface UserDao {
 
     public User selectByPrimaryKey(Integer id);
 
+    public User selectByUserCode(String usercode);
+    
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
