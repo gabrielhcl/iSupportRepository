@@ -1,5 +1,7 @@
 package com.yongyou.iSupport.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,4 +21,14 @@ public class IsSDweekplanePServiceImpl implements IsSDweekplanePService {
 		return this.isSDweekplanePDao.insert(record);
 	}
 
+	
+	@Override
+	public int deleteByHeadKey(Integer pkDweekplaneH){
+		return this.isSDweekplanePDao.deleteByHeadKey(pkDweekplaneH);
+	}
+	
+	@Override
+	public List<IsSDweekplaneP> selectByHeadKey(Integer pkSDweekplaneN){
+		return this.isSDweekplanePDao.selectByHeadKey(pkSDweekplaneN);
+	}
 }

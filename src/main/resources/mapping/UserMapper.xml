@@ -5,14 +5,14 @@
     <id column="pk_user" property="pk_user" jdbcType="INTEGER" />
     <result column="usercode" property="usercode" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="username" property="username" jdbcType="INTEGER" />
-    <result column="usertype" property="usertype" jdbcType="INTEGER" />
-    <result column="usercnname" property="usercnname" jdbcType="INTEGER" />
-    <result column="userphone" property="userphone" jdbcType="INTEGER" />
-    <result column="useremail" property="useremail" jdbcType="INTEGER" />
-    <result column="usersex" property="usersex" jdbcType="INTEGER" />
-    <result column="userarea" property="userarea" jdbcType="INTEGER" />
-    <result column="userdept" property="userdept" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="usertype" property="usertype" jdbcType="VARCHAR" />
+    <result column="usercnname" property="usercnname" jdbcType="VARCHAR" />
+    <result column="userphone" property="userphone" jdbcType="VARCHAR" />
+    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="usersex" property="usersex" jdbcType="VARCHAR" />
+    <result column="userarea" property="userarea" jdbcType="VARCHAR" />
+    <result column="userdept" property="userdept" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     pk_user, usercode, password, username,usertype,usercnname,usercnname,userphone,useremail,usersex,userarea,userdept
@@ -119,10 +119,18 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.User" >
-    update user_t
-    set user_name = #{userName,jdbcType=VARCHAR},
+    update is_b_user
+    set 
+    usercode = #{usercode,jdbcType=VARCHAR},
+    username = #{username,jdbcType=VARCHAR},
     password = #{password,jdbcType=VARCHAR},
-    age = #{age,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    usertype = #{usertype,jdbcType=VARCHAR},
+    usercnname = #{usercnname,jdbcType=VARCHAR},
+    userphone = #{userphone,jdbcType=VARCHAR},
+    useremail = #{useremail,jdbcType=VARCHAR},
+    usersex = #{usersex,jdbcType=VARCHAR},
+    userarea = #{userarea,jdbcType=VARCHAR},
+    userdept = #{userdept,jdbcType=VARCHAR}
+    where pk_user = #{pk_user,jdbcType=INTEGER}
   </update>
 </mapper>

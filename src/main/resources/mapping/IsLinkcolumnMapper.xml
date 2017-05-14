@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsLinkcolumnDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsLinkcolumn" >
+    <id column="pk_column" property="pkColumn" jdbcType="INTEGER" />
+    <result column="columncode" property="columncode" jdbcType="VARCHAR" />
+    <result column="columnname" property="columnname" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
+    <result column="iseffective" property="iseffective" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_column, columncode, columnname, sort, iseffective
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsLinkcolumnExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from is_linkcolumn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_linkcolumn
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_linkcolumn
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yongyou.iSupport.entity.IsLinkcolumnExample" >
+    delete from is_linkcolumn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsLinkcolumn" >
+    insert into is_linkcolumn (pk_column, columncode, columnname, 
+      sort, iseffective)
+    values (#{pkColumn,jdbcType=INTEGER}, #{columncode,jdbcType=VARCHAR}, #{columnname,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=VARCHAR}, #{iseffective,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsLinkcolumn" >
+    insert into is_linkcolumn
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkColumn != null" >
+        pk_column,
+      </if>
+      <if test="columncode != null" >
+        columncode,
+      </if>
+      <if test="columnname != null" >
+        columnname,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="iseffective != null" >
+        iseffective,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkColumn != null" >
+        #{pkColumn,jdbcType=INTEGER},
+      </if>
+      <if test="columncode != null" >
+        #{columncode,jdbcType=VARCHAR},
+      </if>
+      <if test="columnname != null" >
+        #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="iseffective != null" >
+        #{iseffective,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yongyou.iSupport.entity.IsLinkcolumnExample" resultType="java.lang.Integer" >
+    select count(*) from is_linkcolumn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update is_linkcolumn
+    <set >
+      <if test="record.pkColumn != null" >
+        pk_column = #{record.pkColumn,jdbcType=INTEGER},
+      </if>
+      <if test="record.columncode != null" >
+        columncode = #{record.columncode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.columnname != null" >
+        columnname = #{record.columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null" >
+        sort = #{record.sort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iseffective != null" >
+        iseffective = #{record.iseffective,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update is_linkcolumn
+    set pk_column = #{record.pkColumn,jdbcType=INTEGER},
+      columncode = #{record.columncode,jdbcType=VARCHAR},
+      columnname = #{record.columnname,jdbcType=VARCHAR},
+      sort = #{record.sort,jdbcType=VARCHAR},
+      iseffective = #{record.iseffective,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsLinkcolumn" >
+    update is_linkcolumn
+    <set >
+      <if test="columncode != null" >
+        columncode = #{columncode,jdbcType=VARCHAR},
+      </if>
+      <if test="columnname != null" >
+        columnname = #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="iseffective != null" >
+        iseffective = #{iseffective,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsLinkcolumn" >
+    update is_linkcolumn
+    set columncode = #{columncode,jdbcType=VARCHAR},
+      columnname = #{columnname,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      iseffective = #{iseffective,jdbcType=VARCHAR}
+    where pk_column = #{pkColumn,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+   <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsLinkcolumn">
+  	SELECT
+  	<include refid="Base_Column_List"/>
+  	FROM is_linkcolumn
+  	<where>
+  		<if test="pkColumn!=null">
+  			AND pkColumn=#{pkColumn}
+  		</if>
+  		<if	test="columncode!=null and columncode!=''">
+  			AND columncode LIKE
+  			concat('%',#{columncode},'%')
+  		</if>
+  		<if	test="columnname!=null and columnname!=''">
+  			AND columnname LIKE
+  			concat('%',#{columnname},'%')
+  		</if>
+  		<if	test="sort!=null and sort!=''">
+  			AND sort LIKE
+  			concat('%',#{sort},'%')
+  		</if>
+  	</where>
+  </select>
+</mapper>

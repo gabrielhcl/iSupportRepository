@@ -2,7 +2,6 @@ package com.yongyou.iSupport.dao;
 
 import com.yongyou.iSupport.entity.IsLink;
 import com.yongyou.iSupport.entity.IsLinkExample;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,5 +28,5 @@ public interface IsLinkDao {
 
     int updateByPrimaryKey(IsLink record);
     
-    public List<IsLink> findList(IsLink link);
+    List<IsLink> findList(IsLink record);
 }

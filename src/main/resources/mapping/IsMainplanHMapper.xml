@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsMainplanHDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsMainplanH" >
+    <id column="pk_mainplan_h" property="pkMainplanH" jdbcType="INTEGER" />
+    <result column="mainplancode" property="mainplancode" jdbcType="VARCHAR" />
+    <result column="mainplanname" property="mainplanname" jdbcType="VARCHAR" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="compiler" property="compiler" jdbcType="VARCHAR" />
+    <result column="compiledate" property="compiledate" jdbcType="TIMESTAMP" />
+    <result column="pstartdate" property="pstartdate" jdbcType="TIMESTAMP" />
+    <result column="penddate" property="penddate" jdbcType="TIMESTAMP" />
+    <result column="plancycle" property="plancycle" jdbcType="VARCHAR" />
+    <result column="sumdaytime" property="sumdaytime" jdbcType="VARCHAR" />
+    <result column="pmnum" property="pmnum" jdbcType="VARCHAR" />
+    <result column="pmdays" property="pmdays" jdbcType="VARCHAR" />
+    <result column="imnum" property="imnum" jdbcType="VARCHAR" />
+    <result column="imdays" property="imdays" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_mainplan_h, mainplancode, mainplanname, projectname, compiler, compiledate, pstartdate, 
+    penddate, plancycle, sumdaytime, pmnum, pmdays, imnum, imdays
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsMainplanHExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from is_mainplan_h
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_mainplan_h
+    where pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER}
+  </select>
+  
+<!--   根据项目名搜索主计划 -->
+   <select id="selectByProjectName" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsMainplanH" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_mainplan_h
+    where projectname = #{projectname,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_mainplan_h
+    where pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yongyou.iSupport.entity.IsMainplanHExample" >
+    delete from is_mainplan_h
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsMainplanH" useGeneratedKeys="true" keyProperty="pkMainplanH">
+    insert into is_mainplan_h (pk_mainplan_h, mainplancode, mainplanname, 
+      projectname, compiler, compiledate, 
+      pstartdate, penddate, plancycle, 
+      sumdaytime, pmnum, pmdays, 
+      imnum, imdays)
+    values (#{pkMainplanH,jdbcType=INTEGER}, #{mainplancode,jdbcType=VARCHAR}, #{mainplanname,jdbcType=VARCHAR}, 
+      #{projectname,jdbcType=VARCHAR}, #{compiler,jdbcType=VARCHAR}, #{compiledate,jdbcType=TIMESTAMP}, 
+      #{pstartdate,jdbcType=TIMESTAMP}, #{penddate,jdbcType=TIMESTAMP}, #{plancycle,jdbcType=VARCHAR}, 
+      #{sumdaytime,jdbcType=VARCHAR}, #{pmnum,jdbcType=VARCHAR}, #{pmdays,jdbcType=VARCHAR}, 
+      #{imnum,jdbcType=VARCHAR}, #{imdays,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsMainplanH" >
+    insert into is_mainplan_h
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkMainplanH != null" >
+        pk_mainplan_h,
+      </if>
+      <if test="mainplancode != null" >
+        mainplancode,
+      </if>
+      <if test="mainplanname != null" >
+        mainplanname,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="compiler != null" >
+        compiler,
+      </if>
+      <if test="compiledate != null" >
+        compiledate,
+      </if>
+      <if test="pstartdate != null" >
+        pstartdate,
+      </if>
+      <if test="penddate != null" >
+        penddate,
+      </if>
+      <if test="plancycle != null" >
+        plancycle,
+      </if>
+      <if test="sumdaytime != null" >
+        sumdaytime,
+      </if>
+      <if test="pmnum != null" >
+        pmnum,
+      </if>
+      <if test="pmdays != null" >
+        pmdays,
+      </if>
+      <if test="imnum != null" >
+        imnum,
+      </if>
+      <if test="imdays != null" >
+        imdays,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkMainplanH != null" >
+        #{pkMainplanH,jdbcType=INTEGER},
+      </if>
+      <if test="mainplancode != null" >
+        #{mainplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="mainplanname != null" >
+        #{mainplanname,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="compiler != null" >
+        #{compiler,jdbcType=VARCHAR},
+      </if>
+      <if test="compiledate != null" >
+        #{compiledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pstartdate != null" >
+        #{pstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="penddate != null" >
+        #{penddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plancycle != null" >
+        #{plancycle,jdbcType=VARCHAR},
+      </if>
+      <if test="sumdaytime != null" >
+        #{sumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="pmnum != null" >
+        #{pmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="pmdays != null" >
+        #{pmdays,jdbcType=VARCHAR},
+      </if>
+      <if test="imnum != null" >
+        #{imnum,jdbcType=VARCHAR},
+      </if>
+      <if test="imdays != null" >
+        #{imdays,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yongyou.iSupport.entity.IsMainplanHExample" resultType="java.lang.Integer" >
+    select count(*) from is_mainplan_h
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update is_mainplan_h
+    <set >
+      <if test="record.pkMainplanH != null" >
+        pk_mainplan_h = #{record.pkMainplanH,jdbcType=INTEGER},
+      </if>
+      <if test="record.mainplancode != null" >
+        mainplancode = #{record.mainplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainplanname != null" >
+        mainplanname = #{record.mainplanname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null" >
+        projectname = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.compiler != null" >
+        compiler = #{record.compiler,jdbcType=VARCHAR},
+      </if>
+      <if test="record.compiledate != null" >
+        compiledate = #{record.compiledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pstartdate != null" >
+        pstartdate = #{record.pstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.penddate != null" >
+        penddate = #{record.penddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.plancycle != null" >
+        plancycle = #{record.plancycle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sumdaytime != null" >
+        sumdaytime = #{record.sumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pmnum != null" >
+        pmnum = #{record.pmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pmdays != null" >
+        pmdays = #{record.pmdays,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imnum != null" >
+        imnum = #{record.imnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imdays != null" >
+        imdays = #{record.imdays,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update is_mainplan_h
+    set pk_mainplan_h = #{record.pkMainplanH,jdbcType=INTEGER},
+      mainplancode = #{record.mainplancode,jdbcType=VARCHAR},
+      mainplanname = #{record.mainplanname,jdbcType=VARCHAR},
+      projectname = #{record.projectname,jdbcType=VARCHAR},
+      compiler = #{record.compiler,jdbcType=VARCHAR},
+      compiledate = #{record.compiledate,jdbcType=TIMESTAMP},
+      pstartdate = #{record.pstartdate,jdbcType=TIMESTAMP},
+      penddate = #{record.penddate,jdbcType=TIMESTAMP},
+      plancycle = #{record.plancycle,jdbcType=VARCHAR},
+      sumdaytime = #{record.sumdaytime,jdbcType=VARCHAR},
+      pmnum = #{record.pmnum,jdbcType=VARCHAR},
+      pmdays = #{record.pmdays,jdbcType=VARCHAR},
+      imnum = #{record.imnum,jdbcType=VARCHAR},
+      imdays = #{record.imdays,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsMainplanH" >
+    update is_mainplan_h
+    <set >
+      <if test="mainplancode != null" >
+        mainplancode = #{mainplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="mainplanname != null" >
+        mainplanname = #{mainplanname,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="compiler != null" >
+        compiler = #{compiler,jdbcType=VARCHAR},
+      </if>
+      <if test="compiledate != null" >
+        compiledate = #{compiledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pstartdate != null" >
+        pstartdate = #{pstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="penddate != null" >
+        penddate = #{penddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plancycle != null" >
+        plancycle = #{plancycle,jdbcType=VARCHAR},
+      </if>
+      <if test="sumdaytime != null" >
+        sumdaytime = #{sumdaytime,jdbcType=VARCHAR},
+      </if>
+      <if test="pmnum != null" >
+        pmnum = #{pmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="pmdays != null" >
+        pmdays = #{pmdays,jdbcType=VARCHAR},
+      </if>
+      <if test="imnum != null" >
+        imnum = #{imnum,jdbcType=VARCHAR},
+      </if>
+      <if test="imdays != null" >
+        imdays = #{imdays,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsMainplanH" >
+    update is_mainplan_h
+    set mainplancode = #{mainplancode,jdbcType=VARCHAR},
+      mainplanname = #{mainplanname,jdbcType=VARCHAR},
+      projectname = #{projectname,jdbcType=VARCHAR},
+      compiler = #{compiler,jdbcType=VARCHAR},
+      compiledate = #{compiledate,jdbcType=TIMESTAMP},
+      pstartdate = #{pstartdate,jdbcType=TIMESTAMP},
+      penddate = #{penddate,jdbcType=TIMESTAMP},
+      plancycle = #{plancycle,jdbcType=VARCHAR},
+      sumdaytime = #{sumdaytime,jdbcType=VARCHAR},
+      pmnum = #{pmnum,jdbcType=VARCHAR},
+      pmdays = #{pmdays,jdbcType=VARCHAR},
+      imnum = #{imnum,jdbcType=VARCHAR},
+      imdays = #{imdays,jdbcType=VARCHAR}
+    where pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsMainplanH">
+  	SELECT
+  	<include refid="Base_Column_List"/>
+  	FROM is_mainplan_h
+  	<where>
+  		<if test="pkMainplanH!=null">
+  			AND pkMainplanH=#{pkMainplanH}
+  		</if>
+  		<if	test="mainplanname!=null and mainplanname!=''">
+  			AND mainplanname LIKE
+  			concat('%',#{mainplanname},'%')
+  		</if>
+  		<if	test="projectname!=null and projectname!=''">
+  			AND projectname LIKE
+  			concat('%',#{projectname},'%')
+  		</if>
+  		<if	test="compiler!=null and compiler!=''">
+  			AND compiler LIKE
+  			concat('%',#{compiler},'%')
+  		</if>
+  		<if	test="compiledate!=null and compiledate!=''">
+  			AND compiledate LIKE
+  			concat('%',#{compiledate},'%')
+  		</if>
+  	</where>
+  </select>
+  
+</mapper>

@@ -222,8 +222,9 @@ public class TimeUtil {
 	 * @return
 	 */
 	public static Date parseDate(String date){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 		try {
+			System.out.println(sdf.parse(date));
 			return sdf.parse(date);
 		} catch (ParseException e) {
 			e.printStackTrace();

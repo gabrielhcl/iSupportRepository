@@ -68,4 +68,11 @@ public class LinkController {
 		linkService.updateByPrimaryKey(link);
 		return "redirect:linklist";
 	}
+	
+	@RequestMapping("linktest")
+	public String linkTest(HttpServletRequest request,HttpServletResponse response,Model model,IsLink link){
+		List<IsLink> llist = linkService.findList(link);
+		model.addAttribute("llist",llist);
+		return "linktest";
+	}
 }

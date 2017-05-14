@@ -1,5 +1,7 @@
 package com.yongyou.iSupport.entity;
 
+import java.util.Date;
+
 public class IsLink {
     private Integer pkLink;
 
@@ -10,6 +12,18 @@ public class IsLink {
     private String linkname;
 
     private String linkurl;
+
+    private String createby;
+
+    private Date createdate;
+
+    private String remark;
+
+    private String columnname;
+
+    private String iseffective;
+
+    private String sort;
 
     public Integer getPkLink() {
         return pkLink;
@@ -49,5 +63,53 @@ public class IsLink {
 
     public void setLinkurl(String linkurl) {
         this.linkurl = linkurl == null ? null : linkurl.trim();
+    }
+
+    public String getCreateby() {
+        return createby;
+    }
+
+    public void setCreateby(String createby) {
+        this.createby = createby == null ? null : createby.trim();
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getColumnname() {
+        return columnname;
+    }
+
+    public void setColumnname(String columnname) {
+        this.columnname = columnname == null ? null : columnname.trim();
+    }
+
+    public String getIseffective() {
+        return iseffective;
+    }
+
+    public void setIseffective(String iseffective) {
+        this.iseffective = iseffective == null ? null : iseffective.trim();
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort == null ? null : sort.trim();
     }
 }

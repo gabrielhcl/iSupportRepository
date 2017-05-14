@@ -3,6 +3,9 @@ package com.yongyou.iSupport.form;
 import java.util.List;
 
 public class WeekPlaneForm {
+	private String projectname;
+	private String pkProject;
+	private String corpname;
 	private String filldate;
 	private String planestartdate; // 计划开工日期
 	private String startprojectdate; // 实际开工日期
@@ -22,6 +25,20 @@ public class WeekPlaneForm {
 	private String radio4; // 进度滞后<=10天
 
 	// 进度正常表单中没有
+	private String proplstarttime;
+	private String bpdesignstarttime;
+	private String sysbuildstarttime;
+	private String onlineswitchstarttime;
+	private String susupportstarttime;
+	
+	
+	private String proplstatus;
+	private String bpdesignstatus;
+	private String sysbuildstatus;
+	private String onlineswitchstatus;
+	private String susupportstatus;
+	
+	
 
 	private String riskwarning; // 风险提示
 
@@ -51,6 +68,113 @@ public class WeekPlaneForm {
 	private List<String> nextweekexplain;
 	
 	
+	
+	
+	
+	public String getProjectname() {
+		return projectname;
+	}
+
+	public void setProjectname(String projectname) {
+		this.projectname = projectname;
+	}
+
+	public String getPkProject() {
+		return pkProject;
+	}
+
+	public void setPkProject(String pkProject) {
+		this.pkProject = pkProject;
+	}
+
+	public String getCorpname() {
+		return corpname;
+	}
+
+	public void setCorpname(String corpname) {
+		this.corpname = corpname;
+	}
+
+	public String getProplstatus() {
+		return proplstatus;
+	}
+
+	public void setProplstatus(String proplstatus) {
+		this.proplstatus = proplstatus;
+	}
+
+	public String getBpdesignstatus() {
+		return bpdesignstatus;
+	}
+
+	public void setBpdesignstatus(String bpdesignstatus) {
+		this.bpdesignstatus = bpdesignstatus;
+	}
+
+	public String getSysbuildstatus() {
+		return sysbuildstatus;
+	}
+
+	public void setSysbuildstatus(String sysbuildstatus) {
+		this.sysbuildstatus = sysbuildstatus;
+	}
+
+	public String getOnlineswitchstatus() {
+		return onlineswitchstatus;
+	}
+
+	public void setOnlineswitchstatus(String onlineswitchstatus) {
+		this.onlineswitchstatus = onlineswitchstatus;
+	}
+
+	public String getSusupportstatus() {
+		return susupportstatus;
+	}
+
+	public void setSusupportstatus(String susupportstatus) {
+		this.susupportstatus = susupportstatus;
+	}
+
+	public String getProplstarttime() {
+		return proplstarttime;
+	}
+
+	public void setProplstarttime(String proplstarttime) {
+		this.proplstarttime = proplstarttime;
+	}
+
+	public String getBpdesignstarttime() {
+		return bpdesignstarttime;
+	}
+
+	public void setBpdesignstarttime(String bpdesignstarttime) {
+		this.bpdesignstarttime = bpdesignstarttime;
+	}
+
+	public String getSysbuildstarttime() {
+		return sysbuildstarttime;
+	}
+
+	public void setSysbuildstarttime(String sysbuildstarttime) {
+		this.sysbuildstarttime = sysbuildstarttime;
+	}
+
+	public String getOnlineswitchstarttime() {
+		return onlineswitchstarttime;
+	}
+
+	public void setOnlineswitchstarttime(String onlineswitchstarttime) {
+		this.onlineswitchstarttime = onlineswitchstarttime;
+	}
+
+	public String getSusupportstarttime() {
+		return susupportstarttime;
+	}
+
+	public void setSusupportstarttime(String susupportstarttime) {
+		this.susupportstarttime = susupportstarttime;
+	}
+
 	public List<String> getNextweektask() {
 		return nextweektask;
 	}

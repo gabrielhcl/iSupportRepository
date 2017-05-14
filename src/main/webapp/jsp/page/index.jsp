@@ -99,10 +99,10 @@ body {
 								src="${pageContext.request.contextPath}/assets/images/users/avatar-1.jpg"
 								alt="user-img" class="img-circle"> </a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0)"><i
+								<li><a href="${pageContext.request.contextPath}/user/updatepassword"><i
 										class="ti-user m-r-5"></i> 修改密码</a></li>
-								<li><a href="javascript:void(0)"><i
-										class="ti-power-off m-r-5"></i> 登出</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/logout"><i
+										class="ti-power-off m-r-5"></i> 退出</a></li>
 							</ul></li>
 							<li class="hidden-xs" style="margin-top: 20px">${user.usercnname}</li>
 						</ul>
@@ -189,6 +189,7 @@ body {
 								<li><a href="${pageContext.request.contextPath}/group/selectByPrimaryKey?pk_group=2"> echarts测试</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=12"> ueditor展示测试</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=33">ueditor信息发布</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=55">老司机福利</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=44">iSupport新闻</a></li>
 							</ul>
 							</li>

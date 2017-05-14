@@ -11,6 +11,8 @@ public interface IsSDweekplanePDao {
     int deleteByExample(IsSDweekplanePExample example);
 
     int deleteByPrimaryKey(Integer pkSDweekplaneP);
+    
+    int deleteByHeadKey(Integer pkDweekplaneH);
 
     int insert(IsSDweekplaneP record);
 
@@ -19,6 +21,8 @@ public interface IsSDweekplanePDao {
     List<IsSDweekplaneP> selectByExample(IsSDweekplanePExample example);
 
     IsSDweekplaneP selectByPrimaryKey(Integer pkSDweekplaneP);
+    
+    List<IsSDweekplaneP> selectByHeadKey(Integer pkSDweekplaneN);
 
     int updateByExampleSelective(@Param("record") IsSDweekplaneP record, @Param("example") IsSDweekplanePExample example);
 

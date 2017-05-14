@@ -40,4 +40,9 @@ public class IsBProjectServiceImpl implements IsBProjectService {
 	public int updateByPrimaryKey(IsBProject record){
 		return this.isBProjectDao.updateByPrimaryKey(record);
 	}
+	
+	@Override
+	public IsBProject selectByProjectName(String projectname){
+		return this.isBProjectDao.selectByProjectName(projectname);
+	}
 }

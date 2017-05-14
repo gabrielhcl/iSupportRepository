@@ -29,12 +29,12 @@
 				<tbody>
 					<c:forEach items="${llist}" var="link">
 						<div class="ab">
-							<div class="col-md-4 abc">
+							<div class="col-md-2 abc">
 								<div class="caption">
-									<h4>${link.linkname}</h4>
-									<p>
-										<a><p>${link.linkurl}</p></a>
-									</p>
+									<h4><a href="${link.linkurl}"  style="text-decoration: none;">${link.linkname}</a></h4>
+<!-- 									<p> -->
+<%-- 										<a href="${link.linkurl}"><p>${link.linkurl}</p></a> --%>
+<!-- 									</p> -->
 								</div>
 							</div>
 						</div>

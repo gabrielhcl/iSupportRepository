@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
 	public User selectByUserCode(String usercode){
 		return this.userDao.selectByUserCode(usercode);
 	}
+	
+	@Override
+	public int updateByPrimaryKey(User record){
+		return this.userDao.updateByPrimaryKey(record);
+	}
 }

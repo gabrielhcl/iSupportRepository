@@ -10,4 +10,6 @@ public interface UserService {
     public int insertUser(User user);
     
     public User selectByUserCode(String usercode);
+    
+    int updateByPrimaryKey(User record);
 }  

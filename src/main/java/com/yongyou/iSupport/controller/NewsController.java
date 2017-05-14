@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yongyou.iSupport.entity.Area;
 import com.yongyou.iSupport.entity.IsColumn;
 import com.yongyou.iSupport.entity.IsComment;
 import com.yongyou.iSupport.entity.IsNews;

@@ -29,4 +29,6 @@ public interface IsBProjectDao {
 	    int updateByPrimaryKey(IsBProject record);
 	    
 	    public List<IsBProject> findList(IsBProject record);
+	    
+	    IsBProject selectByProjectName(String projectname);
 }

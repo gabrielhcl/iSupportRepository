@@ -2,6 +2,7 @@ package com.yongyou.iSupport.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,13 +11,16 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+//import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yongyou.iSupport.entity.Area;
+import com.yongyou.iSupport.entity.IsBCorp;
 import com.yongyou.iSupport.entity.IsBGroup;
 import com.yongyou.iSupport.entity.IsBProject;
 import com.yongyou.iSupport.form.IsBProjectForm;
 import com.yongyou.iSupport.service.AreaService;
+import com.yongyou.iSupport.service.CorpService;
 import com.yongyou.iSupport.service.IsBGroupService;
 import com.yongyou.iSupport.service.IsBProjectService;
 import com.yongyou.iSupport.utils.TimeUtil;
@@ -31,16 +35,20 @@ public class IsBProjectController {
 	private IsBGroupService isBGroupService;
 	@Autowired
 	private AreaService areaService;
+	@Autowired
+	private CorpService corpService;
 	
 	/*
-	 * 跳转projrct添加form表单 
+	 * 跳转project添加form表单 
 	 */
 	@RequestMapping("addproject")
-	public String addProject(Model model,HttpServletRequest request,HttpServletResponse response,IsBProject record,IsBGroup group,Area area){
+	public String addProject(Model model,HttpServletRequest request,HttpServletResponse response,IsBProject record,IsBGroup group,Area area,IsBCorp corp){
 		List<IsBGroup> findList = isBGroupService.findList(group);
 		model.addAttribute("glist",findList);
 		List<Area> findList2 = areaService.findList(area);
 		model.addAttribute("alist",findList2);
+		List<IsBCorp> clist = corpService.findList(corp);
+		model.addAttribute("clist",clist);
 		return "projectForm";
 	}
 	
@@ -64,6 +72,9 @@ public class IsBProjectController {
 		bean.setServiceftime(TimeUtil.parseDate(record.getServiceftimef()));
 		bean.setCreatedate(TimeUtil.parseDate(record.getCreatedatef()));
 		System.out.println(bean);
+		UUID uuid = UUID.randomUUID();
+		String projectcode = uuid.toString().substring(0, 8);
+		bean.setProjectcode(projectcode);
 		isBProjectService.insert(bean);
 		return "redirect:/project/projectlist";
 	}

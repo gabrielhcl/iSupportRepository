@@ -15,4 +15,6 @@ public interface IsBProjectService  {
 	IsBProject selectByPrimaryKey(Integer pkProject);
 	
 	int updateByPrimaryKey(IsBProject record);
+	
+	IsBProject selectByProjectName(String projectname);
 }

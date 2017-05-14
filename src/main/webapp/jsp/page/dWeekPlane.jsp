@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -44,19 +45,28 @@
 		<div class="container">
 			<div class="row clearfix">
 				<div class="col-md-3 column"></div>
-				<div class="col-md-4 column" align="center">
-					<h4>用友网络科技股份有限公司建筑行业公司</h4>
-<!-- 					<h5>2017年02月24日</h5> -->
+				<div class="col-md-6 column" align="center">
+				<br><br><br><br>
+				<h2>${project.customername}</h2>
+				<h2>${project.projectname}</h2>
+				<h3>项目双周计划及项目状态报告</h3>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					<h3>用友网络科技股份有限公司建筑行业公司</h3>
+					<h4><fmt:formatDate value="${nowtime}" pattern="yyyy年MM月dd日"/></h4>
 				</div>
-				<div class="col-md-5 column"></div>
+				<div class="col-md-3 column"></div>
 			</div>
 			<div>
-				<form id = "iform" name = "iform" method = "post" action="${pageContext.request.contextPath}/savedweekplane">
+<%-- 				<form id="iform" name="iform"   role="form" method="post" action="${pageContext.request.contextPath}/dweekplane/savedweekplane"> --%>
+				<form role="form" action="${pageContext.request.contextPath}/dweekplane/savedweekplane" method="post"  >	
 					<table data-toggle="table" data-show-columns="false" data-page-list="[5, 10, 20]"
 						data-page-size="5" data-pagination="true" data-show-pagination-switch="true"
 						class="table-bordered">
 						<thead></thead>
 						<tbody>
+						<input type="hidden" name="projectname" value="${project.projectname}">
+						<input type="hidden" name="pkProject" value="${project.pkProject}">
+						<input type="hidden" name="corpname" value="${project.customername}">
 							<tr>
 								<td style="background-color: #F4F8FB" width="70%">报告日期</td>
 								<td colspan="2">
@@ -68,8 +78,9 @@
 								<td class="tableColor">计划开工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="date" class="form-control" id="planestartdate" name="planestartdate" required>
-										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
+										<input type="hidden" class="form-control" id="planestartdate" name="planestartdate" value="<fmt:formatDate value="${mainplanH.pstartdate}" pattern="yyyy-MM-dd"/>" required>
+										<fmt:formatDate value="${mainplanH.pstartdate}" pattern="yyyy/MM/dd"/>
+<!-- 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span> -->
 									</div>
 								</td>
 							</tr>
@@ -84,8 +95,10 @@
 								<td class="tableColor">计划完工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="date" class="form-control" id="planefinishdate" name="planefinishdate" required>
-										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
+<!-- 										<input type="date" class="form-control" id="planefinishdate" name="planefinishdate" required> -->
+										<input type="hidden" class="form-control" id="planefinishdate" name="planefinishdate" value="<fmt:formatDate value="${mainplanH.penddate}" pattern="yyyy-MM-dd"/>" required>
+										<fmt:formatDate value="${mainplanH.penddate}" pattern="yyyy/MM/dd"/>
+<!-- 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span> -->
 									</div>
 								</td>
 							</tr>
@@ -196,10 +209,10 @@
 								<td>项目规格</td>
 								<td>
 								<select class="form-control" name="proplstatus">
-									<option value="1">未开始</option>
-									<option value="2">开始</option>
-									<option value="3">完成</option>
-									<option value="4">未完成</option>
+									<option value="未开始">未开始</option>
+									<option value="开始">开始</option>
+									<option value="完成">完成</option>
+									<option value="未完成">未完成</option>
 								</select>
 								</td>
 								<td></td>
@@ -212,10 +225,10 @@
 								<td></td>
 								<td>
 								<select class="form-control" name="bpdesignstatus">
-									<option value="1">未开始</option>
-									<option value="2">开始</option>
-									<option value="3">完成</option>
-									<option value="4">未完成</option>
+									<option value="未开始">未开始</option>
+									<option value="开始">开始</option>
+									<option value="完成">完成</option>
+									<option value="未完成">未完成</option>
 								</select>
 								</td>
 								<td></td>
@@ -228,10 +241,10 @@
 								<td></td>
 								<td>
 								<select class="form-control" name="sysbuildstatus">
-									<option value="1">未开始</option>
-									<option value="2">开始</option>
-									<option value="3">完成</option>
-									<option value="4">未完成</option>
+									<option value="未开始">未开始</option>
+									<option value="开始">开始</option>
+									<option value="完成">完成</option>
+									<option value="未完成">未完成</option>
 								</select>
 								</td>
 								<td></td>
@@ -244,10 +257,10 @@
 								<td></td>
 								<td>
 								<select class="form-control" name="onlineswitchstatus">
-									<option value="1">未开始</option>
-									<option value="2">开始</option>
-									<option value="3">完成</option>
-									<option value="4">未完成</option>
+									<option value="未开始">未开始</option>
+									<option value="开始">开始</option>
+									<option value="完成">完成</option>
+									<option value="未完成">未完成</option>
 								</select>
 								</td>
 								<td></td>
@@ -260,11 +273,10 @@
 								<td></td>
 								<td>
 								<select class="form-control" name="susupportstatus">
-									<option value="1">未开始</option>
-									<option value="2">开始</option>
-									<option value="3">完成</option>
-									<option value="4">未完成</option>
-								</select>
+									<option value="未开始">未开始</option>
+									<option value="开始">开始</option>
+									<option value="完成">完成</option>
+									<option value="未完成">未完成</option>								</select>
 								</td>
 							</tr>
 
@@ -721,21 +733,22 @@
 								<td colspan="4"></td>
 							</tr>
 							<tr>
-								<td><input type ="button" value = "提交" id="tracysubmit" /></td>
+<!-- 								<td><input type ="button" value = "提交" id="tracysubmit" /></td> -->
 							</tr>
 						</tbody>
 					</table>
+					<input type="submit" value="提交">
 				</form>
 			</div>
 		</div>
 	</div>
 	<script>
 		$(function() {
-			$("#tracysubmit").click(function() {
-				alert("666");
-				$('form').submit();
-				alert("777");
-			});
+// 			$("#tracysubmit").click(function() {
+// 				alert("666");
+// 				$('form').submit();
+// 				alert("777");
+// 			});
 			
 			$("#sumdaytime").focus(	function() {
 				var projectmanagerdaytime = parseInt(V('projectmanagerdaytime').value);

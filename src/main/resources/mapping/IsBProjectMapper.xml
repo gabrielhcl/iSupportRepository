@@ -124,6 +124,17 @@
     from is_b_project
     where pk_project = #{pkProject,jdbcType=INTEGER}
   </select>
+  
+  
+<!--   根据项目名搜索项目信息 -->
+	<select id="selectByProjectName" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBProject" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_b_project
+    where projectname = #{projectname,jdbcType=VARCHAR}
+  </select>
+
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from is_b_project
     where pk_project = #{pkProject,jdbcType=INTEGER}

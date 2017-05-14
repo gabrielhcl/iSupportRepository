@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.yongyou.iSupport.entity.User;
 import com.yongyou.iSupport.service.UserService;
 
@@ -19,6 +21,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	
+	@RequestMapping("logout")
+	public String logout(HttpServletRequest request,HttpServletResponse response){
+		return "login";
+	}
 	
 	
 	/*
@@ -62,5 +69,48 @@ public class UserController {
 	public String insertUser(User user,HttpServletRequest request,HttpServletResponse response,Model model){
 		userService.insertUser(user);
 		return "login";
+	}
+	
+	
+	@RequestMapping("updatepassword")
+	public String updatePassword(HttpServletRequest request,HttpServletResponse response,Model model,HttpSession session){
+		User user = (User) session.getAttribute("user");
+//		String password = user.getPassword();
+//		String username = user.getUsername();
+//		String userphone = user.getUserphone();
+		model.addAttribute("user",user);
+		return "updatePwd";
+	}
+	
+	@RequestMapping("changepassword")
+	public String changepassword(HttpServletRequest request,HttpServletResponse response,Model model,HttpSession session,String password){
+		User user = (User) session.getAttribute("user");
+		user.setPassword(password);
+		userService.updateByPrimaryKey(user);
+		return "UpdatePwdSuccess";
+	}
+	
+	
+	
+	@RequestMapping("checkPwd")
+	@ResponseBody
+	public String checkPwd(HttpServletRequest request,HttpServletResponse response,Model model,HttpSession session,String oldpassword){
+		User user = (User) session.getAttribute("user");
+		String username = user.getUsername();
+		String password1 = user.getPassword();
+		User user2 = new User();
+		user2.setUsername(username);
+		user2.setPassword(oldpassword);
+		User user3 = userService.selectByNameAndPwd(user2);
+		if(user3 == null){
+			return JSON.toJSONString("error");
+		}else{
+			String password2 = user3.getPassword();
+			if(password2.equals(password1)){
+				return JSON.toJSONString("success");
+			}else{
+				return JSON.toJSONString("error");
+			}
+		}
 	}
 }

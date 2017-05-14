@@ -21,10 +21,28 @@
 			</div>
 			<form role="form"   method="post" action="${pageContext.request.contextPath}/link/savelink">
 				<div class="form-group">
+				<label for="exampleInputEmail1">分类</label>
+				<select class="selectpicker" data-style="btn-white" name="pkColumn" required>
+				<c:forEach items="${clist}" var="column">
+					<option value="${column.pkColumn}">${column.columnname}</option>
+				</c:forEach>
+				</select>
+				</div>
+				<div class="form-group">
 					 <label>链接名称</label><input type="text" class="form-control" id="linkname" name="linkname" />
 				</div>
 				<div class="form-group">
 					 <label>url</label><input type="text" class="form-control" id="linkurl" name="linkurl" />
+				</div>
+				<div class="form-group">
+					 <label>排序</label><input type="text" class="form-control" id="sort" name="sort" />
+				</div>
+				<div class="form-group">
+					<label for="name">是否有效</label>
+					<select class="form-control" name="iseffective" required>
+						<option value="0">是</option>
+						<option value="1">否</option>
+					</select>
 				</div>
 				<button type="submit" class="btn btn-default">保存</button>
 			</form>

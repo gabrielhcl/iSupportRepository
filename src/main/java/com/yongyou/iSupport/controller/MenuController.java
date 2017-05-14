@@ -25,13 +25,13 @@ public class MenuController {
 	public String selectMenu(Area area, HttpServletRequest request,HttpServletResponse response,Model model){
 		String menuid = request.getParameter("menuid");
 		if(menuid.equals("1")){
-			model.addAttribute("iframesrc",request.getContextPath() + "/dweekplanehlist");
+			model.addAttribute("iframesrc",request.getContextPath() + "/dweekplane/dweekplanehlist");
 			return "index";
 		}else if(menuid.equals("0")){
 			model.addAttribute("iframesrc",request.getContextPath() + "/jsp/page/yonyou-map.jsp");
 			return "index";
 		}else if(menuid.equals("2")){
-			model.addAttribute("iframesrc",request.getContextPath() + "/jsp/page/proImplPlane.jsp");
+			model.addAttribute("iframesrc",request.getContextPath() + "/mainplan/mainplanlist");
 			return "index";
 		}else if(menuid.equals("11")){
 			model.addAttribute("iframesrc",request.getContextPath() + "/area/arealist");
@@ -68,6 +68,9 @@ public class MenuController {
 			return "index";
 		}else if(menuid.equals("10")){
 			model.addAttribute("iframesrc",request.getContextPath() + "/link/linkmain");
+			return "index";
+		}else if(menuid.equals("55")){
+			model.addAttribute("iframesrc",request.getContextPath() + "/shanxi/shanxilist");
 			return "index";
 		}
 		return menuid;

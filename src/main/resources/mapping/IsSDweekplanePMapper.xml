@@ -17,10 +17,26 @@
     from is_s_dweekplane_p
     where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
   </select>
+  
+   <select id="selectByHeadKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_s_dweekplane_p
+    where pk_s_dweekplane_h = #{pkSDweekplaneH,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from is_s_dweekplane_p
     where pk_s_dweekplane_p = #{pkSDweekplaneP,jdbcType=INTEGER}
   </delete>
+  
+   <!--   	根据主表id删除数据 -->
+   <delete id="deleteByHeadKey" parameterType="java.lang.Integer">
+    delete from is_s_dweekplane_p
+    where pk_s_dweekplane_h = #{pkSDweekplaneH,jdbcType=INTEGER}
+  </delete>
+  
+  
   <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsSDweekplaneP">
     insert into is_s_dweekplane_p (pk_s_dweekplane_p, pk_s_dweekplane_h, problem, 
       needhelp, hopefinishtime)

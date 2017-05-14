@@ -37,11 +37,11 @@
 					<small>列表</small>
 				</div>
 				<button id="addbutton"
-					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/adddweekplane'">
+					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/dweekplane/selectproject'">
 					添加
 				</button>
 				<br>
-				<form modelAttribute="dweekplane" action="${pageContext.request.contextPath}/dweekplanehlist" method="post" id="searchForm" name="searchForm" class="form-inline searchForm">
+				<form modelAttribute="dweekplane" action="${pageContext.request.contextPath}/dweekplane/dweekplanehlist" method="post" id="searchForm" name="searchForm" class="form-inline searchForm">
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card-box">
@@ -66,7 +66,7 @@
 											<td>${dweekplaneh.projectmanager}</td>
 											<td>
 											<a
-												href="${pageContext.request.contextPath}/dweekplane/dweekplanedetail?pkDweekplaneH=${dweekplaneh.pkDweekplaneH}"
+												href="${pageContext.request.contextPath}/dweekplane/dweekplanedetail?pkDweekplaneH=${dweekplaneh.pkDweekplaneH}&&projectname=${dweekplaneh.projectname}"
 												onclick="return confirmx('确认要删除该数据吗？', this.href)"
 												class="btn btn-success btn-xs"> <i class="fa fa-trash"></i>查看
 											</a>

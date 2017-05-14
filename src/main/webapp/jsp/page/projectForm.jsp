@@ -51,7 +51,7 @@
 			<br>
 			<div class="row">
 				<div class="col-md-12">
-					<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/project/insertproject" method="post" modelAttribute="project">
+					<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/project/insertproject" method="post">
 					
 						<div class="form-group" class="col-md-6">
 							<h4 class="col-md-6">项目基本信息</h4>
@@ -68,11 +68,9 @@
 							<small class="col-md-1 control-label">客户名称</small>
 							<div class="col-md-3">
 								<select class="form-control" name="customername">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
+									<c:forEach items="${clist}" var="corp">
+									<option value="${corp.corpname}">${corp.corpname}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>

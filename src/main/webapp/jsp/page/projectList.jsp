@@ -74,7 +74,13 @@
 												href="${pageContext.request.contextPath}/project/update?pkProject=${project.pkProject}"
 												onclick="return confirmx('确认要修改该数据吗？', this.href)"
 												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>修改
-											</a> <a
+											</a>
+											<a
+												href="${pageContext.request.contextPath}/mainplan/addmainplan?pkProject=${project.pkProject}"
+												onclick="return confirmx('确认要修改该数据吗？', this.href)"
+												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>生成主计划
+											</a>
+											 <a
 												href="${pageContext.request.contextPath}/project/delete?pkProject=${project.pkProject}"
 												onclick="return confirmx('确认要删除该数据吗？', this.href)"
 												class="btn btn-danger btn-xs"> <i class="fa fa-trash"></i>删除

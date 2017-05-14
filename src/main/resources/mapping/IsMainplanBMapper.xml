@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsMainplanBDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsMainplanB" >
+    <id column="pk_mainplan_b" property="pkMainplanB" jdbcType="INTEGER" />
+    <result column="pk_mainplan_h" property="pkMainplanH" jdbcType="INTEGER" />
+    <result column="plancode" property="plancode" jdbcType="VARCHAR" />
+    <result column="planname" property="planname" jdbcType="VARCHAR" />
+    <result column="spstartdate" property="spstartdate" jdbcType="TIMESTAMP" />
+    <result column="spenddate" property="spenddate" jdbcType="TIMESTAMP" />
+    <result column="splancycle" property="splancycle" jdbcType="VARCHAR" />
+    <result column="spmnum" property="spmnum" jdbcType="VARCHAR" />
+    <result column="spmdays" property="spmdays" jdbcType="VARCHAR" />
+    <result column="simnum" property="simnum" jdbcType="VARCHAR" />
+    <result column="simdays" property="simdays" jdbcType="VARCHAR" />
+    <result column="alldays" property="alldays" jdbcType="VARCHAR" />
+    <result column="ufrole" property="ufrole" jdbcType="VARCHAR" />
+    <result column="ufmember" property="ufmember" jdbcType="VARCHAR" />
+    <result column="custrole" property="custrole" jdbcType="VARCHAR" />
+    <result column="servicecontent" property="servicecontent" jdbcType="VARCHAR" />
+    <result column="ufdocument" property="ufdocument" jdbcType="VARCHAR" />
+    <result column="sremark" property="sremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_mainplan_b, pk_mainplan_h, plancode, planname, spstartdate, spenddate, splancycle, 
+    spmnum, spmdays, simnum, simdays, alldays, ufrole, ufmember, custrole, servicecontent, 
+    ufdocument, sremark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsMainplanBExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from is_mainplan_b
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_mainplan_b
+    where pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="selectByMainplanHAndPlancode" parameterType="com.yongyou.iSupport.entity.IsMainplanB" resultMap="BaseResultMap">
+	SELECT 
+	*
+	FROM is_mainplan_b
+	WHERE
+	pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER} AND plancode = #{plancode,jdbcType=VARCHAR}
+	</select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_mainplan_b
+    where pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}
+  </delete>
+  
+  
+  
+  
+<!--   根据主计划主表id删除主计划子表数据 -->
+	<delete id="deleteByMainplanId" parameterType="java.lang.Integer" >
+	    delete from is_mainplan_b
+	    where pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER}
+  	</delete>
+  	
+  	
+  	
+  	
+  
+  <delete id="deleteByExample" parameterType="com.yongyou.iSupport.entity.IsMainplanBExample" >
+    delete from is_mainplan_b
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsMainplanB" >
+    insert into is_mainplan_b (pk_mainplan_b, pk_mainplan_h, plancode, 
+      planname, spstartdate, spenddate, 
+      splancycle, spmnum, spmdays, 
+      simnum, simdays, alldays, 
+      ufrole, ufmember, custrole, 
+      servicecontent, ufdocument, sremark
+      )
+    values (#{pkMainplanB,jdbcType=INTEGER}, #{pkMainplanH,jdbcType=INTEGER}, #{plancode,jdbcType=VARCHAR}, 
+      #{planname,jdbcType=VARCHAR}, #{spstartdate,jdbcType=TIMESTAMP}, #{spenddate,jdbcType=TIMESTAMP}, 
+      #{splancycle,jdbcType=VARCHAR}, #{spmnum,jdbcType=VARCHAR}, #{spmdays,jdbcType=VARCHAR}, 
+      #{simnum,jdbcType=VARCHAR}, #{simdays,jdbcType=VARCHAR}, #{alldays,jdbcType=VARCHAR}, 
+      #{ufrole,jdbcType=VARCHAR}, #{ufmember,jdbcType=VARCHAR}, #{custrole,jdbcType=VARCHAR}, 
+      #{servicecontent,jdbcType=VARCHAR}, #{ufdocument,jdbcType=VARCHAR}, #{sremark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsMainplanB" >
+    insert into is_mainplan_b
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkMainplanB != null" >
+        pk_mainplan_b,
+      </if>
+      <if test="pkMainplanH != null" >
+        pk_mainplan_h,
+      </if>
+      <if test="plancode != null" >
+        plancode,
+      </if>
+      <if test="planname != null" >
+        planname,
+      </if>
+      <if test="spstartdate != null" >
+        spstartdate,
+      </if>
+      <if test="spenddate != null" >
+        spenddate,
+      </if>
+      <if test="splancycle != null" >
+        splancycle,
+      </if>
+      <if test="spmnum != null" >
+        spmnum,
+      </if>
+      <if test="spmdays != null" >
+        spmdays,
+      </if>
+      <if test="simnum != null" >
+        simnum,
+      </if>
+      <if test="simdays != null" >
+        simdays,
+      </if>
+      <if test="alldays != null" >
+        alldays,
+      </if>
+      <if test="ufrole != null" >
+        ufrole,
+      </if>
+      <if test="ufmember != null" >
+        ufmember,
+      </if>
+      <if test="custrole != null" >
+        custrole,
+      </if>
+      <if test="servicecontent != null" >
+        servicecontent,
+      </if>
+      <if test="ufdocument != null" >
+        ufdocument,
+      </if>
+      <if test="sremark != null" >
+        sremark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkMainplanB != null" >
+        #{pkMainplanB,jdbcType=INTEGER},
+      </if>
+      <if test="pkMainplanH != null" >
+        #{pkMainplanH,jdbcType=INTEGER},
+      </if>
+      <if test="plancode != null" >
+        #{plancode,jdbcType=VARCHAR},
+      </if>
+      <if test="planname != null" >
+        #{planname,jdbcType=VARCHAR},
+      </if>
+      <if test="spstartdate != null" >
+        #{spstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spenddate != null" >
+        #{spenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="splancycle != null" >
+        #{splancycle,jdbcType=VARCHAR},
+      </if>
+      <if test="spmnum != null" >
+        #{spmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="spmdays != null" >
+        #{spmdays,jdbcType=VARCHAR},
+      </if>
+      <if test="simnum != null" >
+        #{simnum,jdbcType=VARCHAR},
+      </if>
+      <if test="simdays != null" >
+        #{simdays,jdbcType=VARCHAR},
+      </if>
+      <if test="alldays != null" >
+        #{alldays,jdbcType=VARCHAR},
+      </if>
+      <if test="ufrole != null" >
+        #{ufrole,jdbcType=VARCHAR},
+      </if>
+      <if test="ufmember != null" >
+        #{ufmember,jdbcType=VARCHAR},
+      </if>
+      <if test="custrole != null" >
+        #{custrole,jdbcType=VARCHAR},
+      </if>
+      <if test="servicecontent != null" >
+        #{servicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="ufdocument != null" >
+        #{ufdocument,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null" >
+        #{sremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yongyou.iSupport.entity.IsMainplanBExample" resultType="java.lang.Integer" >
+    select count(*) from is_mainplan_b
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update is_mainplan_b
+    <set >
+      <if test="record.pkMainplanB != null" >
+        pk_mainplan_b = #{record.pkMainplanB,jdbcType=INTEGER},
+      </if>
+      <if test="record.pkMainplanH != null" >
+        pk_mainplan_h = #{record.pkMainplanH,jdbcType=INTEGER},
+      </if>
+      <if test="record.plancode != null" >
+        plancode = #{record.plancode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planname != null" >
+        planname = #{record.planname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spstartdate != null" >
+        spstartdate = #{record.spstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spenddate != null" >
+        spenddate = #{record.spenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.splancycle != null" >
+        splancycle = #{record.splancycle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spmnum != null" >
+        spmnum = #{record.spmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spmdays != null" >
+        spmdays = #{record.spmdays,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simnum != null" >
+        simnum = #{record.simnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simdays != null" >
+        simdays = #{record.simdays,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alldays != null" >
+        alldays = #{record.alldays,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufrole != null" >
+        ufrole = #{record.ufrole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufmember != null" >
+        ufmember = #{record.ufmember,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custrole != null" >
+        custrole = #{record.custrole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicecontent != null" >
+        servicecontent = #{record.servicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufdocument != null" >
+        ufdocument = #{record.ufdocument,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sremark != null" >
+        sremark = #{record.sremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update is_mainplan_b
+    set pk_mainplan_b = #{record.pkMainplanB,jdbcType=INTEGER},
+      pk_mainplan_h = #{record.pkMainplanH,jdbcType=INTEGER},
+      plancode = #{record.plancode,jdbcType=VARCHAR},
+      planname = #{record.planname,jdbcType=VARCHAR},
+      spstartdate = #{record.spstartdate,jdbcType=TIMESTAMP},
+      spenddate = #{record.spenddate,jdbcType=TIMESTAMP},
+      splancycle = #{record.splancycle,jdbcType=VARCHAR},
+      spmnum = #{record.spmnum,jdbcType=VARCHAR},
+      spmdays = #{record.spmdays,jdbcType=VARCHAR},
+      simnum = #{record.simnum,jdbcType=VARCHAR},
+      simdays = #{record.simdays,jdbcType=VARCHAR},
+      alldays = #{record.alldays,jdbcType=VARCHAR},
+      ufrole = #{record.ufrole,jdbcType=VARCHAR},
+      ufmember = #{record.ufmember,jdbcType=VARCHAR},
+      custrole = #{record.custrole,jdbcType=VARCHAR},
+      servicecontent = #{record.servicecontent,jdbcType=VARCHAR},
+      ufdocument = #{record.ufdocument,jdbcType=VARCHAR},
+      sremark = #{record.sremark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsMainplanB" >
+    update is_mainplan_b
+    <set >
+      <if test="pkMainplanH != null" >
+        pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER},
+      </if>
+      <if test="plancode != null" >
+        plancode = #{plancode,jdbcType=VARCHAR},
+      </if>
+      <if test="planname != null" >
+        planname = #{planname,jdbcType=VARCHAR},
+      </if>
+      <if test="spstartdate != null" >
+        spstartdate = #{spstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spenddate != null" >
+        spenddate = #{spenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="splancycle != null" >
+        splancycle = #{splancycle,jdbcType=VARCHAR},
+      </if>
+      <if test="spmnum != null" >
+        spmnum = #{spmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="spmdays != null" >
+        spmdays = #{spmdays,jdbcType=VARCHAR},
+      </if>
+      <if test="simnum != null" >
+        simnum = #{simnum,jdbcType=VARCHAR},
+      </if>
+      <if test="simdays != null" >
+        simdays = #{simdays,jdbcType=VARCHAR},
+      </if>
+      <if test="alldays != null" >
+        alldays = #{alldays,jdbcType=VARCHAR},
+      </if>
+      <if test="ufrole != null" >
+        ufrole = #{ufrole,jdbcType=VARCHAR},
+      </if>
+      <if test="ufmember != null" >
+        ufmember = #{ufmember,jdbcType=VARCHAR},
+      </if>
+      <if test="custrole != null" >
+        custrole = #{custrole,jdbcType=VARCHAR},
+      </if>
+      <if test="servicecontent != null" >
+        servicecontent = #{servicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="ufdocument != null" >
+        ufdocument = #{ufdocument,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null" >
+        sremark = #{sremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsMainplanB" >
+    update is_mainplan_b
+    set pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER},
+      plancode = #{plancode,jdbcType=VARCHAR},
+      planname = #{planname,jdbcType=VARCHAR},
+      spstartdate = #{spstartdate,jdbcType=TIMESTAMP},
+      spenddate = #{spenddate,jdbcType=TIMESTAMP},
+      splancycle = #{splancycle,jdbcType=VARCHAR},
+      spmnum = #{spmnum,jdbcType=VARCHAR},
+      spmdays = #{spmdays,jdbcType=VARCHAR},
+      simnum = #{simnum,jdbcType=VARCHAR},
+      simdays = #{simdays,jdbcType=VARCHAR},
+      alldays = #{alldays,jdbcType=VARCHAR},
+      ufrole = #{ufrole,jdbcType=VARCHAR},
+      ufmember = #{ufmember,jdbcType=VARCHAR},
+      custrole = #{custrole,jdbcType=VARCHAR},
+      servicecontent = #{servicecontent,jdbcType=VARCHAR},
+      ufdocument = #{ufdocument,jdbcType=VARCHAR},
+      sremark = #{sremark,jdbcType=VARCHAR}
+    where pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}
+  </update>
+</mapper>

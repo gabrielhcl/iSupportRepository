@@ -1,5 +1,6 @@
 package com.yongyou.iSupport.dao;
 
+import com.yongyou.iSupport.entity.IsSDweekplaneT;
 import com.yongyou.iSupport.entity.IsSDweekplaneW;
 import com.yongyou.iSupport.entity.IsSDweekplaneWExample;
 import java.util.List;
@@ -11,6 +12,8 @@ public interface IsSDweekplaneWDao {
     int deleteByExample(IsSDweekplaneWExample example);
 
     int deleteByPrimaryKey(Integer pkSDweekplaneW);
+    
+    int deleteByHeadKey(Integer pkDweekplaneH);
 
     int insert(IsSDweekplaneW record);
 
@@ -19,6 +22,8 @@ public interface IsSDweekplaneWDao {
     List<IsSDweekplaneW> selectByExample(IsSDweekplaneWExample example);
 
     IsSDweekplaneW selectByPrimaryKey(Integer pkSDweekplaneW);
+    
+    List<IsSDweekplaneT> selectByHeadKey(Integer pkSDweekplaneN);
 
     int updateByExampleSelective(@Param("record") IsSDweekplaneW record, @Param("example") IsSDweekplaneWExample example);
 

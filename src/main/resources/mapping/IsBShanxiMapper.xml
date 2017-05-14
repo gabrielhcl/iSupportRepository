@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsBShanxiDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsBShanxi" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="newstitle" property="newstitle" jdbcType="VARCHAR" />
+    <result column="newstype" property="newstype" jdbcType="VARCHAR" />
+    <result column="newsarea" property="newsarea" jdbcType="VARCHAR" />
+    <result column="newsaddress" property="newsaddress" jdbcType="VARCHAR" />
+    <result column="newssource" property="newssource" jdbcType="VARCHAR" />
+    <result column="girlnumber" property="girlnumber" jdbcType="VARCHAR" />
+    <result column="girlage" property="girlage" jdbcType="VARCHAR" />
+    <result column="quality" property="quality" jdbcType="VARCHAR" />
+    <result column="appearance" property="appearance" jdbcType="VARCHAR" />
+    <result column="project" property="project" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="opentime" property="opentime" jdbcType="VARCHAR" />
+    <result column="environment" property="environment" jdbcType="VARCHAR" />
+    <result column="safety" property="safety" jdbcType="VARCHAR" />
+    <result column="mobilephone" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="evaluate" property="evaluate" jdbcType="VARCHAR" />
+    <result column="newsremark" property="newsremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, newstitle, newstype, newsarea, newsaddress, newssource, girlnumber, girlage, 
+    quality, appearance, project, price, opentime, environment, safety, mobilephone, 
+    evaluate, newsremark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBShanxiExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from is_b_shanxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_b_shanxi
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_b_shanxi
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yongyou.iSupport.entity.IsBShanxiExample" >
+    delete from is_b_shanxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsBShanxi" >
+    insert into is_b_shanxi (id, newstitle, newstype, 
+      newsarea, newsaddress, newssource, 
+      girlnumber, girlage, quality, 
+      appearance, project, price, 
+      opentime, environment, safety, 
+      mobilephone, evaluate, newsremark
+      )
+    values (#{id,jdbcType=INTEGER}, #{newstitle,jdbcType=VARCHAR}, #{newstype,jdbcType=VARCHAR}, 
+      #{newsarea,jdbcType=VARCHAR}, #{newsaddress,jdbcType=VARCHAR}, #{newssource,jdbcType=VARCHAR}, 
+      #{girlnumber,jdbcType=VARCHAR}, #{girlage,jdbcType=VARCHAR}, #{quality,jdbcType=VARCHAR}, 
+      #{appearance,jdbcType=VARCHAR}, #{project,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
+      #{opentime,jdbcType=VARCHAR}, #{environment,jdbcType=VARCHAR}, #{safety,jdbcType=VARCHAR}, 
+      #{mobilephone,jdbcType=VARCHAR}, #{evaluate,jdbcType=VARCHAR}, #{newsremark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsBShanxi" >
+    insert into is_b_shanxi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="newstitle != null" >
+        newstitle,
+      </if>
+      <if test="newstype != null" >
+        newstype,
+      </if>
+      <if test="newsarea != null" >
+        newsarea,
+      </if>
+      <if test="newsaddress != null" >
+        newsaddress,
+      </if>
+      <if test="newssource != null" >
+        newssource,
+      </if>
+      <if test="girlnumber != null" >
+        girlnumber,
+      </if>
+      <if test="girlage != null" >
+        girlage,
+      </if>
+      <if test="quality != null" >
+        quality,
+      </if>
+      <if test="appearance != null" >
+        appearance,
+      </if>
+      <if test="project != null" >
+        project,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="opentime != null" >
+        opentime,
+      </if>
+      <if test="environment != null" >
+        environment,
+      </if>
+      <if test="safety != null" >
+        safety,
+      </if>
+      <if test="mobilephone != null" >
+        mobilephone,
+      </if>
+      <if test="evaluate != null" >
+        evaluate,
+      </if>
+      <if test="newsremark != null" >
+        newsremark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newstitle != null" >
+        #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newstype != null" >
+        #{newstype,jdbcType=VARCHAR},
+      </if>
+      <if test="newsarea != null" >
+        #{newsarea,jdbcType=VARCHAR},
+      </if>
+      <if test="newsaddress != null" >
+        #{newsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="newssource != null" >
+        #{newssource,jdbcType=VARCHAR},
+      </if>
+      <if test="girlnumber != null" >
+        #{girlnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="girlage != null" >
+        #{girlage,jdbcType=VARCHAR},
+      </if>
+      <if test="quality != null" >
+        #{quality,jdbcType=VARCHAR},
+      </if>
+      <if test="appearance != null" >
+        #{appearance,jdbcType=VARCHAR},
+      </if>
+      <if test="project != null" >
+        #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null" >
+        #{environment,jdbcType=VARCHAR},
+      </if>
+      <if test="safety != null" >
+        #{safety,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluate != null" >
+        #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="newsremark != null" >
+        #{newsremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yongyou.iSupport.entity.IsBShanxiExample" resultType="java.lang.Integer" >
+    select count(*) from is_b_shanxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update is_b_shanxi
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.newstitle != null" >
+        newstitle = #{record.newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newstype != null" >
+        newstype = #{record.newstype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsarea != null" >
+        newsarea = #{record.newsarea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsaddress != null" >
+        newsaddress = #{record.newsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newssource != null" >
+        newssource = #{record.newssource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.girlnumber != null" >
+        girlnumber = #{record.girlnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.girlage != null" >
+        girlage = #{record.girlage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quality != null" >
+        quality = #{record.quality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appearance != null" >
+        appearance = #{record.appearance,jdbcType=VARCHAR},
+      </if>
+      <if test="record.project != null" >
+        project = #{record.project,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opentime != null" >
+        opentime = #{record.opentime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.environment != null" >
+        environment = #{record.environment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safety != null" >
+        safety = #{record.safety,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobilephone != null" >
+        mobilephone = #{record.mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluate != null" >
+        evaluate = #{record.evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newsremark != null" >
+        newsremark = #{record.newsremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update is_b_shanxi
+    set id = #{record.id,jdbcType=INTEGER},
+      newstitle = #{record.newstitle,jdbcType=VARCHAR},
+      newstype = #{record.newstype,jdbcType=VARCHAR},
+      newsarea = #{record.newsarea,jdbcType=VARCHAR},
+      newsaddress = #{record.newsaddress,jdbcType=VARCHAR},
+      newssource = #{record.newssource,jdbcType=VARCHAR},
+      girlnumber = #{record.girlnumber,jdbcType=VARCHAR},
+      girlage = #{record.girlage,jdbcType=VARCHAR},
+      quality = #{record.quality,jdbcType=VARCHAR},
+      appearance = #{record.appearance,jdbcType=VARCHAR},
+      project = #{record.project,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=VARCHAR},
+      opentime = #{record.opentime,jdbcType=VARCHAR},
+      environment = #{record.environment,jdbcType=VARCHAR},
+      safety = #{record.safety,jdbcType=VARCHAR},
+      mobilephone = #{record.mobilephone,jdbcType=VARCHAR},
+      evaluate = #{record.evaluate,jdbcType=VARCHAR},
+      newsremark = #{record.newsremark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsBShanxi" >
+    update is_b_shanxi
+    <set >
+      <if test="newstitle != null" >
+        newstitle = #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newstype != null" >
+        newstype = #{newstype,jdbcType=VARCHAR},
+      </if>
+      <if test="newsarea != null" >
+        newsarea = #{newsarea,jdbcType=VARCHAR},
+      </if>
+      <if test="newsaddress != null" >
+        newsaddress = #{newsaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="newssource != null" >
+        newssource = #{newssource,jdbcType=VARCHAR},
+      </if>
+      <if test="girlnumber != null" >
+        girlnumber = #{girlnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="girlage != null" >
+        girlage = #{girlage,jdbcType=VARCHAR},
+      </if>
+      <if test="quality != null" >
+        quality = #{quality,jdbcType=VARCHAR},
+      </if>
+      <if test="appearance != null" >
+        appearance = #{appearance,jdbcType=VARCHAR},
+      </if>
+      <if test="project != null" >
+        project = #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        opentime = #{opentime,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null" >
+        environment = #{environment,jdbcType=VARCHAR},
+      </if>
+      <if test="safety != null" >
+        safety = #{safety,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        mobilephone = #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluate != null" >
+        evaluate = #{evaluate,jdbcType=VARCHAR},
+      </if>
+      <if test="newsremark != null" >
+        newsremark = #{newsremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsBShanxi" >
+    update is_b_shanxi
+    set newstitle = #{newstitle,jdbcType=VARCHAR},
+      newstype = #{newstype,jdbcType=VARCHAR},
+      newsarea = #{newsarea,jdbcType=VARCHAR},
+      newsaddress = #{newsaddress,jdbcType=VARCHAR},
+      newssource = #{newssource,jdbcType=VARCHAR},
+      girlnumber = #{girlnumber,jdbcType=VARCHAR},
+      girlage = #{girlage,jdbcType=VARCHAR},
+      quality = #{quality,jdbcType=VARCHAR},
+      appearance = #{appearance,jdbcType=VARCHAR},
+      project = #{project,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      opentime = #{opentime,jdbcType=VARCHAR},
+      environment = #{environment,jdbcType=VARCHAR},
+      safety = #{safety,jdbcType=VARCHAR},
+      mobilephone = #{mobilephone,jdbcType=VARCHAR},
+      evaluate = #{evaluate,jdbcType=VARCHAR},
+      newsremark = #{newsremark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBShanxi">
+  	SELECT
+  	<include refid="Base_Column_List"/>
+  	FROM is_b_shanxi
+  	<where>
+  		<if test="id!=null">
+  			AND id=#{id}
+  		</if>
+  		<if	test="newstitle!=null and newstitle!=''">
+  			AND newstitle LIKE
+  			concat('%',#{newstitle},'%')
+  		</if>
+  		<if	test="newstype!=null and newstype!=''">
+  			AND newstype LIKE
+  			concat('%',#{newstype},'%')
+  		</if>
+  		<if	test="newsaddress!=null and newsaddress!=''">
+  			AND newsaddress LIKE
+  			concat('%',#{newsaddress},'%')
+  		</if>
+  		<if	test="price!=null and price!=''">
+  			AND price LIKE
+  			concat('%',#{price},'%')
+  		</if>
+  		<if	test="environment!=null and environment!=''">
+  			AND environment LIKE
+  			concat('%',#{environment},'%')
+  		</if>
+  		<if	test="project!=null and project!=''">
+  			AND project LIKE
+  			concat('%',#{project},'%')
+  		</if>
+  		<if	test="safety!=null and safety!=''">
+  			AND safety LIKE
+  			concat('%',#{safety},'%')
+  		</if>
+  	</where>
+  </select>
+</mapper>
