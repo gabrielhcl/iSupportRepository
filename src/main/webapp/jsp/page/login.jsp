@@ -47,7 +47,7 @@ body {
 				<div class="row clearfix">
 					<div class="col-md-4 column"></div>
 					<div class="col-md-4 column div1">
-						<form role="form" action="${pageContext.request.contextPath}/user/login" class="form-signin">
+						<form role="form" action="${pageContext.request.contextPath}/user/login" class="form-signin" method="post">
 							<div class="form-group">
 								<label for="exampleInputEmail1">用户名</label>
 								<input type="text" class="form-control" name="username" id="username"/>

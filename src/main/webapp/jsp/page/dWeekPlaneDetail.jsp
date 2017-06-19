@@ -419,8 +419,7 @@
 						</tbody>
 					</table>
 <!-- 					<input type="submit" value="提交"> -->
-<input name ="Button"  value="打印" type="button" onclick="window.print()" />  
-
+					<input name ="Button"  value="打印" type="button" onclick="window.print()" />  
 				</form>
 			</div>
 		</div>

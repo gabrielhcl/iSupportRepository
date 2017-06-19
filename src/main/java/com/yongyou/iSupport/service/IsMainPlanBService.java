@@ -11,4 +11,6 @@ public interface IsMainPlanBService {
 	int deleteByMainplanId(Integer pkMainPlanH);
 	
 	IsMainplanB selectByMainplanHAndPlancode(@Param("pkMainplanH")Integer pkMainplanH,@Param("plancode")String plancode);
+
+	int updateByMainplanH(IsMainplanB record);
 }

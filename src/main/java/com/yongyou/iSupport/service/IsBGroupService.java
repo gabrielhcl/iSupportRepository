@@ -16,4 +16,6 @@ public interface IsBGroupService {
 	 public int updateByPrimaryKey(IsBGroup record);
 	 
 	 public IsBGroup selectByPrimaryKey(Integer pk_group);
+	 
+	 IsBGroup selectByCode(String groupcode);
 }

@@ -96,7 +96,7 @@
 							<div class="col-md-1"></div>
 							<div class="col-md-3">
 								<div class="checkbox checkbox-primary">
-                                    <input id="checkbox1" type="checkbox" name="isimplement">
+                                    <input id="checkbox1" type="checkbox" name="isimplement" value="1">
                                     <label for="checkbox1">
                                        	 是否按照合同签订服务期间执行
                                     </label>
@@ -129,10 +129,9 @@
 							<small class="col-md-1 control-label">对应产品</small>
 							<div class="col-md-3">
 								<select class="form-control" name="productcode">
-									<option value="1">V5</option>
-									<option value="2">V6</option>
-									<option value="3">V5营改增</option>
-									<option value="4">V6营改增</option>
+								<c:forEach items="${prolist}" var="product">
+									<option value="${product.productname}">${product.productname}</option>
+								</c:forEach>
 								</select>
 							</div>
 							<small class="col-md-1 control-label">模块信息</small>

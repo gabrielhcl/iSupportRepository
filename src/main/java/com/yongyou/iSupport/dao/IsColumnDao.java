@@ -29,4 +29,7 @@ public interface IsColumnDao {
     int updateByPrimaryKey(IsColumn record);
     
     public List<IsColumn> findList(IsColumn column);
+    
+    List <IsColumn> findListBySort(IsColumn column);
+    
 }

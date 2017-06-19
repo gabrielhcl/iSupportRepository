@@ -39,4 +39,9 @@ public class IsBGroupServiceImpl implements IsBGroupService{
 	public IsBGroup selectByPrimaryKey(Integer pk_group){
 		return isBGroupDao.selectByPrimaryKey(pk_group);
 	}
+	
+	@Override
+	public IsBGroup selectByCode(String groupcode){
+		return isBGroupDao.selectByCode(groupcode);
+	}
 }

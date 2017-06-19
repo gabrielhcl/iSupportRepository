@@ -236,7 +236,7 @@
                               {name: '陕西',value: Math.round(Math.random()*1000)},  
                               {name: '甘肃',value: Math.round(Math.random()*1000)},  
                               {name: '宁夏',value: Math.round(Math.random()*1000)},  
-                              {name: '青海',value: Math.round(Math.random()*1000)},  
+                              {name: '青海',value: 77},  
                               {name: '新疆',value: Math.round(Math.random()*1000)},  
                               {name: '云南',value: Math.round(Math.random()*1000)},  
                               {name: '贵州',value: Math.round(Math.random()*1000)},  

@@ -1,17 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+<meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
 <meta name="author" content="Coderthemes">
 
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/assets/images/favicon_1.ico">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon_1.ico">
 
-<title>Ubold - Responsive Admin Dashboard Template</title>
+<title>iSupport</title>
 
 <!--Morris Chart CSS -->
 <link rel="stylesheet"
@@ -58,16 +57,16 @@ body {
 		<div class="topbar">
 
 			<!-- LOGO -->
-			<div class="topbar-left">
+			<div class="topbar-left" style="background-color: #4b1267;">
 				<div class="text-center">
-					<a href="index.html" class="logo"><i
+					<a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=0" class="logo"><i
 						class="icon-magnet icon-c-logo"></i><span>YONYOU<i
 							class="md md-album">iSupport</i></span></a>
 				</div>
 			</div>
 
 			<!-- Button mobile view to collapse sidebar menu -->
-			<div class="navbar navbar-default" role="navigation">
+			<div class="navbar navbar-default" role="navigation" style="background-color: #4b1267;">
 				<div class="container">
 					<div class="">
 						<!-- 侧面菜单展开按钮 -->
@@ -89,14 +88,15 @@ body {
 							id="btn-fullscreen" class="waves-effect waves-light"><i
 								class="icon-size-fullscreen"></i></a></li>
 						<!-- 通讯录联系人 -->
-						<li class="hidden-xs" style="margin-top: 20px"><a href="#"
+						<li class="hidden-xs" style="margin-top: 20px"><a href="${pageContext.request.contextPath}/user/userlist"
 							class="right-bar-toggle waves-effect waves-light"><i
-								class="icon-settings"></i></a></li>
+								class="ti-view-grid"></i></a></li>
 						<!-- 个人操作及个人头像 -->
 						<li class="dropdown" style="margin-top: 10px"><a href=""
 							class="dropdown-toggle profile" data-toggle="dropdown"
 							aria-expanded="true"><img
-								src="${pageContext.request.contextPath}/assets/images/users/avatar-1.jpg"
+<%-- 								src="${pageContext.request.contextPath}/assets/images/users/avatar-1.jpg" --%>
+								src="/portrait/${user.def1}"
 								alt="user-img" class="img-circle"> </a>
 							<ul class="dropdown-menu">
 								<li><a href="${pageContext.request.contextPath}/user/updatepassword"><i
@@ -126,7 +126,7 @@ body {
 						<!-- 默认展开菜单 -->
 						<li class="has_sub">
 							<!--自动展开菜单<a href="#" class="waves-effect active"><i class="ti-home"></i> <span> 工作 </span> </a> -->
-							<a href="#" class="waves-effect"><i class="ti-home"></i> <span>
+							<a href="#" class="waves-effect"><i class="icon-bag"></i> <span>
 									工作 </span> </a>
 							<ul class="list-unstyled">
 								<li class="active"><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=2">实施主计划</a></li>
@@ -138,18 +138,32 @@ body {
 						<li class="has_sub"><a href="#" class="waves-effect"><i
 								class="ti-paint-bucket"></i> <span> 项目 </span> </a>
 							<ul class="list-unstyled">
-								<li><a href="ui-buttons.html">项目分析</a></li>
+								<li><a href="#" class="waves-effect"><span>项目分析 </span></a>
+								<ul class="list-unstyled">
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=23">柱状图分析</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=24">南丁格尔玫瑰图</a></li>
+								</ul>
+								</li>
 								<li><a href="ui-panels.html">项目回款</a></li>
 								<li><a href="ui-portlets.html">项目回款预测</a></li>
 								<li><a href="ui-checkbox-radio.html">项目回款汇总</a></li>
 								<li><a href="ui-tabs.html">项目收入与资源投入分析</a></li>
 								<li><a href="ui-modals.html">汇总分析</a></li>
+								
+								
+								<li><a href="#" class="waves-effect"><span>测试 </span></a>
+								<ul class="list-unstyled">
+								<li><a href="ui-tabs.html">测试1</a></li>
+								<li><a href="ui-modals.html">测试2</a></li>
+								</ul>
+								</li>
+								
 							</ul></li>
 						<!-- 提示信息条数菜单 -->
 						<li class="has_sub"><a href="#" class="waves-effect"><i
-								class="ti-light-bulb"></i><span> 运维 </span> </a>
+								class="icon-wrench"></i><span> 运维 </span> </a>
 							<ul class="list-unstyled">
-								<li><a href="components-grid.html">运维问题录入</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=19">运维问题录入</a></li>
 								<li><a href="components-widgets.html">运维问题分析</a></li>
 								<li><a href="components-nestable-list.html">生成分析报告</a></li>
 							</ul></li>
@@ -158,44 +172,47 @@ body {
 						<!-- 菜单类型标识 -->
 						<li class="text-muted menu-title">More</li>
 
-						<li class="has_sub"><a href="#" class="waves-effect"><i
-								class="ti-files"></i><span> 项目地图 </span></a>
+						<li class="has_sub">
+						<a href="#" class="waves-effect">
+						<i class="icon-map"></i>
+						<span>项目地图 </span></a>
 							<ul class="list-unstyled">
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=0">项目情况分布一览</a></li>
 								<li><a href="page-login.html">在建项目汇总展示</a></li>
 								<li><a href="page-login-v2.html">运维项目汇总展示</a></li>
-								<li><a
-									href="${pageContext.request.contextPath}/mapController/vectorMap">地图示例</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<li class="has_sub"><a href="#" class="waves-effect"><i
 								class="ti-files"></i><span> 管理 </span></a>
 							<ul class="list-unstyled">
 <!-- 								<li><a href="extra-profile.html">合同管理</a></li> -->
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=11">区域管理</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=98">产品管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=4">集团管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=5">公司管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=6">项目管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=7">新闻管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=8">栏目管理</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=19">运维问题管理</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=9">友情链接管理</a></li>
 							</ul>
 							</li>
 							
 							
 							<li class="has_sub"><a href="#" class="waves-effect"><i
-								class="ti-files"></i><span>测试 </span></a>
+								class="icon-bulb"></i><span>测试 </span></a>
 							<ul class="list-unstyled">
 								<li><a href="${pageContext.request.contextPath}/group/selectByPrimaryKey?pk_group=2"> echarts测试</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=12"> ueditor展示测试</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=33">ueditor信息发布</a></li>
-								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=55">老司机福利</a></li>
 								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=44">iSupport新闻</a></li>
+								<li><a href="${pageContext.request.contextPath}/menu/selectmenu?menuid=45">新闻统计</a></li>
 							</ul>
 							</li>
 
 							<li class="has_sub"><a href="#" class="waves-effect"><i
-								class="ti-files"></i><span>链接 </span></a>
+								class="icon-magnet"></i><span>链接 </span></a>
 							<ul class="list-unstyled">
 								<li><a href="${pageContext.request.contextPath}/link/linkmain?menuid=10">友情链接</a></li>
 							</ul>
@@ -229,58 +246,23 @@ body {
 
 		<!-- 右侧信息展开栏（用户联系人列表） -->
 		<div class="side-bar right-bar nicescroll">
-			<h4 class="text-center">联系人</h4>
+			<h4 class="text-center">人员组成</h4>
 			<div class="contact-list nicescroll">
 				<ul class="list-group contacts-list">
+				
+				<c:forEach items="${ulist}" var="user">
 					<li class="list-group-item"><a href="#">
 							<div class="avatar">
 								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-1.jpg"
+									src="/portrait/${user.def1}"
 									alt="">
-							</div> <span class="name">张四川</span> <i class="fa fa-circle online"></i>
+							</div> <span class="name">${user.usercnname}</span> <i class="fa fa-circle online"></i>
 					</a> <span class="clearfix"></span></li>
-					<li class="list-group-item"><a href="#">
-							<div class="avatar">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-2.jpg"
-									alt="">
-							</div> <span class="name">李上海</span> <i class="fa fa-circle online"></i>
-					</a> <span class="clearfix"></span></li>
-					<li class="list-group-item"><a href="#">
-							<div class="avatar">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-3.jpg"
-									alt="">
-							</div> <span class="name">苏重庆</span> <i class="fa fa-circle online"></i>
-					</a> <span class="clearfix"></span></li>
-					<li class="list-group-item"><a href="#">
-							<div class="avatar">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-4.jpg"
-									alt="">
-							</div> <span class="name">孙意涵</span> <i class="fa fa-circle online"></i>
-					</a> <span class="clearfix"></span></li>
-					<li class="list-group-item"><a href="#">
-							<div class="avatar">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-5.jpg"
-									alt="">
-							</div> <span class="name">李海洋</span> <i class="fa fa-circle away"></i>
-					</a> <span class="clearfix"></span></li>
-					<li class="list-group-item"><a href="#">
-							<div class="avatar">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-6.jpg"
-									alt="">
-							</div> <span class="name">张绍忠</span> <i class="fa fa-circle away"></i>
-					</a> <span class="clearfix"></span></li>
-					<li class="list-group-item"><a href="#">
-							<div class="avatar">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/users/avatar-7.jpg"
-									alt="">
-							</div> <span class="name">易中天</span> <i class="fa fa-circle away"></i>
-					</a> <span class="clearfix"></span></li>
+				</c:forEach>
+					
+					
+					
+					
 				</ul>
 			</div>
 		</div>

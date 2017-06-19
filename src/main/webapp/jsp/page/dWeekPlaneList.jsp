@@ -36,10 +36,10 @@
 					<h1>双周报</h1>
 					<small>列表</small>
 				</div>
-				<button id="addbutton"
-					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/dweekplane/selectproject'">
-					添加
-				</button>
+<!-- 				<button id="addbutton" -->
+<%-- 					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/dweekplane/selectproject'"> --%>
+<!-- 					添加 -->
+<!-- 				</button> -->
 				<br>
 				<form modelAttribute="dweekplane" action="${pageContext.request.contextPath}/dweekplane/dweekplanehlist" method="post" id="searchForm" name="searchForm" class="form-inline searchForm">
 					<div class="row">
@@ -70,11 +70,12 @@
 												onclick="return confirmx('确认要删除该数据吗？', this.href)"
 												class="btn btn-success btn-xs"> <i class="fa fa-trash"></i>查看
 											</a>
+<!-- 											<a -->
+<%-- 												href="${pageContext.request.contextPath}/dweekplane/update?pkDweekplaneH=${dweekplaneh.pkDweekplaneH}&&projectname=${dweekplaneh.projectname}" --%>
+<!-- 												onclick="return confirmx('确认要修改该数据吗？', this.href)" -->
+<!-- 												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>修改 -->
+<!-- 											</a>  -->
 											<a
-												href="${pageContext.request.contextPath}/dweekplane/update?pkDweekplaneH=${dweekplaneh.pkDweekplaneH}"
-												onclick="return confirmx('确认要修改该数据吗？', this.href)"
-												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>修改
-											</a> <a
 												href="${pageContext.request.contextPath}/dweekplane/delete?pkDweekplaneH=${dweekplaneh.pkDweekplaneH}"
 												onclick="return confirmx('确认要删除该数据吗？', this.href)"
 												class="btn btn-danger btn-xs"> <i class="fa fa-trash"></i>删除

@@ -15,4 +15,6 @@ public interface AreaDao {
 	public int updateByPrimaryKey(Area area);
 	
 	public Area selectByPrimaryKey(Integer pk_area);
+	
+	Area selectByCode(String areacode);
 }

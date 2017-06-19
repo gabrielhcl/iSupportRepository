@@ -199,6 +199,30 @@ public class TimeUtil {
 		return "";
 	}
 	
+	
+	/*
+	 * 字符串转时间类型方法修改
+	 */
+	public static String newconvertDate(Date date, String format) {
+		try {
+			if (date != null) {
+				Calendar c = Calendar.getInstance();
+				c.setTime(date);
+				if (format == null || format.equals("")) {
+					format = "yyyy-MM-dd";
+				}
+				SimpleDateFormat f = new SimpleDateFormat(format);
+				return f.format(c.getTime());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	
+	
+	
 	/**
 	 * 字符串转日期
 	 * 精确到秒

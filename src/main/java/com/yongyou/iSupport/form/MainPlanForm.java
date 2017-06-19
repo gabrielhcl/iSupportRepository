@@ -35,6 +35,8 @@ public class MainPlanForm {
 	
 // 主计划子表表单接收数据字段
 	
+	private List<Integer> pkmainplanb;
+	
 	private List<String> plancode;
 	
 	private List<String> planname;
@@ -66,6 +68,16 @@ public class MainPlanForm {
 	private List<String> ufdocument;
 	
 	private List<String> sremark;
+	
+	
+
+	public List<Integer> getPkmainplanb() {
+		return pkmainplanb;
+	}
+
+	public void setPkmainplanb(List<Integer> pkmainplanb) {
+		this.pkmainplanb = pkmainplanb;
+	}
 
 	public String getMainplancode() {
 		return mainplancode;

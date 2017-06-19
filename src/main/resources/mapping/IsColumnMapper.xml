@@ -6,9 +6,10 @@
     <result column="columncode" property="columncode" jdbcType="VARCHAR" />
     <result column="columnname" property="columnname" jdbcType="VARCHAR" />
     <result column="columnremark" property="columnremark" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pk_column, columncode, columnname, columnremark
+    pk_column, columncode, columnname, columnremark,sort
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsColumn" >
     insert into is_column (pk_column, columncode, columnname, 
-      columnremark)
+      columnremark,sort)
     values (#{pkColumn,jdbcType=INTEGER}, #{columncode,jdbcType=VARCHAR}, #{columnname,jdbcType=VARCHAR}, 
-      #{columnremark,jdbcType=VARCHAR})
+      #{columnremark,jdbcType=VARCHAR},#{sort,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsColumn" >
     insert into is_column
@@ -76,7 +77,8 @@
     update is_column
     set columncode = #{columncode,jdbcType=VARCHAR},
       columnname = #{columnname,jdbcType=VARCHAR},
-      columnremark = #{columnremark,jdbcType=VARCHAR}
+      columnremark = #{columnremark,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR}
     where pk_column = #{pkColumn,jdbcType=INTEGER}
   </update>
   
@@ -103,4 +105,12 @@
   		</if>
   	</where>
   </select>
+  
+  
+  	<select id="findListBySort" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsColumn">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_column
+		ORDER BY sort DESC
+	</select>
 </mapper>

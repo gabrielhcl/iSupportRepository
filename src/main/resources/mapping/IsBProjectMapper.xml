@@ -865,4 +865,30 @@
 			</if>
 		</where>
 	</select>
+	
+	
+<!-- 	<SELECT ID="SELECTCOUNTBYAREA"  RESULTMAP="BASERESULTMAP" PARAMETERTYPE="COM.YONGYOU.ISUPPORT.ENTITY.ISBPROJECT"> -->
+<!-- 	SELECT  -->
+<!-- 	<INCLUDE REFID="BASE_COLUMN_LIST" /> -->
+<!-- 	FROM IS_B_PROJECT WHERE AREACODE = '5'  -->
+<!-- 	</SELECT> -->
+	
+	<select id="selectcountbyarea"  resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBProject">
+	SELECT 
+	COUNT(*),areacode
+	FROM is_b_project GROUP BY areacode
+	</select>
+	
+	
+	
+	<select id="selectcountbyareacode"   resultType="int" parameterType="java.lang.String">
+	SELECT COUNT(*) FROM is_b_project WHERE areacode=#{areacode,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectcountandcode"  resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBProject">
+	SELECT 
+	COUNT(*)
+	FROM is_b_project GROUP BY areacode
+	</select>
+	
 </mapper>

@@ -1,5 +1,7 @@
 package com.yongyou.iSupport.service;
 
+import java.util.List;
+
 import com.yongyou.iSupport.entity.User;
 
 public interface UserService {  
@@ -12,4 +14,6 @@ public interface UserService {
     public User selectByUserCode(String usercode);
     
     int updateByPrimaryKey(User record);
+    
+    List<User> findList(User user);
 }  

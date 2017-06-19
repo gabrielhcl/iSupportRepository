@@ -440,4 +440,27 @@
       sremark = #{sremark,jdbcType=VARCHAR}
     where pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}
   </update>
+   <update id="updateByMainplanH" parameterType="com.yongyou.iSupport.entity.IsMainplanB" >
+    update is_mainplan_b
+    set  
+<!--       pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}, -->
+<!--       pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER}, -->
+      plancode = #{plancode,jdbcType=VARCHAR},
+      planname = #{planname,jdbcType=VARCHAR},
+      spstartdate = #{spstartdate,jdbcType=TIMESTAMP},
+      spenddate = #{spenddate,jdbcType=TIMESTAMP},
+      splancycle = #{splancycle,jdbcType=VARCHAR},
+      spmnum = #{spmnum,jdbcType=VARCHAR},
+      spmdays = #{spmdays,jdbcType=VARCHAR},
+      simnum = #{simnum,jdbcType=VARCHAR},
+      simdays = #{simdays,jdbcType=VARCHAR},
+      alldays = #{alldays,jdbcType=VARCHAR},
+      ufrole = #{ufrole,jdbcType=VARCHAR},
+      ufmember = #{ufmember,jdbcType=VARCHAR},
+      custrole = #{custrole,jdbcType=VARCHAR},
+      servicecontent = #{servicecontent,jdbcType=VARCHAR},
+      ufdocument = #{ufdocument,jdbcType=VARCHAR},
+      sremark = #{sremark,jdbcType=VARCHAR}
+    where pk_mainplan_h = #{pkMainplanH,jdbcType=INTEGER} and  pk_mainplan_b = #{pkMainplanB,jdbcType=INTEGER}
+  </update>
 </mapper>

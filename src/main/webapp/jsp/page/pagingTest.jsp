@@ -89,6 +89,42 @@ font-size: smaller;
 }
 </style>
 
+
+<script type="text/javascript">
+
+
+function testreturn(){
+// 	获取输入框输入的userName
+	alert("in testreturn");
+	$.ajax({
+		url:"http://localhost/workbench-integration-gyy/loginValidate/testcontroller",  
+		data:'',
+		dataType:"json",
+		type:"post",
+		success : function(data) {
+			if (data.status == "success") {
+				alert("success");
+				alert(data.fabulous);
+				$("#showResult").html(data.fabulous);
+				document.getElementById("usercnname").value = data.fabulous;
+			} else {
+				$("#showResult").html("<font color='red'>系统错误</font>");
+			}
+		}
+		
+// 		success:function(data){
+// 			if(data=="success"){
+// 				alert("12312");
+// 				$("#showResult").html("<font color='green'>密码正确</font>");  
+// 			}else{
+// 				$("#oldpassword").val("").focus();
+// 				$("#showResult").html("<font color='red'>密码错误,请重新输入</font>");  
+// 			}
+// 		}
+	});
+}
+</script>
+
 </head>
 <body>
 
@@ -97,208 +133,28 @@ font-size: smaller;
 			<div class="col-md-12 column">
 				<div class="page-header">
 					<h1>
-						新闻详情<small>news detail</small>
+						测试跨域取值<small>news detail</small>
 					</h1>
 				</div>
+				<button onclick="testreturn();">测试return</button>
+				<span id="showResult"></span>  
 			</div>
 		</div>
 		<div class="row clearfix">
 			<div class="col-md-3 column"></div>
 			<div class="col-md-6 column b1">
-				<br>
-				<br>
-				<h2 class="blogDetail-title">${news.newstitle}</h2>
-				<br>
-				<p>作者:${user.usercnname}</p>
-				<br>
-<%-- 				<p>${userArticle.content}</p> --%>
-
-				<div id="content">
-				${news.newscontent}
-				</div>
+			<form action="${pageContext.request.contextPath}/news/innews" role="form" method="post">
+			<input type="hidden" name="usercnname" id="usercnname">
+			<button type="submit">submit</button>
+			</form>
 			</div>
 			<div class="col-md-3 column">
-				<div class="blogDetail-box">
-					<h5 class="text-error">作者:${user.usercnname}</h5>
-<%-- 					<h5 class="text-error">日期:<fmt:formatDate value="${userArticle.createDate}" pattern="yyyy年MM月dd日"/></h5> --%>
-					<h5 class="text-error">
-					日期:<fmt:formatDate value="${news.newsdate}" pattern="yyyy年MM月dd日"/>
-					</h5>
-				</div>
 
 			</div>
 		</div>
 
-		<div class="row clearfix">
-			<div class="col-md-3 column"></div>
-			<div class="col-md-6 column b1">
-			<br> <br>
-				<div class="panel-group" id="panel-584638 ">
-<%-- 				<c:if test="${news.iscomment==0}"> --%>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<a class="panel-title collapsed" data-toggle="collapse"
-								data-parent="#panel-584638" href="#panel-element-814366" style="text-decoration: none;">&nbsp&nbsp评论</a>
-						</div>
-						<div id="panel-element-814366" class="panel-collapse collapse">
-							<div class="panel-body">
-							<form  class="form-signin"
-					action="${pageContext.request.contextPath}/comment/savecomment?pkNews=${news.pkNews}&newstitle=${news.newstitle}"
-					method="post" id="form">
-					<input type="hidden" name="pkNews" value="${news.pkNews }">
-					<input type="hidden" name="newstitle" value="${news.newstitle }">
-								<div class="form-group">
-									<div class="col-sm-10">
-										<textarea name="content" placeholder="" class="a1"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-
-									<div class="col-sm-offset-2 col-sm-10"
-										style="width: 50%; padding: 0; margin: 0; float: left;">
-										<br> &nbsp&nbsp
-										<button type="submit" class="btn btn-default">发表评论</button>
-									</div>
-								</div>
-								</form>
-							</div>
-						</div>
-					</div>
-<%-- 				</c:if> --%>
-				</div>
-			
-				<div class="card-box">
-				<form>
-					<div class="row">
-						<div class="col-sm-12">
-<!-- 							<div class="card-box"> -->
-								<table id="demo-custom-toolbar" data-toggle="table"
-									data-toolbar="#demo-delete-row" data-search="true"
-									data-show-refresh="true" data-show-toggle="true"
-									data-sort-name="id" data-page-list="[5, 10, 20]"
-									data-page-size="10" data-pagination="true"
-									data-show-pagination-switch="true" class="table-bordered ">
-									<thead>
-										<tr>
-											<th   data-sortable="true"> </th>
-											<th   data-sortable="true"> </th>
-											<th   data-sortable="true"> </th>
-										</tr>
-									</thead>
-
-									<tbody>
-									<c:forEach items="${clist}" var="comment">
-										<tr>
-											<td class="username">${comment.username}</td>
-											<td>${comment.content}</td>
-											<td class="commentdate"><fmt:formatDate
- 										value="${comment.createdate}" pattern="yyyy/MM/dd" /></td>
-									</c:forEach>
-									</tbody>
-								</table>
-<!-- 							</div> -->
-						</div>
-					</div>
-				</form>
-			</div>
-			</div>
-			<div class="col-md-3 column"></div>
-		</div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="row clearfix">
-			<div class="col-md-4 column">
-				<dl>
-					<dt>Description lists</dt>
-					<dd>A description list is perfect for defining terms.</dd>
-					<dt>Euismod</dt>
-					<dd>Vestibulum id ligula porta felis euismod semper eget
-						lacinia odio sem nec elit.</dd>
-					<dd>Donec id elit non mi porta gravida at eget metus.</dd>
-					<dt>Malesuada porta</dt>
-					<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-					<dt>Felis euismod semper eget lacinia</dt>
-					<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris
-						condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-				</dl>
-			</div>
-			<div class="col-md-4 column">
-				<address>
-					<strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br />
-					San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123)
-					456-7890
-				</address>
-			</div>
-			<div class="col-md-4 column"></div>
-		</div>
 	</div>
 
-
-
-
-
-
-
-
-
-<!-- 	<div class="row"> -->
-<!-- 		<div class="col-md-12"> -->
-<!-- 			<div class="card-box"> -->
-<!-- 				<div class="page-header"> -->
-<!-- 					<h1>区域</h1> -->
-<!-- 					<small>列表</small> -->
-<!-- 				</div> -->
-<!-- 				<button id="button" -->
-<%-- 					class="btn btn-default  waves-light"  onclick="location='${pageContext.request.contextPath}/area/addarea'"> --%>
-<!-- 					添加 -->
-<!-- 				</button> -->
-<!-- 				<br> -->
-<%-- 				<form modelAttribute="area" action="${pageContext.request.contextPath}/area/arealist" method="post" id="searchForm" name="searchForm" class="form-inline searchForm"> --%>
-<!-- 					<div class="row"> -->
-<!-- 						<div class="col-sm-12"> -->
-<!-- 							<div class="card-box"> -->
-<!-- 								<table id="demo-custom-toolbar" data-toggle="table" -->
-<!-- 									data-toolbar="#demo-delete-row" data-search="true" -->
-<!-- 									data-show-refresh="true" data-show-toggle="true" -->
-<!-- 									data-sort-name="id" data-page-list="[5, 10, 20]" -->
-<!-- 									data-page-size="10" data-pagination="true" -->
-<!-- 									data-show-pagination-switch="true" class="table-bordered "> -->
-<!-- 									<thead> -->
-<!-- 										<tr> -->
-<!-- 											<th   data-sortable="true">区域编码</th> -->
-<!-- 											<th   data-sortable="true">区域名</th> -->
-<!-- 											<th   data-sortable="true">操作</th> -->
-<!-- 										</tr> -->
-<!-- 									</thead> -->
-
-<!-- 									<tbody> -->
-<%-- 									<c:forEach items="${alist}" var="area"> --%>
-<!-- 										<tr> -->
-<%-- 											<td>${area.areacode}</td> --%>
-<%-- 											<td>${area.areaname}</td> --%>
-<!-- 											<td><a -->
-<%-- 												href="${pageContext.request.contextPath}/area/update?pk_area=${area.pk_area}" --%>
-<!-- 												onclick="return confirmx('确认要修改该数据吗？', this.href)" -->
-<!-- 												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>修改 -->
-<!-- 											</a> <a -->
-<%-- 												href="${pageContext.request.contextPath}/area/delete?pk_area=${area.pk_area}" --%>
-<!-- 												onclick="return confirmx('确认要删除该数据吗？', this.href)" -->
-<!-- 												class="btn btn-danger btn-xs"> <i class="fa fa-trash"></i>删除 -->
-<!-- 											</a></td> -->
-<%-- 									</c:forEach> --%>
-<!-- 									</tbody> -->
-<!-- 								</table> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</form> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 
 	<script>
 		var resizefunc = [];

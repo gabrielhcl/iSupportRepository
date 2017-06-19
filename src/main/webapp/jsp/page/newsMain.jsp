@@ -39,11 +39,57 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/modernizr.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/dWeekPlane.js"></script>
-
 </head>
 <body style="background-color: #FFFFFF">
 	<div class="content">
 		<div class="container">
+		<div class="row clearfix">
+		<br><br>
+		<div class="col-md-12 column">
+			<div class="carousel slide" id="carousel-481942" style="width: 850; margin: auto;">
+				<ol class="carousel-indicators">
+				<c:forEach items="${carlist}" var="news">
+					<li data-slide-to="${news.pkNews}" data-target="#carousel-481942">
+					</li>
+				</c:forEach>
+				</ol>
+				<div class="carousel-inner" style="width: 850; height:480;">
+				<c:forEach items="${carlist}" var="news">
+					<div class="${news.itemactive}">
+						<img alt="" src="/photo/${news.carouselimg}" />
+						<div class="carousel-caption">
+							<h4>
+								<a href="${pageContext.request.contextPath}/news/newsdetail?pkNews=${news.pkNews}&newstitle=${news.newstitle}">${news.newstitle}</a>
+							</h4>
+<!-- 							<p> -->
+<%-- 								${news.newsremarks} --%>
+<!-- 							</p> -->
+						</div>
+					</div>
+					</c:forEach>
+				</div> <a class="left carousel-control" href="#carousel-481942" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-481942" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+<!--=================分割线========================================================================================================================================================== -->
+		
+		</div>
+		<br><br>
+	</div>
+		
+		
+		
+		
 						<div class="row">
 							<div class="col-md-8 col-md-offset-2">
 								<form  action="${pageContext.request.contextPath}/news/selectnews" method="post" >
@@ -74,7 +120,7 @@
 												<div class="col-md-12">
 												<c:forEach items="${nlist}" var="news">
 													<div class="search-item">
-														<h3 class="h5 font-600 m-b-5"><a href="${pageContext.request.contextPath}/news/newsdetail?pkNews=${news.pkNews}&newstitle=${news.newstitle}">${news.newstitle}</a></h3>
+														<h3 class="h5 font-600 m-b-5"><a href="${pageContext.request.contextPath}/news/newsdetail?pkNews=${news.pkNews}&newstitle=${news.newstitle}"><c:if test="${news.istop==0}"><h5 style="color: red;">[置顶]</h5></c:if>${news.newstitle}</a></h3>
 														<div class="font-13 text-success m-b-10">
 														<fmt:formatDate value="${news.newsdate}"  pattern="yyyy年MM月dd日"/>
 														</div>

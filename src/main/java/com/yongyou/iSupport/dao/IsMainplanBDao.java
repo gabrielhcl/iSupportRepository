@@ -30,5 +30,7 @@ public interface IsMainplanBDao {
 
     int updateByPrimaryKey(IsMainplanB record);
     
+    int updateByMainplanH(IsMainplanB record);
+    
     IsMainplanB selectByMainplanHAndPlancode(@Param("pkMainplanH")Integer pkMainplanH,@Param("plancode")String plancode);
 }

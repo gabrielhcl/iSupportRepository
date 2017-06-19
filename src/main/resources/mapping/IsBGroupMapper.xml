@@ -58,6 +58,13 @@
     WHERE pk_group = #{pk_group,jdbcType=INTEGER}
 	</select>
 	
+	<select id="selectByCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+	SELECT
+	<include refid="Base_Column_List" />
+	FROM is_b_group
+	WHERE groupcode = #{groupcode,jdbcType=VARCHAR}
+	</select>
+	
 	<update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsBGroup">
 		UPDATE is_b_group 
 		SET  

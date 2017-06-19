@@ -17,4 +17,10 @@ public interface IsBProjectService  {
 	int updateByPrimaryKey(IsBProject record);
 	
 	IsBProject selectByProjectName(String projectname);
+	
+	List<IsBProject> selectcountbyarea();
+	
+	int selectcountbyareacode(String areacode);
+	
+	List<IsBProject> selectcountandcode(IsBProject record);
 }

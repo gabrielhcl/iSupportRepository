@@ -50,9 +50,28 @@ public class NewsServiceImpl implements NewsService{
 		 return this.isNewsDao.findNewsByColumn(news);
 	 }
 	
-	
+	@Override
 	public List<IsNews> selectByPkColumn(Integer pkColumn){
 		return this.isNewsDao.selectByPkColumn(pkColumn);
 	}
+
+	@Override
+	public int selectcountbycolumncode(Integer pk_column){
+		return this.isNewsDao.selectcountbycolumncode(pk_column);
+	}
 	
+	@Override
+	 public List<IsNews> selectByiscarousel(String record){
+		 return this.isNewsDao.selectByiscarousel(record);
+	 }
+	
+	@Override
+	public List<IsNews> findListByIstop(IsNews record){
+		return this.isNewsDao.findListByIstop(record);
+	}
+	
+	@Override
+	public List<IsNews> findImgListOrderDate(IsNews record){
+		return this.isNewsDao.findImgListOrderDate(record);
+	}
 }

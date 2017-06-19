@@ -15,4 +15,7 @@ public interface ColumnService {
 	int updateByPrimaryKey(IsColumn record);
 	
 	int deleteByPrimaryKey(Integer pkColumn);
+	
+	List <IsColumn> findListBySort(IsColumn column);
+	
 }

@@ -78,9 +78,9 @@
 								<td class="tableColor">计划开工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-										<input type="hidden" class="form-control" id="planestartdate" name="planestartdate" value="<fmt:formatDate value="${mainplanH.pstartdate}" pattern="yyyy-MM-dd"/>" required>
-										<fmt:formatDate value="${mainplanH.pstartdate}" pattern="yyyy/MM/dd"/>
-<!-- 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span> -->
+										<input type="date" class="form-control" id="planestartdate" name="planestartdate" value="${pstartdate}">
+<%-- 										<fmt:formatDate value="${mainplanH.pstartdate}" pattern="yyyy/MM/dd"/> --%>
+										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
 							</tr>
@@ -95,10 +95,10 @@
 								<td class="tableColor">计划完工日期</td>
 								<td colspan="2">
 									<div class="input-group">
-<!-- 										<input type="date" class="form-control" id="planefinishdate" name="planefinishdate" required> -->
-										<input type="hidden" class="form-control" id="planefinishdate" name="planefinishdate" value="<fmt:formatDate value="${mainplanH.penddate}" pattern="yyyy-MM-dd"/>" required>
-										<fmt:formatDate value="${mainplanH.penddate}" pattern="yyyy/MM/dd"/>
-<!-- 										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span> -->
+										<input type="date" class="form-control" id="planefinishdate" name="planefinishdate" value="${penddate}">
+<%-- 										<input type="hidden" class="form-control" id="planefinishdate" name="planefinishdate" value="<fmt:formatDate value="${mainplanH.penddate}" pattern="yyyy-MM-dd"/>" required> --%>
+<%-- 										<fmt:formatDate value="${mainplanH.penddate}" pattern="yyyy/MM/dd"/> --%>
+										<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 									</div>
 								</td>
 							</tr>

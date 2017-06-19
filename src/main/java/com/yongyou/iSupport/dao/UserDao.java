@@ -1,5 +1,7 @@
 package com.yongyou.iSupport.dao;
 
+import java.util.List;
+
 import com.yongyou.iSupport.entity.User;
 
 public interface UserDao {
@@ -17,5 +19,7 @@ public interface UserDao {
     int updateByPrimaryKey(User record);
     
     public User selectByNameAndPwd(User user);
+    
+    List<User> findList(User user);
     
 }

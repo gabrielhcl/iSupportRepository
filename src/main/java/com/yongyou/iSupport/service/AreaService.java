@@ -15,4 +15,6 @@ public interface AreaService {
 	public int updateByPrimaryKey(Area area);
 	
 	public Area selectByPrimaryKey(Integer pk_area);
+	
+	Area selectByCode(String areacode);
 }

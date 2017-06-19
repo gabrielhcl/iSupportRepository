@@ -21,6 +21,7 @@
 			
 			success:function(data){
 				if(data=="success"){
+					alert("12312");
 					$("#showResult").html("<font color='green'>密码正确</font>");  
 				}else{
 					$("#oldpassword").val("").focus();

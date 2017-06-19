@@ -39,5 +39,11 @@ public class ColumnService implements com.yongyou.iSupport.service.ColumnService
 	public int deleteByPrimaryKey(Integer pkColumn){
 		return this.isColumnDao.deleteByPrimaryKey(pkColumn);
 	}
+	
+	@Override
+	public List <IsColumn> findListBySort(IsColumn column){
+		return this.isColumnDao.findListBySort(column);
+	}
+	
 
 }

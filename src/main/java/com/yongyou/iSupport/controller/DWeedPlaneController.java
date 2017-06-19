@@ -72,7 +72,6 @@ public class DWeedPlaneController {
 		IsSDweekplaneH isSDweekplaneH = new IsSDweekplaneH();
 		
 		BeanUtils.copyProperties(form, isSDweekplaneH);
-		Date parseDate = TimeUtil.parseDate(form.getFilldate());
 		isSDweekplaneH.setFilldate(TimeUtil.parseDate(form.getFilldate()));
 		isSDweekplaneH.setPlanestartdate(TimeUtil.parseDate(form.getPlanestartdate()));
 		isSDweekplaneH.setStartprojectdate(TimeUtil.parseDate(form.getStartprojectdate()));
@@ -299,7 +298,9 @@ public class DWeedPlaneController {
 	}
 	
 	
-	
+	/*
+	 * 从主计划列表添加双周报
+	 */
 	@RequestMapping("createdweekfrommainplan")
 	public String createdweekfrommainplan(HttpServletRequest request,HttpServletResponse response,Model model,Integer pkMainplanH){
 		IsMainplanH mainplanH = isMainPlanHService.selectByPrimaryKey(pkMainplanH);
@@ -308,6 +309,12 @@ public class DWeedPlaneController {
 		String date = TimeUtil.getNowTime();
 		Date nowtime = TimeUtil.parseDateHms(date);
 		
+		String Pstartdate = null;
+		String pstartdate = TimeUtil.newconvertDate(mainplanH.getPstartdate(), Pstartdate);
+		String Penddate = null;
+		String penddate = TimeUtil.newconvertDate(mainplanH.getPenddate(), Penddate);
+		model.addAttribute("pstartdate",pstartdate);
+		model.addAttribute("penddate",penddate);
 		model.addAttribute("nowtime",nowtime);
 		model.addAttribute("mainplanH",mainplanH);
 		model.addAttribute("project",project);
@@ -315,4 +322,18 @@ public class DWeedPlaneController {
 		
 	}
 	
+	@RequestMapping("update")
+	public  String update (HttpServletRequest request,HttpServletResponse response,Model model,Integer pkDweekplaneH,IsSDweekplaneH isSDweekplaneH,String projectname){
+		isSDweekplaneHService.selectdweekplanedetail(pkDweekplaneH, isSDweekplaneH ,model);
+		IsMainplanH mainplanh = isMainPlanHService.selectByProjectName(projectname);
+		IsBProject project = isBProjectService.selectByProjectName(projectname);
+		
+		String date = TimeUtil.getNowTime();
+		Date nowtime = TimeUtil.parseDateHms(date);
+		
+		model.addAttribute("nowtime",nowtime);
+		model.addAttribute("mainplanh",mainplanh);
+		model.addAttribute("project",project);
+		return "updatedWeekPlan";
+	}
 }

@@ -8,6 +8,8 @@ public class IsColumn {
     private String columnname;
 
     private String columnremark;
+    
+    private String sort;
 
     public Integer getPkColumn() {
         return pkColumn;
@@ -40,4 +42,14 @@ public class IsColumn {
     public void setColumnremark(String columnremark) {
         this.columnremark = columnremark == null ? null : columnremark.trim();
     }
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+    
+    
 }

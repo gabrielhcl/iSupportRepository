@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yongyou.iSupport.dao.IsBProductDao">
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsBProduct">
+    <id column="pk_product" jdbcType="INTEGER" property="pkProduct" />
+    <result column="productname" jdbcType="VARCHAR" property="productname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pk_product, productname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from is_b_product
+    where pk_product = #{pkProduct,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from is_b_product
+    where pk_product = #{pkProduct,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsBProduct">
+    insert into is_b_product (pk_product, productname)
+    values (#{pkProduct,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsBProduct">
+    update is_b_product
+    set productname = #{productname,jdbcType=VARCHAR}
+    where pk_product = #{pkProduct,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsBProduct">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_b_product 
+		<where>
+			<if test=" pkProduct!= null">
+				AND pkProduct=#{pkProduct}
+			</if>
+			<if test=" productname != null and  productname != '' ">
+				AND productname LIKE
+				concat('%',#{productname},'%')
+			</if>
+		</where>
+	</select>
+</mapper>

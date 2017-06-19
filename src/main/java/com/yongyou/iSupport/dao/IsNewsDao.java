@@ -12,6 +12,8 @@ public interface IsNewsDao {
     
     public List<IsNews> selectByPkColumn(Integer pkColumn);
     
+    public List<IsNews> selectByiscarousel(String record);
+    
     public List<IsNews> findNewsByColumn(IsNews news);
     
     int deleteByExample(IsNewsExample example);
@@ -35,4 +37,10 @@ public interface IsNewsDao {
     int updateByPrimaryKey(IsNews record);
     
     public int insertNews(IsNews news);
+    
+    int selectcountbycolumncode(Integer pk_column);
+    
+    List<IsNews> findListByIstop(IsNews record);
+    
+    List<IsNews> findImgListOrderDate(IsNews record);
 }

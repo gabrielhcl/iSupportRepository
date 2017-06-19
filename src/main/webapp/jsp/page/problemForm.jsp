@@ -54,11 +54,11 @@
 			<br>
 			<div class="row">
 				<div class="col-md-12">
-					<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/project/insertproject" method="post" modelAttribute="project">
+					<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/problem/saveproblem" method="post" modelAttribute="problem">
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">问题编码</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="billcode">
+								<input type="text" class="form-control" value="" name="problemcode">
 							</div>
 							<small class="col-md-1 control-label">项目名称</small>
 							<div class="col-md-3">
@@ -66,7 +66,7 @@
 							</div>
 							<small class="col-md-1 control-label">客户名称</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" disabled="" value="" name="billcode">
+								<input type="text" class="form-control" disabled="" value="" name="customername">
 							</div>
 							
 						</div>
@@ -74,15 +74,15 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">所属集团</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" disabled="" value="" name="billcode">
+								<input type="text" class="form-control" disabled="" value="" name="companyrelated">
 							</div>
 							<small class="col-md-1 control-label">对应产品</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" disabled="" value="" name="billcode">
+								<input type="text" class="form-control" disabled="" value="" name="productrelated">
 							</div>
 							<small class="col-md-1 control-label">对应模块</small>
 							<div class="col-md-3">
-								<select class="form-control"  name="groupcode">
+								<select class="form-control"  name="modulerelated" disabled="disabled">
 								<c:forEach items="${glist}" var="group">
 									<option value="${group.groupcode}">${group.groupname}</option>
 								</c:forEach>
@@ -90,17 +90,37 @@
 							</div>
 						</div>
 						
+						
 						<div class="form-group" class="col-md-6">
+							<small class="col-md-1 control-label">公司名称</small>
+							<div class="col-md-3">
+								<input type="text" class="form-control"  value="" name="corpname">
+							</div>
+							<small class="col-md-1 control-label">账套名称</small>
+							<div class="col-md-3">
+								<input type="text" class="form-control"  value="" name="accountname">
+							</div>
+							<small class="col-md-1 control-label">节点名称</small>
+							<div class="col-md-3">
+								<input type="text" class="form-control"  value="" name="nodename">
+							</div>
+						</div>
+						
+						<div class="form-group" class="col-md-6">
+							<small class="col-md-1 control-label">单据编号</small>
+							<div class="col-md-3">
+								<input type="text" class="form-control"   value="" name="billcode">
+							</div>
 							<small class="col-md-1 control-label">问题级别</small>
 							<div class="col-md-3">
-								<select class="form-control" name="customername">
+								<select class="form-control" name="problempriority">
 									<option value="1">一般</option>
 									<option value="2">紧急</option>
 								</select>
 							</div>
 							<small class="col-md-1 control-label">问题类型</small>
 							<div class="col-md-3">
-								<select class="form-control" name="customername">
+								<select class="form-control" name="problemtype">
 									<option value="1">日常操作</option>
 									<option value="2">环境问题</option>
 									<option value="3">数据库问题</option>
@@ -114,15 +134,15 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">提交人</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="billcode">
+								<input type="text" class="form-control" value="" name="submitter">
 							</div>
 							<small class="col-md-1 control-label">联系方式</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="billcode">
+								<input type="text" class="form-control" value="" name="contact">
 							</div>
 							<small class="col-md-1 control-label">提交时间</small>
 							<div class="col-md-3 input-daterange input-group" id="date-range">
-								<input type="date" class="form-control" id="planestartdate"  name="createdatef">
+								<input type="date" class="form-control" id="planestartdate"  name="submitdate">
 								<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 							</div>
 						</div>
@@ -130,11 +150,11 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">负责人</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" value="" name="billcode">
+								<input type="text" class="form-control" value="" name="officerincharge">
 							</div>
 							<small class="col-md-1 control-label">处理状态</small>
 							<div class="col-md-3">
-								<select class="form-control" name="customername">
+								<select class="form-control" name="problemstatus">
 									<option value="1">未处理</option>
 									<option value="2">处理中</option>
 									<option value="3">已完成</option>
@@ -142,7 +162,7 @@
 							</div>
 							<small class="col-md-1 control-label">完成时间</small>
 							<div class="col-md-3 input-daterange input-group" id="date-range">
-								<input type="date" class="form-control" id="planestartdate"  name="createdatef">
+								<input type="date" class="form-control" id="finishdate"  name="finishdate">
 								<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 							</div>
 						</div>
@@ -150,11 +170,11 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">处理时长</small>
 							<div class="col-md-3">
-								<input type="text" class="form-control" disabled="" placeholder="..分钟" value="" name="billcode" >
+								<input type="text" class="form-control" disabled="" placeholder="..分钟" value="" name="processingtime" >
 							</div>
 							<small class="col-md-1 control-label">支持方式</small>
 							<div class="col-md-3">
-								<select class="form-control" name="customername">
+								<select class="form-control" name="supportmethod">
 									<option value="1">顾问电话支持</option>
 									<option value="2">400热线支持</option>
 									<option value="3">远程支持</option>
@@ -167,17 +187,17 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">问题描述</small>
 							<div class="col-md-11">
-								<input type="text" class="form-control" value="" name="billcode">
+								<input type="text" class="form-control" value="" name="problemdescription">
 							</div> 
 						</div>
 						<div class="form-group" class="col-md-12">
 							<small class="col-md-1 control-label">详细描述</small>
-							<div class="summernote"></div>
+							<textarea class="summernote" name="detaileddescription" class="form-control"></textarea>
 						</div>
 						<div  class="form-group" class="col-sm-12">
 							<small class="col-md-1 control-label">解决方案</small>
 							<div class="col-md-11">
-								<textarea required class="form-control"></textarea>
+								<textarea required class="form-control" name="solution"></textarea>
 							</div> 
 						</div>
 						<button type="submit" class="btn btn-default">保存</button>

@@ -13,9 +13,15 @@
     <result column="usersex" property="usersex" jdbcType="VARCHAR" />
     <result column="userarea" property="userarea" jdbcType="VARCHAR" />
     <result column="userdept" property="userdept" jdbcType="VARCHAR" />
+    <result column="def1" property="def1" jdbcType="VARCHAR" />
+    <result column="def2" property="def2" jdbcType="VARCHAR" />
+    <result column="def3" property="def3" jdbcType="VARCHAR" />
+    <result column="def4" property="def4" jdbcType="VARCHAR" />
+    <result column="def5" property="def5" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pk_user, usercode, password, username,usertype,usercnname,usercnname,userphone,useremail,usersex,userarea,userdept
+    pk_user, usercode, password, username, usertype, usercnname, userphone, useremail, 
+    usersex, userarea, userdept, def1, def2, def3, def4, def5
   </sql>
   
   
@@ -60,12 +66,14 @@
     insert into is_b_user (usercode, password, 
       username, usertype, usercnname, 
       userphone, useremail, usersex, 
-      userarea, userdept 
+      userarea, userdept ,def1, 
+      def2, def3, def4, def5
       )
     values (#{usercode,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{username,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR}, #{usercnname,jdbcType=VARCHAR}, 
       #{userphone,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}, 
-      #{userarea,jdbcType=VARCHAR}, #{userdept,jdbcType=VARCHAR}
+      #{userarea,jdbcType=VARCHAR}, #{userdept,jdbcType=VARCHAR}, #{def1,jdbcType=VARCHAR}, 
+      #{def2,jdbcType=VARCHAR}, #{def3,jdbcType=VARCHAR}, #{def4,jdbcType=VARCHAR}, #{def5,jdbcType=VARCHAR}
       )
   </insert>
   
@@ -130,7 +138,43 @@
     useremail = #{useremail,jdbcType=VARCHAR},
     usersex = #{usersex,jdbcType=VARCHAR},
     userarea = #{userarea,jdbcType=VARCHAR},
-    userdept = #{userdept,jdbcType=VARCHAR}
+    userdept = #{userdept,jdbcType=VARCHAR},
+    def1 = #{def1,jdbcType=VARCHAR},
+    def2 = #{def2,jdbcType=VARCHAR},
+    def3 = #{def3,jdbcType=VARCHAR},
+    def4 = #{def4,jdbcType=VARCHAR},
+    def5 = #{def5,jdbcType=VARCHAR}
     where pk_user = #{pk_user,jdbcType=INTEGER}
   </update>
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.User">
+  	SELECT
+  	<include refid="Base_Column_List"/>
+  	FROM is_b_user
+  	<where>
+  		<if test="pk_user!=null">
+  			AND pk_user=#{pk_user}
+  		</if>
+  		<if	test="usercode!=null and usercode!=''">
+  			AND usercode LIKE
+  			concat('%',#{usercode},'%')
+  		</if>
+  		<if	test="usertype!=null and usertype!=''">
+  			AND usertype LIKE
+  			concat('%',#{usertype},'%')
+  		</if>
+  		<if	test="usercnname!=null and usercnname!=''">
+  			AND usercnname LIKE
+  			concat('%',#{usercnname},'%')
+  		</if>
+  		<if	test="userarea!=null and userarea!=''">
+  			AND userarea LIKE
+  			concat('%',#{userarea},'%')
+  		</if>
+  		<if	test="usersex!=null and usersex!=''">
+  			AND usersex LIKE
+  			concat('%',#{usersex},'%')
+  		</if>
+  	</where>
+  </select>
 </mapper>

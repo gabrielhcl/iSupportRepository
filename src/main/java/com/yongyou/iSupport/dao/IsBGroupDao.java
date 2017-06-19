@@ -14,4 +14,6 @@ public interface IsBGroupDao {
     public int updateByPrimaryKey(IsBGroup record);
     
     public List<IsBGroup> findList(IsBGroup record);
+    
+    IsBGroup selectByCode(String groupcode);
 }

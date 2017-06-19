@@ -40,4 +40,9 @@ public class AreaServiceImpl implements AreaService{
 	public Area selectByPrimaryKey(Integer pk_area){
 		return this.areaDao.selectByPrimaryKey(pk_area);
 	}
+	
+	@Override
+	public Area selectByCode(String areacode){
+		return this.areaDao.selectByCode(areacode);
+	}
 }

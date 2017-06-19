@@ -21,4 +21,12 @@ public interface NewsService {
 	public List<IsNews> findNewsByColumn(IsNews news);
 	
 	public List<IsNews> selectByPkColumn(Integer pkColumn);
+	
+	int selectcountbycolumncode(Integer pk_column);
+	
+	 public List<IsNews> selectByiscarousel(String record);
+	 
+	 List<IsNews> findListByIstop(IsNews record);
+	 
+	 List<IsNews> findImgListOrderDate(IsNews record);
 }

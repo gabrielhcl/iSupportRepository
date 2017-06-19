@@ -2,6 +2,8 @@ package com.yongyou.iSupport.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yongyou.iSupport.dao.UserDao;
@@ -36,5 +38,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int updateByPrimaryKey(User record){
 		return this.userDao.updateByPrimaryKey(record);
+	}
+	
+	@Override
+	public List<User> findList(User user){
+		return this.userDao.findList(user);
 	}
 }

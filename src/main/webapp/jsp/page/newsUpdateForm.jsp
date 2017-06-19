@@ -69,17 +69,69 @@
     			<br>
     			<div class="form-group">
 					<label for="name">允许评论</label>
+					<c:if test="${news.iscomment==0}">
 					<select class="form-control" name="iscomment">
-						<option value="0">是</option>
+						<option value="0" selected="selected">是</option>
 						<option value="1">否</option>
 					</select>
+					</c:if>
+					<c:if test="${news.iscomment==1}">
+					<select class="form-control" name="iscomment">
+						<option value="0">是</option>
+						<option value="1" selected="selected">否</option>
+					</select>
+					</c:if>
 				</div>
 				<div class="form-group">
 					<label for="name">新闻置顶</label>
+					<c:if test="${news.istop==0}">
 					<select class="form-control" name="istop">
-						<option value="0">是</option>
+						<option value="0" selected="selected">是</option>
 						<option value="1">否</option>
 					</select>
+					</c:if>
+					<c:if test="${news.istop==1}">
+					<select class="form-control" name="istop">
+						<option value="0">是</option>
+						<option value="1"  selected="selected">否</option>
+					</select>
+					</c:if>
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputEmail1">序号</label><input type="text" class="form-control" name="sort" value="${news.sort}"/>
+				</div>
+				<div class="form-group">
+					<label for="name">发布到外部新闻网站</label>
+					<c:if test="${news.toout==0}">
+					<select class="form-control" name="toout" required>
+						<option value="0" selected="selected">是</option>
+						<option value="1">否</option>
+					</select>
+					</c:if>
+					<c:if test="${news.toout==1}">
+					<select class="form-control" name="toout" required>
+						<option value="0">是</option>
+						<option value="1" selected="selected">否</option>
+					</select>
+					</c:if>
+				</div>
+				<div class="form-group">
+					 <input type="hidden"  name="carouselimg" id="carouselimg" value="${news.carouselimg}" />
+				</div>
+				<div class="form-group">
+					<label for="name">是否轮播展示</label>
+					<c:if test="${news.iscarousel==0}">
+					<select class="form-control" name="iscarousel" required>
+						<option value="0" selected="selected">是</option>
+						<option value="1">否</option>
+					</select>
+					</c:if>
+					<c:if test="${news.iscarousel==1}">
+					<select class="form-control" name="iscarousel" required>
+						<option value="0">是</option>
+						<option value="1"  selected="selected">否</option>
+					</select>
+					</c:if>
 				</div>
     			<br>
 				<button type="submit" class="btn btn-default">保存</button>

@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -66,32 +68,38 @@
 							</div>
 							<small class="col-md-1 control-label">客户名称</small>
 							<div class="col-md-3">
-								<select class="form-control" name="customername">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
+							<input disabled="disabled" type="text" class="form-control" value="${project.customername}">
+<!-- 								<select class="form-control" name="customername"> -->
+<!-- 									<option value="1">1</option> -->
+<!-- 									<option value="2">2</option> -->
+<!-- 									<option value="3">3</option> -->
+<!-- 									<option value="4">4</option> -->
+<!-- 									<option value="5">5</option> -->
+<!-- 								</select> -->
 							</div>
 						</div>
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">所属集团</small>
 							<div class="col-md-3">
-								<select class="form-control"  name="groupcode">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
+							<input disabled="disabled" type="text" class="form-control" value="${group.groupname}">
+<!-- 								<select class="form-control"  name="groupcode"> -->
+<!-- 									<option value="1">1</option> -->
+<!-- 									<option value="2">2</option> -->
+<!-- 									<option value="3">3</option> -->
+<!-- 									<option value="4">4</option> -->
+<!-- 									<option value="5">5</option> -->
+<!-- 								</select> -->
 							</div>
 							<small class="col-md-1 control-label">服务时间</small>
 							<div class="col-md-7">
 								<div class="input-daterange input-group" id="date-range">
-									<input  class="form-control" type="date" name="servicestimef"/>
+									<input  class="form-control" type="date" name="servicestimef" value="${servicestime}"/>
+<%-- 									<fmt:formatDate value="${project.servicestime}" pattern="yyyy/MM/dd"/> --%>
 									<span class="input-group-addon bg-custom b-0 text-white">to</span>
-									<input   class="form-control" type="date" name="serviceftimef"/>
+<!-- 									<span><h3>to</h3></span> -->
+									<input   class="form-control" type="date" name="serviceftimef" value="${serviceftime}"/>
+<!-- 										&nbsp to &nbsp -->
+<%-- 									<fmt:formatDate value="${project.serviceftime}" pattern="yyyy/MM/dd"/> --%>
 								</div>
 							</div>
 						</div>
@@ -99,7 +107,7 @@
 							<div class="col-md-1"></div>
 							<div class="col-md-3">
 								<div class="checkbox checkbox-primary">
-                                    <input id="checkbox1" type="checkbox" name="isimplement">
+                                    <input id="checkbox1" type="checkbox" name="isimplement" <c:if test="${project.isimplement==1}">checked="checked"</c:if>>
                                     <label for="checkbox1">
                                        	 是否按照合同签订服务期间执行
                                     </label>
@@ -117,11 +125,12 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">所属区域</small>
 							<div class="col-md-3">
-								<select class="form-control" name="areacode">
-									<option value="1">西北区</option>
-									<option value="2">西南区</option>
-									<option value="3">四川省区</option>
-								</select>
+							<input disabled="disabled" type="text" class="form-control" value="${area.areaname}">
+<!-- 								<select class="form-control" name="areacode"> -->
+<!-- 									<option value="1">西北区</option> -->
+<!-- 									<option value="2">西南区</option> -->
+<!-- 									<option value="3">四川省区</option> -->
+<!-- 								</select> -->
 							</div> 
 							<small class="col-md-1 control-label">项目地址</small>
 							<div class="col-md-7">
@@ -131,12 +140,13 @@
 						<div class="form-group" class="col-md-6">
 							<small class="col-md-1 control-label">对应产品</small>
 							<div class="col-md-3">
-								<select class="form-control" name="productcode">
-									<option value="1">V5</option>
-									<option value="2">V6</option>
-									<option value="3">V5营改增</option>
-									<option value="4">V6营改增</option>
-								</select>
+							<input disabled="disabled" type="text" class="form-control" value="${project.productcode}">
+<!-- 								<select class="form-control" name="productcode"> -->
+<!-- 									<option value="1">V5</option> -->
+<!-- 									<option value="2">V6</option> -->
+<!-- 									<option value="3">V5营改增</option> -->
+<!-- 									<option value="4">V6营改增</option> -->
+<!-- 								</select> -->
 							</div>
 							<small class="col-md-1 control-label">模块信息</small>
 							<div class="col-md-7">
@@ -156,7 +166,8 @@
 							</div>
 							<small class="col-md-1 control-label">创建日期</small>
 							<div class="col-md-3 input-daterange input-group" id="date-range">
-								<input type="date" class="form-control" id="planestartdate"  name="createdatef">
+								<input type="date" class="form-control" id="planestartdate"  name="createdatef" value="${createdate}">
+<%-- 								<fmt:formatDate value="${project.createdate}" pattern="yyyy/MM/dd"/> --%>
 								<span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
 							</div>
 						</div>
@@ -258,6 +269,7 @@
 								<input  disabled="disabled"  type="text" class="form-control" value="${project.clientnum}" name="clientnum">
 							</div>
 						</div>
+						<input name ="Button"  value="打印" type="button" onclick="window.print()" />  
 					</form>
 				</div>
 			</div>

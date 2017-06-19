@@ -14,10 +14,14 @@
     <result column="newsremarks" property="newsremarks" jdbcType="VARCHAR" />
     <result column="iscomment" property="iscomment" jdbcType="VARCHAR" />
     <result column="istop" property="istop" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
+    <result column="toout" property="toout" jdbcType="VARCHAR" />
+    <result column="iscarousel" property="iscarousel" jdbcType="VARCHAR" />
+    <result column="carouselimg" property="carouselimg" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pk_news, pk_column, newscode, newstitle, newsdate, createby, newscontent, newspicture, 
-    newsremarks, iscomment, istop
+    pk_news, pk_column, newscode, newstitle, newsdate, createby, newspicture, newsremarks, 
+    iscomment, istop, sort, toout, iscarousel, carouselimg,newscontent
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -39,16 +43,18 @@
   </delete>
   
   
-  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsNews" >
-    insert into is_news (pk_column, newscode, 
+   <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsNews" >
+    insert into is_news (pk_news, pk_column, newscode, 
       newstitle, newsdate, createby, 
-      newscontent, newspicture, newsremarks, 
-      iscomment, istop
+      newspicture, newsremarks, iscomment, 
+      istop, sort, toout, 
+      iscarousel, carouselimg, newscontent
       )
-    values (#{pkColumn,jdbcType=INTEGER}, #{newscode,jdbcType=VARCHAR}, 
+    values (#{pkNews,jdbcType=INTEGER}, #{pkColumn,jdbcType=INTEGER}, #{newscode,jdbcType=VARCHAR}, 
       #{newstitle,jdbcType=VARCHAR}, #{newsdate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
-      #{newscontent,jdbcType=VARCHAR}, #{newspicture,jdbcType=VARCHAR}, #{newsremarks,jdbcType=VARCHAR}, 
-      #{iscomment,jdbcType=VARCHAR}, #{istop,jdbcType=VARCHAR} 
+      #{newspicture,jdbcType=VARCHAR}, #{newsremarks,jdbcType=VARCHAR}, #{iscomment,jdbcType=VARCHAR}, 
+      #{istop,jdbcType=VARCHAR}, #{sort,jdbcType=VARCHAR}, #{toout,jdbcType=VARCHAR}, 
+      #{iscarousel,jdbcType=VARCHAR}, #{carouselimg,jdbcType=VARCHAR}, #{newscontent,jdbcType=LONGVARCHAR}
       )
   </insert>
 <!--   手动插入新闻 -->
@@ -56,12 +62,14 @@
     insert into is_news (pk_column, newscode, 
       newstitle, newsdate, createby, 
       newscontent, newspicture, newsremarks, 
-      iscomment, istop
+      iscomment, istop,sort, toout, 
+      iscarousel, carouselimg
       )
     values (#{pkColumn,jdbcType=INTEGER}, #{newscode,jdbcType=VARCHAR}, 
       #{newstitle,jdbcType=VARCHAR}, #{newsdate,jdbcType=TIMESTAMP}, #{createby,jdbcType=VARCHAR}, 
       #{newscontent,jdbcType=VARCHAR}, #{newspicture,jdbcType=VARCHAR}, #{newsremarks,jdbcType=VARCHAR}, 
-      #{iscomment,jdbcType=VARCHAR}, #{istop,jdbcType=VARCHAR} 
+      #{iscomment,jdbcType=VARCHAR}, #{istop,jdbcType=VARCHAR} ,#{sort,jdbcType=VARCHAR}, #{toout,jdbcType=VARCHAR}, 
+      #{iscarousel,jdbcType=VARCHAR}, #{carouselimg,jdbcType=VARCHAR}
       )
   </insert>
   
@@ -201,7 +209,11 @@
       newspicture = #{newspicture,jdbcType=VARCHAR},
       newsremarks = #{newsremarks,jdbcType=VARCHAR},
       iscomment = #{iscomment,jdbcType=VARCHAR},
-      istop = #{istop,jdbcType=VARCHAR}
+      istop = #{istop,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      toout = #{toout,jdbcType=VARCHAR},
+      iscarousel = #{iscarousel,jdbcType=VARCHAR},
+      carouselimg = #{carouselimg,jdbcType=VARCHAR}
     where pk_news = #{pkNews,jdbcType=INTEGER}
   </update>
   
@@ -251,6 +263,54 @@
 				AND istop LIKE
 				concat('%',#{istop},'%')
 			</if>
+			<if test=" sort != null and  sort != '' ">
+				AND sort LIKE
+				concat('%',#{sort},'%')
+			</if>
+			<if test=" toout != null and  toout != '' ">
+				AND toout LIKE
+				concat('%',#{toout},'%')
+			</if>
+			<if test=" iscarousel != null and  iscarousel != '' ">
+				AND iscarousel LIKE
+				concat('%',#{iscarousel},'%')
+			</if>
+			<if test=" carouselimg != null and  carouselimg != '' ">
+				AND carouselimg LIKE
+				concat('%',#{carouselimg},'%')
+			</if>
 		</where>
 	</select>
+	
+	
+	
+	<select id="selectcountbycolumncode"   resultType="int" parameterType="java.lang.Integer">
+	SELECT COUNT(*) FROM is_news WHERE pk_column=#{pk_column,jdbcType=INTEGER}
+	</select>
+	
+	
+	<select id="selectByiscarousel" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_news
+    where iscarousel = 0;
+  	</select>
+  	
+    <!--根据置顶条件搜索新闻并按照序号排序新闻 -->
+  	<select id="findListByIstop" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsNews">
+		SELECT
+		<include refid="Base_Column_List" />
+		,CASE WHEN istop = '0' then 1 else 2 end orderdata 
+		FROM is_news 
+		order by orderdata,sort desc
+	</select> 
+<!-- 	搜索轮播新闻（按发布日期排序） -->
+<!-- 	select * from is_news WHERE iscarousel=0 ORDER BY newsdate  -->
+	<select id="findImgListOrderDate" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsNews">
+	SELECT
+	<include refid="Base_Column_List" />
+	FROM is_news WHERE iscarousel=0 ORDER BY newsdate DESC
+	</select>
+	
+  	
 </mapper>

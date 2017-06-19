@@ -29,4 +29,9 @@ public class IsMainPlanBServiceImpl implements IsMainPlanBService {
 	public IsMainplanB selectByMainplanHAndPlancode(@Param("pkMainplanH")Integer pkMainplanH,@Param("plancode")String plancode){
 		return this.isMainplanBDao.selectByMainplanHAndPlancode(pkMainplanH, plancode);
 	}
+	
+	@Override
+    public	int updateByMainplanH(IsMainplanB record){
+		 return this.isMainplanBDao.updateByMainplanH(record);
+	 }
 }

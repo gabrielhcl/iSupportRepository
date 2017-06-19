@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,13 +14,14 @@
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-
+		var areacountlist = ${areacountlist};
+		alert("${areacountlist}");
         function fetchData(cb) {
             // 通过 setTimeout 模拟异步加载
             setTimeout(function () {
                 cb({
-                    categories: ["${group.groupcode}","${group.groupname}","${group.remark}","四月","五月","六月"],
-                    data: [5, 20, 36, 10, 10, 20]
+                    categories:areacountlist,
+                    data: ["${xibei}","${sichuan}","${xian}"]
                 });
             }, 1000);
         }
@@ -50,7 +52,7 @@
                 },
                 series: [{
                     // 根据名字对应到相应的系列
-                    name: '销量',
+                    name: '项目数量',
                     data: data.data
                 }]
             });

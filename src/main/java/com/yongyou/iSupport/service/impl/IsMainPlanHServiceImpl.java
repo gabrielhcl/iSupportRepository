@@ -40,4 +40,9 @@ public class IsMainPlanHServiceImpl implements IsMainPlanHService {
 	public IsMainplanH selectByProjectName(String projectname){
 		return this.isMainPlanHDao.selectByProjectName(projectname);
 	}
+	
+	@Override
+	public int updateByPrimaryKey(IsMainplanH record){
+		return this.isMainPlanHDao.updateByPrimaryKey(record);
+	}
 }

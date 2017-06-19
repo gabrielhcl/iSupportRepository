@@ -15,8 +15,6 @@ public class IsNews {
 
     private String createby;
 
-    private String newscontent;
-
     private String newspicture;
 
     private String newsremarks;
@@ -24,6 +22,18 @@ public class IsNews {
     private String iscomment;
 
     private String istop;
+
+    private String sort;
+
+    private String toout;
+
+    private String iscarousel;
+
+    private String carouselimg;
+
+    private String newscontent;
+    
+    private String itemactive;
 
     public Integer getPkNews() {
         return pkNews;
@@ -73,14 +83,6 @@ public class IsNews {
         this.createby = createby == null ? null : createby.trim();
     }
 
-    public String getNewscontent() {
-        return newscontent;
-    }
-
-    public void setNewscontent(String newscontent) {
-        this.newscontent = newscontent == null ? null : newscontent.trim();
-    }
-
     public String getNewspicture() {
         return newspicture;
     }
@@ -112,4 +114,54 @@ public class IsNews {
     public void setIstop(String istop) {
         this.istop = istop == null ? null : istop.trim();
     }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort == null ? null : sort.trim();
+    }
+
+    public String getToout() {
+        return toout;
+    }
+
+    public void setToout(String toout) {
+        this.toout = toout == null ? null : toout.trim();
+    }
+
+    public String getIscarousel() {
+        return iscarousel;
+    }
+
+    public void setIscarousel(String iscarousel) {
+        this.iscarousel = iscarousel == null ? null : iscarousel.trim();
+    }
+
+    public String getCarouselimg() {
+        return carouselimg;
+    }
+
+    public void setCarouselimg(String carouselimg) {
+        this.carouselimg = carouselimg == null ? null : carouselimg.trim();
+    }
+
+    public String getNewscontent() {
+        return newscontent;
+    }
+
+    public void setNewscontent(String newscontent) {
+        this.newscontent = newscontent == null ? null : newscontent.trim();
+    }
+
+	public String getItemactive() {
+		return itemactive;
+	}
+
+	public void setItemactive(String itemactive) {
+		this.itemactive = itemactive;
+	}
+    
+    
 }

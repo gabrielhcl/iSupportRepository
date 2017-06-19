@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>注册页面</title>
@@ -13,7 +14,8 @@
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script> --%>
 <!-- 验证中文提示 -->
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/basic/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> --%>
-
+ <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.9.1.js"></script>
+ <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.form.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 body{
@@ -69,6 +71,41 @@ function clearCss() {
 }      
 
 </script>
+<script type="text/javascript">
+	$(function(){
+		 //jquery.form image1
+		 $("#upimage").bind("click",function(){
+		 if($("#upfile").val()==""){
+		  alert("请选择一个图片文件,再点击");
+		  return;
+		 }
+		 
+		var file = document.getElementById("upfile").value;
+		 $("#form1").ajaxSubmit({
+			 url:"${pageContext.request.contextPath}/user/upload",
+			 contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			 type:"POST",
+			  success:function(response){
+				  alert(response);
+				  $("#ln").empty();
+				  $("#ln").append("<img src='/portrait/"+response+"' width='250' height='140'/>");
+				  $("#def1").val(response);
+				  $("#im1").val(response);
+			  },
+			  error:function(msg){
+			  alert("出错了");
+			  }
+		 	});
+		 });
+		 //jquery.form image2
+		});
+	
+	
+	function formsubmit(){
+		alert("提交表单")
+		document.getElementById('commentForm').submit();
+	};
+</script>
 </head>
 <body>
 <div class="container">
@@ -111,8 +148,9 @@ function clearCss() {
 				<div class="form-group">
 					<label for="exampleInputPassword1">所在大区</label>
 					<select class="form-control m-b" name="userarea" >
-						<option value="0">西南区</option>
-						<option value="1">西北区</option>
+					<c:forEach items="${alist}" var="area">
+						<option value="${area.areaname}">${area.areaname}</option>
+					</c:forEach>
 					</select>
 				</div>
 				<div class="form-group">
@@ -136,10 +174,24 @@ function clearCss() {
 						<option value="1">女</option>
 					</select>
 				</div>
-				<br>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+				<div class="form-group">
+					 <input type="hidden"  name="def1" id="def1" value="" />
+				</div>
+<!-- 				<br> -->
+<!-- 				<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button> -->
 				</fieldset>
 			</form>
+			<div class="form-group">
+				<label for="name">上传头像</label>
+					<form enctype="multipart/form-data" id="form1" method="post" action="${pageContext.request.contextPath}/user/upload">
+					文件:
+					 <input type="file" name="upfile" id="upfile"><br><input type="button" id="upimage" value="上传">
+					 <input type="text" name="im1" id="im1" value="" />
+					</form>
+					<div id="ln"></div><br>
+			</div>
+			<br>
+			<input type="button" value="保存" onclick="formsubmit()" class="btn btn-default"/>
 		</div>
 		<div class="col-md-4 column">
 		</div>

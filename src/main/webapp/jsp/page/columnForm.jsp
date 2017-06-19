@@ -28,6 +28,9 @@
 					 <label for="exampleInputPassword1">栏目名称</label><input type="text" class="form-control" id="columnname" name="columnname" />
 				</div>
 				<div class="form-group">
+					 <label for="exampleInputPassword1">排序</label><input type="text" class="form-control" id="sort" name="sort" />
+				</div>
+				<div class="form-group">
 					 <label for="exampleInputPassword1">备注</label><input type="text" class="form-control" id="columnremark" name="columnremark" />
 				</div>
 				<button type="submit" class="btn btn-default">保存</button>

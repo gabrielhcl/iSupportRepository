@@ -14,4 +14,6 @@ public interface IsMainPlanHService {
 	IsMainplanH selectByPrimaryKey(Integer pkMainplanH);
 	
 	IsMainplanH selectByProjectName(String projectname);
+	
+	int updateByPrimaryKey(IsMainplanH record);
 }

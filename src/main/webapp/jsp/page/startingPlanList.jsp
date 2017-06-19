@@ -44,10 +44,10 @@
 				<div class="page-header">
 					<h1>实施主计划</h1>
 				</div>
-				<button id="addbutton"
-					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/mainplan/addmainplan'">
-					添加
-				</button>
+<!-- 				<button id="addbutton" -->
+<%-- 					class="btn btn-default  waves-light addbutton"  onclick="location='${pageContext.request.contextPath}/mainplan/addmainplan'"> --%>
+<!-- 					添加 -->
+<!-- 				</button> -->
 				<br>
 				<form role="form"
 					action="${pageContext.request.contextPath}/mainplan/mainplanlist"
@@ -87,7 +87,7 @@
 												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>查看
 											</a>
 											<a
-												href="${pageContext.request.contextPath}/area/update?pk_area= "
+												href="${pageContext.request.contextPath}/mainplan/toupdate?pkMainplanH=${mainplanh.pkMainplanH}"
 												onclick="return confirmx('确认要修改该数据吗？', this.href)"
 												class="btn btn-info btn-xs"> <i class="fa fa-trash"></i>修改
 											</a>

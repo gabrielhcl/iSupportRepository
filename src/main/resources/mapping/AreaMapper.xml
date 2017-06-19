@@ -61,4 +61,11 @@
     WHERE pk_area = #{pk_area,jdbcType=INTEGER}
 	</select>
   
+  
+  	<select id="selectByCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+	SELECT 
+    <include refid="Base_Column_List" />
+    FROM is_b_area 
+    WHERE areacode = #{areacode,jdbcType=VARCHAR}
+	</select>
 </mapper>

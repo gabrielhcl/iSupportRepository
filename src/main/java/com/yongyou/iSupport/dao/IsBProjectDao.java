@@ -15,6 +15,10 @@ public interface IsBProjectDao {
 	    int insert(IsBProject record);
 
 	    int insertSelective(IsBProject record);
+	    
+	    List<IsBProject> selectcountbyarea();
+	    
+	    
 
 	    List<IsBProject> selectByExample(IsBProjectExample example);
 
@@ -31,4 +35,8 @@ public interface IsBProjectDao {
 	    public List<IsBProject> findList(IsBProject record);
 	    
 	    IsBProject selectByProjectName(String projectname);
+	    
+	    int selectcountbyareacode(String areacode);
+	    
+	    List<IsBProject> selectcountandcode(IsBProject record);
 }

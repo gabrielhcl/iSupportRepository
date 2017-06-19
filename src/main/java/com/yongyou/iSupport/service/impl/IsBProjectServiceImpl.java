@@ -45,4 +45,19 @@ public class IsBProjectServiceImpl implements IsBProjectService {
 	public IsBProject selectByProjectName(String projectname){
 		return this.isBProjectDao.selectByProjectName(projectname);
 	}
+	
+	@Override
+	public List<IsBProject> selectcountbyarea(){
+		return this.isBProjectDao.selectcountbyarea();
+	}
+	
+	@Override
+	public int selectcountbyareacode(String areacode){
+		return this.isBProjectDao.selectcountbyareacode(areacode);
+	}
+	
+	@Override
+	public List<IsBProject> selectcountandcode(IsBProject record){
+		return this.isBProjectDao.selectcountandcode(record);
+	}
 }

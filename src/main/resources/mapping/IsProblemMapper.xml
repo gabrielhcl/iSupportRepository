@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yongyou.iSupport.dao.IsProblemDao" >
+  <resultMap id="BaseResultMap" type="com.yongyou.iSupport.entity.IsProblem" >
+    <id column="pk_problem" property="pkProblem" jdbcType="INTEGER" />
+    <result column="problemcode" property="problemcode" jdbcType="VARCHAR" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="customername" property="customername" jdbcType="VARCHAR" />
+    <result column="companyrelated" property="companyrelated" jdbcType="VARCHAR" />
+    <result column="productrelated" property="productrelated" jdbcType="VARCHAR" />
+    <result column="modulerelated" property="modulerelated" jdbcType="VARCHAR" />
+    <result column="problempriority" property="problempriority" jdbcType="VARCHAR" />
+    <result column="problemtype" property="problemtype" jdbcType="VARCHAR" />
+    <result column="submitter" property="submitter" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="submitdate" property="submitdate" jdbcType="TIMESTAMP" />
+    <result column="officerincharge" property="officerincharge" jdbcType="VARCHAR" />
+    <result column="problemstatus" property="problemstatus" jdbcType="VARCHAR" />
+    <result column="finishdate" property="finishdate" jdbcType="TIMESTAMP" />
+    <result column="processingtime" property="processingtime" jdbcType="VARCHAR" />
+    <result column="supportmethod" property="supportmethod" jdbcType="VARCHAR" />
+    <result column="problemdescription" property="problemdescription" jdbcType="VARCHAR" />
+    <result column="detaileddescription" property="detaileddescription" jdbcType="VARCHAR" />
+    <result column="solution" property="solution" jdbcType="VARCHAR" />
+    <result column="corpname" property="corpname" jdbcType="VARCHAR" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
+    <result column="nodename" property="nodename" jdbcType="VARCHAR" />
+    <result column="billcode" property="billcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pk_problem, problemcode, projectname, customername, companyrelated, productrelated, 
+    modulerelated, problempriority, problemtype, submitter, contact, submitdate, officerincharge, 
+    problemstatus, finishdate, processingtime, supportmethod, problemdescription, detaileddescription, 
+    solution, corpname, accountname, nodename, billcode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsProblemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from is_problem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from is_problem
+    where pk_problem = #{pkProblem,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from is_problem
+    where pk_problem = #{pkProblem,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yongyou.iSupport.entity.IsProblemExample" >
+    delete from is_problem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yongyou.iSupport.entity.IsProblem" >
+    insert into is_problem (pk_problem, problemcode, projectname, 
+      customername, companyrelated, productrelated, 
+      modulerelated, problempriority, problemtype, 
+      submitter, contact, submitdate, 
+      officerincharge, problemstatus, finishdate, 
+      processingtime, supportmethod, problemdescription, 
+      detaileddescription, solution, corpname, 
+      accountname, nodename, billcode
+      )
+    values (#{pkProblem,jdbcType=INTEGER}, #{problemcode,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, 
+      #{customername,jdbcType=VARCHAR}, #{companyrelated,jdbcType=VARCHAR}, #{productrelated,jdbcType=VARCHAR}, 
+      #{modulerelated,jdbcType=VARCHAR}, #{problempriority,jdbcType=VARCHAR}, #{problemtype,jdbcType=VARCHAR}, 
+      #{submitter,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{submitdate,jdbcType=TIMESTAMP}, 
+      #{officerincharge,jdbcType=VARCHAR}, #{problemstatus,jdbcType=VARCHAR}, #{finishdate,jdbcType=TIMESTAMP}, 
+      #{processingtime,jdbcType=VARCHAR}, #{supportmethod,jdbcType=VARCHAR}, #{problemdescription,jdbcType=VARCHAR}, 
+      #{detaileddescription,jdbcType=VARCHAR}, #{solution,jdbcType=VARCHAR}, #{corpname,jdbcType=VARCHAR}, 
+      #{accountname,jdbcType=VARCHAR}, #{nodename,jdbcType=VARCHAR}, #{billcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yongyou.iSupport.entity.IsProblem" >
+    insert into is_problem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkProblem != null" >
+        pk_problem,
+      </if>
+      <if test="problemcode != null" >
+        problemcode,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="customername != null" >
+        customername,
+      </if>
+      <if test="companyrelated != null" >
+        companyrelated,
+      </if>
+      <if test="productrelated != null" >
+        productrelated,
+      </if>
+      <if test="modulerelated != null" >
+        modulerelated,
+      </if>
+      <if test="problempriority != null" >
+        problempriority,
+      </if>
+      <if test="problemtype != null" >
+        problemtype,
+      </if>
+      <if test="submitter != null" >
+        submitter,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="submitdate != null" >
+        submitdate,
+      </if>
+      <if test="officerincharge != null" >
+        officerincharge,
+      </if>
+      <if test="problemstatus != null" >
+        problemstatus,
+      </if>
+      <if test="finishdate != null" >
+        finishdate,
+      </if>
+      <if test="processingtime != null" >
+        processingtime,
+      </if>
+      <if test="supportmethod != null" >
+        supportmethod,
+      </if>
+      <if test="problemdescription != null" >
+        problemdescription,
+      </if>
+      <if test="detaileddescription != null" >
+        detaileddescription,
+      </if>
+      <if test="solution != null" >
+        solution,
+      </if>
+      <if test="corpname != null" >
+        corpname,
+      </if>
+      <if test="accountname != null" >
+        accountname,
+      </if>
+      <if test="nodename != null" >
+        nodename,
+      </if>
+      <if test="billcode != null" >
+        billcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkProblem != null" >
+        #{pkProblem,jdbcType=INTEGER},
+      </if>
+      <if test="problemcode != null" >
+        #{problemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="companyrelated != null" >
+        #{companyrelated,jdbcType=VARCHAR},
+      </if>
+      <if test="productrelated != null" >
+        #{productrelated,jdbcType=VARCHAR},
+      </if>
+      <if test="modulerelated != null" >
+        #{modulerelated,jdbcType=VARCHAR},
+      </if>
+      <if test="problempriority != null" >
+        #{problempriority,jdbcType=VARCHAR},
+      </if>
+      <if test="problemtype != null" >
+        #{problemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="submitter != null" >
+        #{submitter,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="submitdate != null" >
+        #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="officerincharge != null" >
+        #{officerincharge,jdbcType=VARCHAR},
+      </if>
+      <if test="problemstatus != null" >
+        #{problemstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="finishdate != null" >
+        #{finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processingtime != null" >
+        #{processingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="supportmethod != null" >
+        #{supportmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="problemdescription != null" >
+        #{problemdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="detaileddescription != null" >
+        #{detaileddescription,jdbcType=VARCHAR},
+      </if>
+      <if test="solution != null" >
+        #{solution,jdbcType=VARCHAR},
+      </if>
+      <if test="corpname != null" >
+        #{corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null" >
+        #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null" >
+        #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="billcode != null" >
+        #{billcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yongyou.iSupport.entity.IsProblemExample" resultType="java.lang.Integer" >
+    select count(*) from is_problem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update is_problem
+    <set >
+      <if test="record.pkProblem != null" >
+        pk_problem = #{record.pkProblem,jdbcType=INTEGER},
+      </if>
+      <if test="record.problemcode != null" >
+        problemcode = #{record.problemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null" >
+        projectname = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customername != null" >
+        customername = #{record.customername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyrelated != null" >
+        companyrelated = #{record.companyrelated,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productrelated != null" >
+        productrelated = #{record.productrelated,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modulerelated != null" >
+        modulerelated = #{record.modulerelated,jdbcType=VARCHAR},
+      </if>
+      <if test="record.problempriority != null" >
+        problempriority = #{record.problempriority,jdbcType=VARCHAR},
+      </if>
+      <if test="record.problemtype != null" >
+        problemtype = #{record.problemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.submitter != null" >
+        submitter = #{record.submitter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        contact = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.submitdate != null" >
+        submitdate = #{record.submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.officerincharge != null" >
+        officerincharge = #{record.officerincharge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.problemstatus != null" >
+        problemstatus = #{record.problemstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finishdate != null" >
+        finishdate = #{record.finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.processingtime != null" >
+        processingtime = #{record.processingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supportmethod != null" >
+        supportmethod = #{record.supportmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.problemdescription != null" >
+        problemdescription = #{record.problemdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detaileddescription != null" >
+        detaileddescription = #{record.detaileddescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.solution != null" >
+        solution = #{record.solution,jdbcType=VARCHAR},
+      </if>
+      <if test="record.corpname != null" >
+        corpname = #{record.corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountname != null" >
+        accountname = #{record.accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodename != null" >
+        nodename = #{record.nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billcode != null" >
+        billcode = #{record.billcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update is_problem
+    set pk_problem = #{record.pkProblem,jdbcType=INTEGER},
+      problemcode = #{record.problemcode,jdbcType=VARCHAR},
+      projectname = #{record.projectname,jdbcType=VARCHAR},
+      customername = #{record.customername,jdbcType=VARCHAR},
+      companyrelated = #{record.companyrelated,jdbcType=VARCHAR},
+      productrelated = #{record.productrelated,jdbcType=VARCHAR},
+      modulerelated = #{record.modulerelated,jdbcType=VARCHAR},
+      problempriority = #{record.problempriority,jdbcType=VARCHAR},
+      problemtype = #{record.problemtype,jdbcType=VARCHAR},
+      submitter = #{record.submitter,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      submitdate = #{record.submitdate,jdbcType=TIMESTAMP},
+      officerincharge = #{record.officerincharge,jdbcType=VARCHAR},
+      problemstatus = #{record.problemstatus,jdbcType=VARCHAR},
+      finishdate = #{record.finishdate,jdbcType=TIMESTAMP},
+      processingtime = #{record.processingtime,jdbcType=VARCHAR},
+      supportmethod = #{record.supportmethod,jdbcType=VARCHAR},
+      problemdescription = #{record.problemdescription,jdbcType=VARCHAR},
+      detaileddescription = #{record.detaileddescription,jdbcType=VARCHAR},
+      solution = #{record.solution,jdbcType=VARCHAR},
+      corpname = #{record.corpname,jdbcType=VARCHAR},
+      accountname = #{record.accountname,jdbcType=VARCHAR},
+      nodename = #{record.nodename,jdbcType=VARCHAR},
+      billcode = #{record.billcode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yongyou.iSupport.entity.IsProblem" >
+    update is_problem
+    <set >
+      <if test="problemcode != null" >
+        problemcode = #{problemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null" >
+        customername = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="companyrelated != null" >
+        companyrelated = #{companyrelated,jdbcType=VARCHAR},
+      </if>
+      <if test="productrelated != null" >
+        productrelated = #{productrelated,jdbcType=VARCHAR},
+      </if>
+      <if test="modulerelated != null" >
+        modulerelated = #{modulerelated,jdbcType=VARCHAR},
+      </if>
+      <if test="problempriority != null" >
+        problempriority = #{problempriority,jdbcType=VARCHAR},
+      </if>
+      <if test="problemtype != null" >
+        problemtype = #{problemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="submitter != null" >
+        submitter = #{submitter,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="submitdate != null" >
+        submitdate = #{submitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="officerincharge != null" >
+        officerincharge = #{officerincharge,jdbcType=VARCHAR},
+      </if>
+      <if test="problemstatus != null" >
+        problemstatus = #{problemstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="finishdate != null" >
+        finishdate = #{finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processingtime != null" >
+        processingtime = #{processingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="supportmethod != null" >
+        supportmethod = #{supportmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="problemdescription != null" >
+        problemdescription = #{problemdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="detaileddescription != null" >
+        detaileddescription = #{detaileddescription,jdbcType=VARCHAR},
+      </if>
+      <if test="solution != null" >
+        solution = #{solution,jdbcType=VARCHAR},
+      </if>
+      <if test="corpname != null" >
+        corpname = #{corpname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null" >
+        accountname = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null" >
+        nodename = #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="billcode != null" >
+        billcode = #{billcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_problem = #{pkProblem,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yongyou.iSupport.entity.IsProblem" >
+    update is_problem
+    set problemcode = #{problemcode,jdbcType=VARCHAR},
+      projectname = #{projectname,jdbcType=VARCHAR},
+      customername = #{customername,jdbcType=VARCHAR},
+      companyrelated = #{companyrelated,jdbcType=VARCHAR},
+      productrelated = #{productrelated,jdbcType=VARCHAR},
+      modulerelated = #{modulerelated,jdbcType=VARCHAR},
+      problempriority = #{problempriority,jdbcType=VARCHAR},
+      problemtype = #{problemtype,jdbcType=VARCHAR},
+      submitter = #{submitter,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      submitdate = #{submitdate,jdbcType=TIMESTAMP},
+      officerincharge = #{officerincharge,jdbcType=VARCHAR},
+      problemstatus = #{problemstatus,jdbcType=VARCHAR},
+      finishdate = #{finishdate,jdbcType=TIMESTAMP},
+      processingtime = #{processingtime,jdbcType=VARCHAR},
+      supportmethod = #{supportmethod,jdbcType=VARCHAR},
+      problemdescription = #{problemdescription,jdbcType=VARCHAR},
+      detaileddescription = #{detaileddescription,jdbcType=VARCHAR},
+      solution = #{solution,jdbcType=VARCHAR},
+      corpname = #{corpname,jdbcType=VARCHAR},
+      accountname = #{accountname,jdbcType=VARCHAR},
+      nodename = #{nodename,jdbcType=VARCHAR},
+      billcode = #{billcode,jdbcType=VARCHAR}
+    where pk_problem = #{pkProblem,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  <select id="findList" resultMap="BaseResultMap" parameterType="com.yongyou.iSupport.entity.IsProblem">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM is_problem 
+		<where>
+			<if test="pkProblem!= null">
+				AND pkProblem=#{pkProblem}
+			</if>
+			<if test=" projectname != null and  projectname != '' ">
+				AND projectname LIKE
+				concat('%',#{projectname},'%')
+			</if>
+			<if test=" customername != null and  customername != '' ">
+				AND customername LIKE
+				concat('%',#{customername},'%')
+			</if><if test=" companyrelated != null and  companyrelated != '' ">
+				AND companyrelated LIKE
+				concat('%',#{companyrelated},'%')
+			</if><if test=" productrelated != null and  productrelated != '' ">
+				AND productrelated LIKE
+				concat('%',#{productrelated},'%')
+			</if><if test=" modulerelated != null and  modulerelated != '' ">
+				AND modulerelated LIKE
+				concat('%',#{modulerelated},'%')
+			</if><if test=" problemtype != null and  problemtype != '' ">
+				AND problemtype LIKE
+				concat('%',#{problemtype},'%')
+			</if>
+			<if test=" submitter != null and  submitter != '' ">
+				AND submitter LIKE
+				concat('%',#{submitter},'%')
+			</if>
+			<if test=" officerincharge != null and  officerincharge != '' ">
+				AND officerincharge LIKE
+				concat('%',#{officerincharge},'%')
+			</if>
+			<if test=" problemstatus != null and  problemstatus != '' ">
+				AND problemstatus LIKE
+				concat('%',#{problemstatus},'%')
+			</if>
+			<if test=" supportmethod != null and  supportmethod != '' ">
+				AND supportmethod LIKE
+				concat('%',#{supportmethod},'%')
+			</if>
+		</where>
+	</select>
+</mapper>
